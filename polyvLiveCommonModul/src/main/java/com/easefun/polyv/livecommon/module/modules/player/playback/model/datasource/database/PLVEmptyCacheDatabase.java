@@ -1,9 +1,9 @@
 package com.easefun.polyv.livecommon.module.modules.player.playback.model.datasource.database;
 
-import android.arch.persistence.db.SupportSQLiteOpenHelper;
-import android.arch.persistence.room.DatabaseConfiguration;
-import android.arch.persistence.room.InvalidationTracker;
-import android.support.annotation.NonNull;
+import androidx.sqlite.db.SupportSQLiteOpenHelper;
+import androidx.room.DatabaseConfiguration;
+import androidx.room.InvalidationTracker;
+import androidx.annotation.NonNull;
 
 import com.easefun.polyv.livecommon.module.modules.player.playback.model.datasource.database.dao.IPLVPlaybackCacheDAO;
 import com.easefun.polyv.livecommon.module.modules.player.playback.model.datasource.database.entity.PLVPlaybackCacheVideoVO;

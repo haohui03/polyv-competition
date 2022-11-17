@@ -1,6 +1,6 @@
 package com.easefun.polyv.livecommon.module.modules.streamer.view;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.easefun.polyv.livecommon.module.modules.linkmic.model.PLVLinkMicItemDataBean;
 import com.easefun.polyv.livecommon.module.modules.streamer.contract.IPLVStreamerContract;

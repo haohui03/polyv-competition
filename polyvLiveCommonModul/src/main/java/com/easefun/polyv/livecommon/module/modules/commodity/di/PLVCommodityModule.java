@@ -1,6 +1,6 @@
 package com.easefun.polyv.livecommon.module.modules.commodity.di;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.easefun.polyv.livecommon.module.modules.commodity.model.PLVCommodityRepo;
 import com.easefun.polyv.livecommon.module.modules.commodity.viewmodel.PLVCommodityViewModel;

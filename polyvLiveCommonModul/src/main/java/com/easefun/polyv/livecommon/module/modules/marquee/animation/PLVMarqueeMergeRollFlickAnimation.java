@@ -3,7 +3,7 @@ package com.easefun.polyv.livecommon.module.modules.marquee.animation;
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.os.Build;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.Log;
 import android.view.animation.LinearInterpolator;
 

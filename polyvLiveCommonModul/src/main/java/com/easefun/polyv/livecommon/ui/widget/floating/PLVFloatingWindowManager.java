@@ -2,8 +2,8 @@ package com.easefun.polyv.livecommon.ui.widget.floating;
 
 import android.app.Activity;
 import android.graphics.Point;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import android.view.View;
 import android.view.ViewGroup;
 

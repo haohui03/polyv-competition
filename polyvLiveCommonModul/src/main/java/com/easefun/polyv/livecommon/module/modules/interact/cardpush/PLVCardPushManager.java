@@ -1,7 +1,7 @@
 package com.easefun.polyv.livecommon.module.modules.interact.cardpush;
 
 import android.graphics.Color;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.text.Layout;
 import android.view.View;
 import android.view.ViewGroup;

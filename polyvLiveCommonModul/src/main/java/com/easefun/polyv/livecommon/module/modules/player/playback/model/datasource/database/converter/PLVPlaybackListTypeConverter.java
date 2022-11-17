@@ -1,6 +1,6 @@
 package com.easefun.polyv.livecommon.module.modules.player.playback.model.datasource.database.converter;
 
-import android.arch.persistence.room.TypeConverter;
+import androidx.room.TypeConverter;
 
 import com.plv.livescenes.playback.video.PLVPlaybackListType;
 

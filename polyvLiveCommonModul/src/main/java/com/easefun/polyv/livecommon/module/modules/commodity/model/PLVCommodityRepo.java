@@ -2,7 +2,7 @@ package com.easefun.polyv.livecommon.module.modules.commodity.model;
 
 import static com.plv.foundationsdk.utils.PLVSugarUtil.nullable;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.easefun.polyv.livecommon.module.modules.commodity.model.vo.PLVCommodityProductVO;
 import com.easefun.polyv.livecommon.module.modules.socket.PLVSocketMessage;

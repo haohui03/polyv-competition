@@ -2,10 +2,10 @@ package com.easefun.polyv.livecommon.module.modules.beauty.viewmodel;
 
 import static com.plv.foundationsdk.utils.PLVSugarUtil.getOrDefault;
 
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
+import androidx.annotation.Nullable;
 
 import com.easefun.polyv.livecommon.module.modules.beauty.model.PLVBeautyRepo;
 import com.easefun.polyv.livecommon.module.modules.beauty.viewmodel.usecase.PLVBeautyOptionListInitUseCase;

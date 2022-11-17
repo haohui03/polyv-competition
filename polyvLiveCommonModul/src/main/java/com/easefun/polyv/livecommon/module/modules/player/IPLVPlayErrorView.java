@@ -1,6 +1,6 @@
 package com.easefun.polyv.livecommon.module.modules.player;
 
-import android.support.annotation.DrawableRes;
+import androidx.annotation.DrawableRes;
 
 import com.plv.foundationsdk.annos.Sp;
 

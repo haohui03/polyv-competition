@@ -5,18 +5,15 @@ pluginManagement {
         mavenCentral()
     }
 }
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
-rootProject.name = "Polyv"
-include ':app',
-        ':polyvLiveCommonModul',
-        ':polyvLiveEcommerceScene',
-        ':polyvLiveCloudClassScene',
-        ':polyvLiveStreamerScene',
-        ':polyvStreamerAloneScene',
-        ':polyvLiveHiClassScene'
+//dependencyResolutionManagement {
+//    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+//    repositories {
+//        google()
+//        mavenCentral()
+//    }
+//}
+rootProject.name = "plvlee2"
+include ':app'
+include ':polyvLiveCommonModul'
+
+

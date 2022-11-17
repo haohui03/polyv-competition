@@ -1,7 +1,7 @@
 package com.easefun.polyv.livecommon.module.modules.streamer.presenter.data;
 
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MutableLiveData;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import com.plv.linkmic.PLVLinkMicConstant;
 

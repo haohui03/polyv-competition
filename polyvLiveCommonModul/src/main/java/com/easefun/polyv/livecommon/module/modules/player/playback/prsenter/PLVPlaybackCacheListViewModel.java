@@ -1,7 +1,7 @@
 package com.easefun.polyv.livecommon.module.modules.player.playback.prsenter;
 
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MutableLiveData;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import com.easefun.polyv.livecommon.module.modules.player.playback.model.PLVPlaybackCacheRepo;
 import com.easefun.polyv.livecommon.module.modules.player.playback.model.datasource.database.entity.PLVPlaybackCacheVideoVO;

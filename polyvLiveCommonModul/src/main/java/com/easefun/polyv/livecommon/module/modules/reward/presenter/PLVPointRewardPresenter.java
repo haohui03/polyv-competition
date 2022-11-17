@@ -1,6 +1,6 @@
 package com.easefun.polyv.livecommon.module.modules.reward.presenter;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.easefun.polyv.livecommon.R;
 import com.easefun.polyv.livecommon.module.config.PLVLiveChannelConfig;

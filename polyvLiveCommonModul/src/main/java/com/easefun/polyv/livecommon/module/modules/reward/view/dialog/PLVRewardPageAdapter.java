@@ -1,8 +1,8 @@
 package com.easefun.polyv.livecommon.module.modules.reward.view.dialog;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import com.easefun.polyv.livecommon.module.modules.reward.view.adapter.PLVRewardListAdapter;
 import com.easefun.polyv.livecommon.ui.widget.itemview.PLVBaseViewData;

@@ -1,6 +1,6 @@
 package com.easefun.polyv.livecommon.module.modules.multirolelinkmic.model;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.text.TextUtils;
 
 import com.easefun.polyv.livecommon.module.data.IPLVLiveRoomDataManager;

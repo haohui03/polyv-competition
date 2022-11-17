@@ -1,6 +1,6 @@
 package com.easefun.polyv.livecommon.module.modules.chatroom.holder;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.view.View;
 import android.view.ViewGroup;
 

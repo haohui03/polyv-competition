@@ -1,6 +1,6 @@
 package com.easefun.polyv.livecommon.module.modules.beauty.viewmodel.vo;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.plv.beauty.api.options.PLVFilterOption;
 import com.plv.foundationsdk.component.livedata.Event;

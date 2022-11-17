@@ -2,9 +2,9 @@ package com.easefun.polyv.livecommon.module.modules.player.playback.model;
 
 import static com.plv.foundationsdk.utils.PLVSugarUtil.getOrDefault;
 
-import android.arch.lifecycle.MutableLiveData;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.lifecycle.MutableLiveData;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.easefun.polyv.livecommon.module.modules.player.playback.prsenter.data.PLVPlayInfoVO;
 import com.plv.foundationsdk.component.livedata.PLVAutoSaveLiveData;

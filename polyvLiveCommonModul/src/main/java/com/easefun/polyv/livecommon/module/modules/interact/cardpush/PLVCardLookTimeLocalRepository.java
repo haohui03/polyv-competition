@@ -1,6 +1,6 @@
 package com.easefun.polyv.livecommon.module.modules.interact.cardpush;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.plv.thirdpart.blankj.utilcode.util.SPUtils;
 

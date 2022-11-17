@@ -1,7 +1,7 @@
 package com.easefun.polyv.livecommon.module.modules.beauty.model.datasource;
 
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MutableLiveData;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import com.plv.beauty.api.options.PLVBeautyOption;
 import com.plv.foundationsdk.component.livedata.PLVAutoSaveLiveData;

@@ -2,8 +2,8 @@ package com.easefun.polyv.livecommon.module.modules.beauty.model.config;
 
 import static com.plv.foundationsdk.utils.PLVAppUtils.getString;
 
-import android.support.annotation.DrawableRes;
-import android.support.annotation.Nullable;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.Nullable;
 
 import com.easefun.polyv.livecommon.R;
 import com.plv.beauty.api.options.PLVBeautyOption;

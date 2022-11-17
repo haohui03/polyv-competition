@@ -2,8 +2,8 @@ package com.easefun.polyv.livecommon.ui.widget;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 /**
  * 能获取到windowFocus状态的dialog

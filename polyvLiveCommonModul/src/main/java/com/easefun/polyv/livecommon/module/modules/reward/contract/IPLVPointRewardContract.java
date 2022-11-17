@@ -1,6 +1,6 @@
 package com.easefun.polyv.livecommon.module.modules.reward.contract;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.easefun.polyv.livecommon.module.config.PLVLiveChannelConfig;
 import com.plv.livescenes.model.pointreward.PLVRewardSettingVO;

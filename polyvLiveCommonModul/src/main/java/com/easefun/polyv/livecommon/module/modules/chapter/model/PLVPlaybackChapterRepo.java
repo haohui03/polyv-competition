@@ -1,6 +1,6 @@
 package com.easefun.polyv.livecommon.module.modules.chapter.model;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.plv.foundationsdk.log.PLVCommonLog;
 import com.plv.livescenes.chatroom.PLVChatApiRequestHelper;

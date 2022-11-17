@@ -1,7 +1,7 @@
 package com.easefun.polyv.livecommon.module.modules.previous.customview;
 
 import android.annotation.SuppressLint;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.view.View;
 
 import com.easefun.polyv.livecommon.ui.widget.itemview.PLVBaseViewData;

@@ -68,14 +68,14 @@
         </RelativeLayout>
 
 
-        <android.support.v4.view.ViewPager
+        <androidx.viewpager.widget.ViewPager
             android:id="@+id/plv_vp_point_reward"
             android:layout_width="match_parent"
             android:layout_height="210dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="4dp" />
 
-        <android.support.v7.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/plv_rv_reward_landscape"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

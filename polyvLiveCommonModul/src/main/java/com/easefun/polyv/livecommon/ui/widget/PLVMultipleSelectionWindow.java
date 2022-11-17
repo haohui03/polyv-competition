@@ -2,9 +2,9 @@ package com.easefun.polyv.livecommon.ui.widget;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.support.annotation.ColorInt;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.AppCompatTextView;
+import androidx.annotation.ColorInt;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatTextView;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;

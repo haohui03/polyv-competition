@@ -2,7 +2,7 @@ package com.easefun.polyv.livecommon.module.modules.player.playback.prsenter.use
 
 import static com.plv.foundationsdk.utils.PLVSugarUtil.listOf;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.easefun.polyv.livecommon.module.modules.player.playback.model.datasource.database.entity.PLVPlaybackCacheVideoVO;
 import com.easefun.polyv.livecommon.module.modules.player.playback.model.enums.PLVPlaybackCacheDownloadStatusEnum;

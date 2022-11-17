@@ -1,6 +1,6 @@
 package com.easefun.polyv.livecommon.module.modules.document.model.enums;
 
-import android.support.annotation.StringDef;
+import androidx.annotation.StringDef;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

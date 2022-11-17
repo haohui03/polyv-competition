@@ -1,8 +1,8 @@
 package com.easefun.polyv.livecommon.module.modules.document.view;
 
 import android.net.Uri;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.easefun.polyv.livecommon.module.modules.document.contract.IPLVDocumentContract;
 import com.easefun.polyv.livecommon.module.modules.document.model.enums.PLVDocumentMode;

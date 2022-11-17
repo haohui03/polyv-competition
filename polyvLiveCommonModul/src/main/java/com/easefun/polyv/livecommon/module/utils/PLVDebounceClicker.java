@@ -1,6 +1,6 @@
 package com.easefun.polyv.livecommon.module.utils;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.util.Pair;
 import android.view.View;
 

@@ -1,6 +1,6 @@
 package com.easefun.polyv.livecommon.module.modules.player.playback.di;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.easefun.polyv.livecommon.module.modules.player.playback.model.PLVPlaybackCacheRepo;
 import com.easefun.polyv.livecommon.module.modules.player.playback.model.datasource.PLVPlaybackCacheDatabaseDataSource;

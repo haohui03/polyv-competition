@@ -1,6 +1,6 @@
 package com.easefun.polyv.livecommon.module.modules.beauty.di;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.easefun.polyv.livecommon.module.modules.beauty.model.PLVBeautyRepo;
 import com.easefun.polyv.livecommon.module.modules.beauty.model.datasource.PLVBeautyLocalDataSource;

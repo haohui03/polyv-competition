@@ -2,7 +2,7 @@ package com.easefun.polyv.livecommon.module.modules.reward.view.effect;
 
 import android.content.Context;
 import android.content.res.Configuration;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;

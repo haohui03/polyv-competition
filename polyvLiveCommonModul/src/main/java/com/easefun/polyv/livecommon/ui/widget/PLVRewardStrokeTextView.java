@@ -14,7 +14,7 @@ import com.plv.thirdpart.blankj.utilcode.util.ConvertUtils;
  * author: hwj
  * description: 字体描边
  */
-public class PLVRewardStrokeTextView extends android.support.v7.widget.AppCompatTextView {
+public class PLVRewardStrokeTextView extends androidx.appcompat.widget.AppCompatTextView {
 
     private TextPaint strokePaint;
 

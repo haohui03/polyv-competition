@@ -1,7 +1,7 @@
 package com.easefun.polyv.livecommon.module.modules.multirolelinkmic.presenter.data;
 
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MutableLiveData;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 /**
  * 多角色连麦的数据，主要用于提供给 非mvp的v 监听/获取连麦的数据

@@ -1,6 +1,6 @@
 package com.easefun.polyv.livecommon.module.modules.chapter.di;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.easefun.polyv.livecommon.module.modules.chapter.model.PLVPlaybackChapterRepo;
 import com.easefun.polyv.livecommon.module.modules.chapter.viewmodel.PLVPlaybackChapterViewModel;

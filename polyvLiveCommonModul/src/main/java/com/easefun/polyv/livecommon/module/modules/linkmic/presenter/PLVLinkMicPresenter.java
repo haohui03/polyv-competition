@@ -4,8 +4,8 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AlertDialog;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.SurfaceView;
@@ -46,7 +46,6 @@ import com.plv.socket.event.PLVEventConstant;
 import com.plv.socket.impl.PLVSocketMessageObserver;
 import com.plv.socket.user.PLVSocketUserConstant;
 import com.plv.thirdpart.blankj.utilcode.util.ActivityUtils;
-import com.plv.thirdpart.blankj.utilcode.util.Utils;
 
 import java.util.ArrayList;
 import java.util.Arrays;

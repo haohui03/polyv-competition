@@ -1,6 +1,6 @@
 package com.easefun.polyv.livecommon.module.modules.commodity.viewmodel.vo;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.plv.socket.event.commodity.PLVProductContentBean;
 

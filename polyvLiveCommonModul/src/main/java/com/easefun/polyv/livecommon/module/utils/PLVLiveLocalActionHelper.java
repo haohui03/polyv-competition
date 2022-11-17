@@ -2,8 +2,8 @@ package com.easefun.polyv.livecommon.module.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.support.annotation.NonNull;
-import android.support.v4.util.SimpleArrayMap;
+import androidx.annotation.NonNull;
+import androidx.collection.SimpleArrayMap;
 
 import com.plv.foundationsdk.utils.PLVGsonUtil;
 import com.plv.thirdpart.blankj.utilcode.util.ScreenUtils;

@@ -4,10 +4,10 @@ import static com.plv.foundationsdk.utils.PLVSugarUtil.listOf;
 
 import android.Manifest;
 import android.app.Activity;
-import android.arch.lifecycle.GenericLifecycleObserver;
-import android.arch.lifecycle.Lifecycle;
-import android.arch.lifecycle.LifecycleObserver;
-import android.arch.lifecycle.LifecycleOwner;
+import androidx.lifecycle.GenericLifecycleObserver;
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.LifecycleObserver;
+import androidx.lifecycle.LifecycleOwner;
 import android.content.Context;
 
 import com.plv.beauty.api.IPLVBeautyManager;

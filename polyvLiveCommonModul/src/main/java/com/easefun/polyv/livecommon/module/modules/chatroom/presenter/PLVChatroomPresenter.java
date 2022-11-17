@@ -3,10 +3,10 @@ package com.easefun.polyv.livecommon.module.modules.chatroom.presenter;
 import static com.plv.foundationsdk.utils.PLVAppUtils.getString;
 import static com.plv.foundationsdk.utils.PLVSugarUtil.getOrDefault;
 
-import android.arch.lifecycle.Observer;
+import androidx.lifecycle.Observer;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;

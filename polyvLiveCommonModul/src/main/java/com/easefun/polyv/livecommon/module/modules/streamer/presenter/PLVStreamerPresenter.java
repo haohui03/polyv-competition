@@ -6,12 +6,12 @@ import static com.plv.foundationsdk.utils.PLVSugarUtil.nullable;
 
 import android.Manifest;
 import android.app.Activity;
-import android.arch.lifecycle.Observer;
+import androidx.lifecycle.Observer;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Pair;
 import android.view.SurfaceView;
