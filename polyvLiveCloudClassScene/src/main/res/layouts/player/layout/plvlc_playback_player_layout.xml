@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.easefun.polyv.livecommon.ui.widget.PLVSwitchViewAnchorLayout
+        android:id="@+id/plvlc_playback_switch_anchor_player"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:id="@+id/plvlc_playback_fl_player_switch_view_parent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.easefun.polyv.livecommon.ui.widget.PLVSwitchViewAnchorLayout>
+
+    <!-- 回放播放器 -->
+    <com.easefun.polyv.livescenes.playback.video.PolyvPlaybackVideoView
+        android:id="@+id/plvlc_playback_video_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- 主播放器载入状态view -->
+        <com.easefun.polyv.livecloudclass.modules.media.widget.PLVLCVideoLoadingLayout
+            android:id="@+id/plvlc_playback_loading_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+
+        <!-- 播放失败显示的view -->
+        <include layout="@layout/plvlc_live_player_nostream_layout" />
+        <!-- 显示的logo -->
+        <com.easefun.polyv.livecommon.ui.widget.PLVPlayerLogoView
+            android:id="@+id/playback_logo_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </com.easefun.polyv.livescenes.playback.video.PolyvPlaybackVideoView>
+    <!--子播放器view-->
+    <include
+        layout="@layout/plvlc_playback_player_sub_video_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- 防盗水印 -->
+    <com.easefun.polyv.livecommon.module.modules.watermark.PLVWatermarkView
+        android:id="@+id/polyv_watermark_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="@id/plvlc_playback_switch_anchor_player"
+        app:layout_constraintLeft_toLeftOf="@id/plvlc_playback_switch_anchor_player"
+        app:layout_constraintRight_toRightOf="@id/plvlc_playback_switch_anchor_player"
+        app:layout_constraintTop_toTopOf="@id/plvlc_playback_switch_anchor_player" />
+
+    <!-- 播放失败/加载缓慢的占位View -->
+    <include layout="@layout/plvlc_live_player_error_layout" />
+
+    <!-- 横屏聊天区 -->
+    <com.easefun.polyv.livecloudclass.modules.chatroom.chatlandscape.PLVLCChatLandscapeLayout
+        android:id="@+id/plvlc_chat_landscape_ly"
+        android:layout_width="240dp"
+        android:layout_height="204dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <!-- 弹幕布局 -->
+    <FrameLayout
+        android:id="@+id/plvlc_danmu_ly"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp" />
+
+    <com.easefun.polyv.livecloudclass.modules.pagemenu.commodity.PLVLCCommodityPushLayout
+        android:layout_width="308dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:plv_show_on_landscape="true"
+        app:plv_show_on_portrait="false" />
+
+    <!-- 亮度手势提示 -->
+    <com.easefun.polyv.livecloudclass.modules.media.widget.PLVLCLightTipsView
+        android:id="@+id/plvlc_playback_tipsview_light"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- 音量手势提示 -->
+    <com.easefun.polyv.livecloudclass.modules.media.widget.PLVLCVolumeTipsView
+        android:id="@+id/plvlc_playback_tipsview_volume"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- 快进/回退提示 -->
+    <com.easefun.polyv.livecloudclass.modules.media.widget.PLVLCProgressTipsView
+        android:id="@+id/plvlc_playback_tipsview_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--重试按钮-->
+    <com.easefun.polyv.livecommon.ui.widget.PLVPlayerRetryLayout
+        android:id="@+id/plvlc_playback_player_retry_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <!-- 控制栏 -->
+    <com.easefun.polyv.livecloudclass.modules.media.controller.PLVLCPlaybackMediaController
+        android:id="@+id/plvlc_playback_media_controller"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <com.easefun.polyv.livecommon.ui.widget.roundview.PLVRoundRectLayout
+        android:id="@+id/plvlc_playback_auto_continue_seek_time_hint_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="44dp"
+        android:background="#99000000"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="7dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:mode="all"
+        app:radius="14dp"
+        tools:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="您上次观看至 "
+                android:textColor="#FFFFFF"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/plvlc_playback_auto_continue_seek_time_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#5C9DFF"
+                android:textSize="12sp"
+                tools:text="00:00:00" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=", 已为您自动续播"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+    </com.easefun.polyv.livecommon.ui.widget.roundview.PLVRoundRectLayout>
+</android.support.constraint.ConstraintLayout>
