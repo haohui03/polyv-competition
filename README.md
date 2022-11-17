@@ -35,16 +35,6 @@ maven {
             allowInsecureProtocol = true
             url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'}
 ```
-### 3. 项目的`build.gradle`中`repositories`还要加上这两句代码，匪夷所思，有无董哥，不然还会报错<br>
-```
-        //不知道为什么加上下面这两个url就正常了
-        maven {
-            allowInsecureProtocol = true
-            url 'http://maven.aliyun.com/nexus/content/repositories/google' }
-        maven {
-            allowInsecureProtocol = true
-            url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'}
-```
 ### 4. 项目的`gradle.properties`还要加上一句`android.enableJetifier=true` 适配androidx?<br>
 ### 5. 官方demo标红的原因估计是旧版本不适配androidx,拉取官方demo中的androidx分支可以解决[链接](https://gitee.com/polyv_ef/polyv-android-livescenes-sdk-demo#https://gitee.com/link)<br>
 &emsp;&emsp; 打死我也不想配环境了
