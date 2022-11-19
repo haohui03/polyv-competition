@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/github/polyv-competition/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.18" />
+        <entry key="..\:/github/polyv-competition/app/src/main/res/drawable/plv_color_topic_tab_text_selector.xml" value="0.1025" />
+        <entry key="..\:/github/polyv-competition/app/src/main/res/layout/activity_main.xml" value="0.1490036231884058" />
+        <entry key="..\:/github/polyv-competition/app/src/main/res/layout/plv_login_streamer_activity.xml" value="0.25" />
+        <entry key="..\:/github/polyv-competition/app/src/main/res/layout/plv_login_streamer_confirm_window_layout.xml" value="0.2821557971014493" />
+        <entry key="..\:/github/polyv-competition/polyvLiveCommonModul/src/main/res/drawable/plv_icon_image_load_err.xml" value="0.2275" />
+        <entry key="..\:/github/polyv-competition/polyvLiveStreamerScene/src/main/res/layout/plvls_live_streamer_activity.xml" value="0.22" />
+        <entry key="..\:/github/polyv-competition/polyvLiveStreamerScene/src/main/res/layouts/streamer/layout/plvls_streamer_layout.xml" value="0.22" />
+        <entry key="..\:/github/polyv-competition/polyvLiveStreamerScene/src/main/res/layouts/streamer/layout/plvls_streamer_recycler_view_item.xml" value="0.5" />
+      </map>
+    </option>
+  </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />

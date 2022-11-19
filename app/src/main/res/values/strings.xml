@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">plvlee2</string>
+    <string name="plv_scene_login_toast_login_failed_channelid_or_pwd_empty">登录频道号和密码不能为空</string>
 </resources>

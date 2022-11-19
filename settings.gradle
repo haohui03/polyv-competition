@@ -13,7 +13,9 @@ pluginManagement {
 //    }
 //}
 rootProject.name = "plvlee2"
-include ':app'
-include ':polyvLiveCommonModul'
+include ':app',
+        ':polyvLiveCommonModul',
+        ':polyvLiveStreamerScene'
+
 
 
