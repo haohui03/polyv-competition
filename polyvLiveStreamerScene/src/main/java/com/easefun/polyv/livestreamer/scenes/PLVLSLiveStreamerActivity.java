@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -11,6 +12,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.util.Pair;
 import android.view.View;
+import android.widget.Button;
 
 import com.easefun.polyv.livecommon.module.config.PLVLiveChannelConfigFiller;
 import com.easefun.polyv.livecommon.module.data.IPLVLiveRoomDataManager;
@@ -34,6 +36,7 @@ import com.easefun.polyv.livestreamer.modules.document.PLVLSDocumentLayout;
 import com.easefun.polyv.livestreamer.modules.document.widget.PLVLSDocumentControllerExpandMenu;
 import com.easefun.polyv.livestreamer.modules.statusbar.IPLVLSStatusBarLayout;
 import com.easefun.polyv.livestreamer.modules.streamer.IPLVLSStreamerLayout;
+import com.easefun.polyv.livestreamer.modules.streamer.PLVLSStreamerLayout;
 import com.easefun.polyv.livestreamer.modules.streamer.di.PLVLSStreamerModule;
 import com.easefun.polyv.livestreamer.ui.widget.PLVLSConfirmDialog;
 import com.plv.foundationsdk.component.di.PLVDependManager;
@@ -84,8 +87,11 @@ public class PLVLSLiveStreamerActivity extends PLVBaseActivity {
     private IPLVLSChatroomLayout plvlsChatroomLy;
     // 美颜布局
     private IPLVLSBeautyLayout beautyLayout;
+
+    private Bitmap ScreenShot;
     // </editor-fold>
 
+    private Button testbutton;
     // <editor-fold defaultstate="collapsed" desc="启动Activity的方法">
 
     /**
@@ -166,7 +172,21 @@ public class PLVLSLiveStreamerActivity extends PLVBaseActivity {
         initLiveRoomManager();
         initView();
         initBeautyModule();
+        testbutton = findViewById(R.id.testbutton);
+        PLVLSStreamerLayout layout = (PLVLSStreamerLayout) plvlsStreamerLy;
+        layout.addOnScreenShotListener(new IPLVOnDataChangedListener<Bitmap>() {
+            @Override
+            public void onChanged(Bitmap bitmap) {
+                ScreenShot = bitmap.copy(Bitmap.Config.ARGB_8888,false) ;
+            }
+        });
+        testbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+                layout.GetTeacherBitmap();
+            }
+        });
         checkStreamRecover();
 
         observeStatusBarLayout();
@@ -537,6 +557,8 @@ public class PLVLSLiveStreamerActivity extends PLVBaseActivity {
                 plvlsChatroomLy.setFrontCameraViewStatus(aBoolean);
             }
         });
+
+
     }
     // </editor-fold>
 
@@ -636,4 +658,7 @@ public class PLVLSLiveStreamerActivity extends PLVBaseActivity {
 
 
     // </editor-fold >
+
+
+
 }

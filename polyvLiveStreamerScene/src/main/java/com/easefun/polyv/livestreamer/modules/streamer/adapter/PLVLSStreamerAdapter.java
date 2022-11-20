@@ -58,6 +58,9 @@ public class PLVLSStreamerAdapter extends RecyclerView.Adapter<PLVLSStreamerAdap
     @Nullable
     private SurfaceView localRenderView;
 
+    @Nullable
+    private SurfaceView TeacherRenderView;
+
     //音频开播模式，只允许音频开播与连麦
     private boolean isOnlyAudio = false;
     //封面图
@@ -164,7 +167,9 @@ public class PLVLSStreamerAdapter extends RecyclerView.Adapter<PLVLSStreamerAdap
         if (myLinkMicId.equals(linkMicId)) {
             localRenderView = holder.renderView;
         }
-
+        if(isTeacher){
+            TeacherRenderView =  holder.renderView;
+        }
         //更新嘉宾视图状态
         updateGuestViewStatus(holder, itemDataBean);
 
@@ -520,8 +525,15 @@ public class PLVLSStreamerAdapter extends RecyclerView.Adapter<PLVLSStreamerAdap
     // </editor-fold>
 
 
+
+    //获取本地用户的视频流，
     @Nullable
     public SurfaceView getLocalRenderView() {
+        return localRenderView;
+    }
+
+    //todo 只能在学生端调用限制
+    public SurfaceView getTeacherRenderView() {
         return localRenderView;
     }
 }

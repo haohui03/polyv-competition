@@ -27,6 +27,7 @@ import com.easefun.polyv.livecommon.ui.widget.roundview.PLVRoundBorderColorView;
 import com.easefun.polyv.livescenes.document.model.PLVSPPTJsModel;
 import com.easefun.polyv.livescenes.document.model.PLVSPPTStatus;
 import com.easefun.polyv.livestreamer.R;
+import com.easefun.polyv.livestreamer.modules.streamer.adapter.PLVLSStreamerAdapter;
 import com.easefun.polyv.livestreamer.modules.streamer.position.PLVLSStreamerViewPositionManager;
 import com.easefun.polyv.livestreamer.modules.streamer.position.vo.PLVLSStreamerViewPositionUiState;
 import com.plv.foundationsdk.component.di.PLVDependManager;
@@ -140,6 +141,8 @@ public class PLVLSDocumentControllerLayout extends FrameLayout {
         initFullScreenOnClickListener();
         initSwitchViewPositionOnClickListener();
         initResetZoomOnClickListener();
+
+        initMybuttonOnClickListener();
         initDocumentMvpView();
 
         observeBeautyLayoutStatus();
@@ -147,6 +150,9 @@ public class PLVLSDocumentControllerLayout extends FrameLayout {
 
         // 首次进入时收起标注工具栏
         plvlsDocumentMarkMenu.close();
+    }
+
+    private void initMybuttonOnClickListener() {
     }
 
     private void findView() {
@@ -706,5 +712,8 @@ public class PLVLSDocumentControllerLayout extends FrameLayout {
     }
 
     // </editor-fold>
+
+
+
 
 }

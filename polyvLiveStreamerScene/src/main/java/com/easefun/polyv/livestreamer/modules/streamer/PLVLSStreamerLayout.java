@@ -3,7 +3,11 @@ package com.easefun.polyv.livestreamer.modules.streamer;
 import static com.plv.foundationsdk.utils.PLVSugarUtil.nullable;
 
 import android.app.AlertDialog;
+
+import androidx.annotation.RequiresApi;
 import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -14,10 +18,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SimpleItemAnimator;
 
 import android.graphics.Bitmap;
+import android.os.Build;
+import android.os.Handler;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.Pair;
 import android.view.LayoutInflater;
+import android.view.PixelCopy;
 import android.view.SurfaceView;
+import android.view.View;
 import android.widget.FrameLayout;
 
 import com.easefun.polyv.livecommon.module.data.IPLVLiveRoomDataManager;
@@ -58,7 +67,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * 推流和连麦布局
  */
-public class PLVLSStreamerLayout extends FrameLayout implements IPLVLSStreamerLayout {
+public class PLVLSStreamerLayout extends FrameLayout implements IPLVLSStreamerLayout, View.OnClickListener {
     // <editor-fold defaultstate="collapsed" desc="变量">
 
     // 本地麦克风音量大小达到该阈值时，提示当前正处于静音状态
@@ -81,6 +90,7 @@ public class PLVLSStreamerLayout extends FrameLayout implements IPLVLSStreamerLa
     private long lastNotifyLocalAudioMutedTimestamp;
 
     private PLVUserAbilityManager.OnUserRoleChangedListener onSpeakerRoleChangedListener;
+    private String mTAG = "scut";
     // </editor-fold>
 
     // <editor-fold defaultstate="collapsed" desc="构造器">
@@ -112,11 +122,19 @@ public class PLVLSStreamerLayout extends FrameLayout implements IPLVLSStreamerLa
         plvlsStreamerRv.getItemAnimator().setChangeDuration(0);
         plvlsStreamerRv.getItemAnimator().setMoveDuration(0);
         plvlsStreamerRv.getItemAnimator().setRemoveDuration(0);
+        plvlsStreamerRv.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.e(mTAG, "onClick: "+view.getClass().getSimpleName());
+                Bitmap bitmap = streamerAdapter.getTeacherRenderView().getDrawingCache(true);
+            }
+        });
         RecyclerView.ItemAnimator rvAnimator = plvlsStreamerRv.getItemAnimator();
         if (rvAnimator instanceof SimpleItemAnimator) {
             ((SimpleItemAnimator) rvAnimator).setSupportsChangeAnimations(false);
         }
 
+        //调用其他接口
         //init adapter
         streamerAdapter = new PLVLSStreamerAdapter(new PLVLSStreamerAdapter.OnStreamerAdapterCallback() {
             @Override
@@ -532,7 +550,32 @@ public class PLVLSStreamerLayout extends FrameLayout implements IPLVLSStreamerLa
                 .show();
     }
 
+    @Override
+    public void onClick(View view) {
+        if(streamerAdapter!=null){
+            Log.i(mTAG, "onClick: "+view.getClass().getSimpleName());
+            Bitmap bitmap = streamerAdapter.getTeacherRenderView().getDrawingCache(true);
+        }
+    }
+
     // </editor-fold>
 
 
+    private MutableLiveData<Bitmap> ScreenShot = new MutableLiveData<>();
+    public void addOnScreenShotListener(IPLVOnDataChangedListener<Bitmap> listener) {
+        ScreenShot.observe((LifecycleOwner) getContext(), listener);
+    }
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public void GetTeacherBitmap(){
+        SurfaceView surfaceView = streamerAdapter.getTeacherRenderView();
+        Bitmap bitmap  = Bitmap.createBitmap(surfaceView.getWidth(),surfaceView.getHeight(), Bitmap.Config.ARGB_8888);
+        PixelCopy.request(streamerAdapter.getTeacherRenderView(), bitmap, new PixelCopy.OnPixelCopyFinishedListener() {
+            @Override
+            public void onPixelCopyFinished(int i) {
+                if(PixelCopy.SUCCESS==i){
+                    ScreenShot.postValue(bitmap);
+                }
+            }
+        },new Handler());
+    }
 }

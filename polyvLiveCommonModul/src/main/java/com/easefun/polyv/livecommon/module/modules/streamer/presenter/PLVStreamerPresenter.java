@@ -271,6 +271,7 @@ public class PLVStreamerPresenter implements IPLVStreamerContract.IStreamerPrese
                 .setViewerId(liveRoomDataManager.getConfig().getUser().getViewerId())
                 .setViewerType(liveRoomDataManager.getConfig().getUser().getViewerType())
                 .setNickName(liveRoomDataManager.getConfig().getUser().getViewerName());
+        //初始化推流引擎
         streamerManager.initEngine(param, new PLVStreamerListener() {
             @Override
             public void onStreamerEngineCreatedSuccess() {
@@ -1027,8 +1028,11 @@ public class PLVStreamerPresenter implements IPLVStreamerContract.IStreamerPrese
 
     // <editor-fold defaultstate="collapsed" desc="成员列表 - 数据处理">
     private void requestListUsersApi() {
+        //第一次发送更新请求
         dispose(listUsersDisposable);
+
         dispose(listUserTimerDisposable);
+
         dispose(linkMicListTimerDisposable);
         String loginRoomId = PLVSocketWrapper.getInstance().getLoginRoomId();//分房间开启，在获取到后为分房间id，其他情况为频道号
         if (TextUtils.isEmpty(loginRoomId)) {
@@ -1045,8 +1049,10 @@ public class PLVStreamerPresenter implements IPLVStreamerContract.IStreamerPrese
                         PLVChatroomManager.getInstance().setOnlineCount(plvsListUsersVO.getCount());
                         generateMemberListWithListUsers(plvsListUsersVO.getUserlist(), true);
                         //请求连麦列表api
+                        //定时轮询
                         requestLinkMicListApiTimer();
                         //定时请求在线列表api
+                        //定时轮询
                         requestListUsersApiTimer(roomId);
                     }
                 }, new Consumer<Throwable>() {
@@ -1337,6 +1343,7 @@ public class PLVStreamerPresenter implements IPLVStreamerContract.IStreamerPrese
         streamerManager.updateMixLayoutUsers(mixUserList);
     }
 
+
     void updateLinkMicCount() {
         streamerData.postLinkMicCount(streamerList.size());
     }
@@ -1558,6 +1565,7 @@ public class PLVStreamerPresenter implements IPLVStreamerContract.IStreamerPrese
         return linkMicId != null && linkMicId.equals(streamerManager.getLinkMicUid());
     }
 
+    //找到老师的ID
     @Nullable
     private String findChannelTeacherUserId() {
         for (PLVMemberItemDataBean memberItemDataBean : memberList) {

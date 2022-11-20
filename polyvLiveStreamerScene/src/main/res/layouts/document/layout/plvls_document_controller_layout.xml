@@ -20,6 +20,12 @@
         app:layout_constraintRight_toRightOf="parent">
 
         <ImageView
+            android:id="@+id/mtestbutton"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/plvls_document_switch_position_icon" />
+        <ImageView
             android:id="@+id/plvls_document_switch_view_position_iv"
             android:layout_width="32dp"
             android:layout_height="32dp"
