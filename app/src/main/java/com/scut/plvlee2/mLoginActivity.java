@@ -521,7 +521,6 @@ public class mLoginActivity extends PLVBaseActivity  implements View.OnClickList
         final String channelId = plvlsLoginInputChannelEt.getText().toString();
         final String nick = plvlsLoginInputNickEt.getText().toString().trim();
         final String password = plvlsLoginInputPwdEt.getText().toString();
-
         if (loginManager == null) {
             loginManager = new PLVSceneLoginManager();
         }

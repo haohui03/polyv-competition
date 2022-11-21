@@ -146,14 +146,15 @@
 
         <CheckBox
             android:id="@+id/plvls_login_remember_password_cb"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
             android:button="@null"
             android:padding="6dp"
             android:drawableLeft="@drawable/plv_checkbox_selector"
             android:layout_gravity="center_vertical" />
 
         <TextView
+            android:layout_marginLeft="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="记住密码"
@@ -173,8 +174,8 @@
 
         <CheckBox
             android:id="@+id/plvls_login_agree_contract_cb"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
             android:button="@null"
             android:padding="6dp"
             android:drawableLeft="@drawable/plv_checkbox_selector"
@@ -183,6 +184,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:text="已阅读并同意"
             android:textColor="#99F0F1F5"
             android:textSize="12sp"
