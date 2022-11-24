@@ -68,14 +68,14 @@ public class Gesture extends Activity implements GestureDetector.OnGestureListen
         // 从右向左滑
         if(motionEvent1.getX() - motionEvent2.getX() > distance) {
             Toast.makeText(this, "左滑", Toast.LENGTH_SHORT).show();
-            viewFlipper.setInAnimation(AnimationUtils.loadAnimation(this, android.R.anim.fade_in));
-            viewFlipper.setOutAnimation(AnimationUtils.loadAnimation(this, android.R.anim.slide_out_right));
+            viewFlipper.setInAnimation(AnimationUtils.loadAnimation(this, R.anim.slide_in_right));
+            viewFlipper.setOutAnimation(AnimationUtils.loadAnimation(this, R.anim.slide_out_left));
             viewFlipper.showNext(); // 展示下一张图片
             return true;
         } else if(motionEvent2.getX() - motionEvent1.getX() > distance) {
             Toast.makeText(this, "右滑", Toast.LENGTH_SHORT).show();
             viewFlipper.setInAnimation(AnimationUtils.loadAnimation(this, android.R.anim.slide_in_left));
-            viewFlipper.setOutAnimation(AnimationUtils.loadAnimation(this, android.R.anim.fade_out));
+            viewFlipper.setOutAnimation(AnimationUtils.loadAnimation(this, android.R.anim.slide_out_right));
             viewFlipper.showPrevious(); // 展示上一张图片
             return true;
         }

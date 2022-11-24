@@ -20,7 +20,6 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         RelativeLayout l = (RelativeLayout)findViewById (R.id.lo);
         Button longClickBtn = (Button) findViewById(R.id.longClickBtn);
         longClickBtn.setOnLongClickListener(new View.OnLongClickListener() {
@@ -45,9 +44,9 @@ public class MainActivity extends Activity {
         l.addView(faceView);
 
         Button gestureBtn = (Button) findViewById(R.id.gestureBtn);
+        Button secondActBtn = (Button) findViewById(R.id.secondActBtn);
         gestureBtn.setOnClickListener(listener);
-
-
+        secondActBtn.setOnClickListener(listener);
     }
 
     // 重写onCreateContextMenu菜单，为菜单添加选项值
@@ -80,9 +79,14 @@ public class MainActivity extends Activity {
     View.OnClickListener listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
+            Intent intent;
             switch (view.getId()) {
                 case R.id.gestureBtn:
-                    Intent intent = new Intent(MainActivity.this, Gesture.class);
+                    intent = new Intent(MainActivity.this, Gesture.class);
+                    startActivity(intent);
+                    break;
+                case R.id.secondActBtn:
+                    intent = new Intent(MainActivity.this, SecondActivity.class);
                     startActivity(intent);
                     break;
                 default:break;

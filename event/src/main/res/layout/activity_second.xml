@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SecondActivity">
+
+    <EditText
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="活着就是为了改变世界"
+        android:id="@+id/editText1"
+        android:textColor="@drawable/edittext_focused"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"/>
+
+    <EditText
+        android:layout_margin="10dp"
+        android:text="尝试很重要"
+        android:textColor="@drawable/edittext_focused"
+        android:layout_above="@+id/editText1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>

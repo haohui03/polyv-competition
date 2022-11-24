@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="listitem">
+        <item>活着就是为了改变世界</item>
+        <item>尝试很重要</item>
+    </string-array>
+</resources>

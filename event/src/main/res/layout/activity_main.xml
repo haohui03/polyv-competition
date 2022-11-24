@@ -21,4 +21,16 @@
      android:text="手势检测"
      android:layout_above="@+id/longClickBtn"
      android:layout_centerHorizontal="true"/>
+
+
+ <Button
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:id="@+id/secondActBtn"
+     android:text="其他"
+     android:layout_below="@+id/longClickBtn"
+     android:layout_centerHorizontal="true"/>
+
+
+
 </RelativeLayout>
