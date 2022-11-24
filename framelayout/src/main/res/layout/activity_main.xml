@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="600dp"
+        android:layout_height="600dp"
+        android:background="#0000ff"
+        android:layout_gravity="center"
+        />
+
+    <TextView
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:background="#000088"
+        android:layout_gravity="center"
+        />
+
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:background="#000066"
+        android:layout_gravity="center"
+        />
+
+</FrameLayout>

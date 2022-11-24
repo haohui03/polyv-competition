@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="location_array">
+        <item>北京</item>
+        <item>广州</item>
+        <item>汕头</item>
+        <item>揭阳</item>
+        <item>普宁</item>
+        <item>韶关</item>
+        <item>惠州</item>
+        <item>佛山</item>
+        <item>重庆</item>
+        <item>成都</item>
+    </array>
+
+</resources>

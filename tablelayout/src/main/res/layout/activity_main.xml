@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:stretchColumns="0,3"
+    >
+
+<!--    collapseColumns：隐藏列-->
+<!--    stretchColumns: 允许被拉伸-->
+<!--    shrinkColumns: 允许被收缩-->
+
+    <TableRow>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="btn1"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="btn2"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="btn3"/>
+    </TableRow>
+
+    <TableRow>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="btn1"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="btn2"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="btn3"/>
+    </TableRow>
+
+
+    <Button
+    android:text="自动一行"
+    />
+
+    <TableRow android:paddingTop="200dp">
+        <TextView/>
+        <TextView
+            android:text="账号："
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="邮箱/手机号码"
+            />
+        <TextView/>
+    </TableRow>
+
+    <TableRow>
+        <TextView/>
+        <TextView
+            android:text="密码："
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="输入6-16位数字或字母"
+            />
+        <TextView/>
+    </TableRow>
+    <TableRow>
+        <TextView/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="注册"
+            />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="登录"
+            android:background="#FF8247"
+            />
+        <TextView/>
+    </TableRow>
+    <TableRow android:paddingTop="20dp">
+        <TextView/>
+        <TextView/>
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="忘记密码？"
+            android:textColor="#FF4500"
+            android:gravity="right"
+            />
+        <TextView/>
+    </TableRow>
+</TableLayout>

@@ -1,0 +1,25 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+rootProject.name = "第一个Android应用"
+include ':app'
+include ':happyxxl'
+include ':myview'
+include ':framelayout'
+include ':tablelayout'
+include ':gridlayout'
+include ':progressbar'
+include ':activity'
+include ':wechat'
+include ':event'
