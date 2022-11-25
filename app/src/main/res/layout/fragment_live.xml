@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <Button
+        android:id="@+id/startLive"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_above="@+id/watchLive"
+        android:layout_centerHorizontal="true"
+        android:background="#aa0077ff"
+        android:textSize="30dp"
+        android:text="开启直播"/>
+
+    <Button
+        android:id="@+id/watchLive"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="30dp"
+        android:background="#6600ff77"
+        android:text="观看直播"
+        android:textSize="30dp" />
+
+</RelativeLayout>

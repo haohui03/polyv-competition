@@ -6,35 +6,31 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bottom"
+        android:layout_alignParentTop="true">
 
-    <Button
-        android:id="@+id/startLive"
-        android:layout_width="200dp"
-        android:layout_height="100dp"
-        android:layout_above="@+id/watchLive"
-        android:layout_centerHorizontal="true"
-        android:background="#aa0077ff"
-        android:textSize="30dp"
-        android:text="开启直播"/>
-
-    <Button
-        android:id="@+id/watchLive"
-        android:layout_width="200dp"
-        android:layout_height="100dp"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="30dp"
-        android:background="#6600ff77"
-        android:text="观看直播"
-        android:textSize="30dp" />
+    </FrameLayout>
+<!--    <fragment-->
+<!--        android:id="@+id/body"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_above="@+id/bottom"-->
+<!--        android:layout_alignParentTop="true"-->
+<!--        android:name="com.scut.plvlee2.liveFragment"/>-->
 
     <LinearLayout
-        android:background="#FFDDDDDD"
+        android:background="#FFEEEEEE"
         android:id="@+id/bottom"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal">
         <LinearLayout
+            android:id="@+id/bottomBox1"
             android:background="@color/bottom_selected"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -45,7 +41,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="2"
                 android:src="@drawable/live"
-                android:id="@+id/msgBtn"/>
+                android:id="@+id/bottomBtn1"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -55,6 +51,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/bottomBox2"
             android:orientation="vertical"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -64,7 +61,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="2"
                 android:src="@drawable/course"
-                android:id="@+id/bookBtn"/>
+                android:id="@+id/bottomBtn2"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -74,6 +71,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/bottomBox3"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1" android:orientation="vertical">
@@ -82,7 +80,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="2"
                 android:src="@drawable/polyv_132"
-                android:id="@+id/discoveryBtn"/>
+                android:id="@+id/bottomBtn3"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -92,6 +90,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/bottomBox4"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -102,7 +101,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="2"
                 android:src="@drawable/me"
-                android:id="@+id/meBtn"/>
+                android:id="@+id/bottomBtn4"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
