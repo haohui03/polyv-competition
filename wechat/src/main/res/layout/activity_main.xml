@@ -21,13 +21,15 @@
         android:name="com.example.wechat.topFragment"/>
 
 
-    <FrameLayout
+
+    <fragment
         android:id="@+id/mid"
         android:layout_below="@+id/top"
         android:layout_above="@+id/bottom"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </FrameLayout>
+        android:layout_height="wrap_content"
+        android:name="com.example.wechat.msgFragment"/>
+
 
     <LinearLayout
         android:background="#FFDDDDDD"
