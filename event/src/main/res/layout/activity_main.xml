@@ -11,26 +11,34 @@
      android:id="@+id/longClickBtn"
      android:layout_width="wrap_content"
      android:layout_height="wrap_content"
-     android:layout_centerInParent="true"
-     android:text="长按我"/>
+     android:text="长按我"
+     android:layout_centerHorizontal="true"
+     android:layout_above="@+id/gestureBtn"
+     />
 
  <Button
+     android:layout_centerInParent="true"
      android:layout_width="wrap_content"
      android:layout_height="wrap_content"
      android:id="@+id/gestureBtn"
      android:text="手势检测"
-     android:layout_above="@+id/longClickBtn"
-     android:layout_centerHorizontal="true"/>
+     />
 
 
  <Button
      android:layout_width="wrap_content"
      android:layout_height="wrap_content"
      android:id="@+id/secondActBtn"
-     android:text="其他"
-     android:layout_below="@+id/longClickBtn"
+     android:text="变色编辑框"
+     android:layout_below="@+id/gestureBtn"
      android:layout_centerHorizontal="true"/>
 
-
+ <Button
+     android:id="@+id/menuBtn"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:text="菜单"
+     android:layout_centerHorizontal="true"
+     android:layout_above="@id/longClickBtn"/>
 
 </RelativeLayout>

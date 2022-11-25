@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/msg" android:title="消息"></item>
+    <item android:id="@+id/homepage" android:title="首页"></item>
+    <item android:id="@+id/help" android:title="帮助"></item>
+</menu>

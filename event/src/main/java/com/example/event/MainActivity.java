@@ -1,12 +1,17 @@
 package com.example.event;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -45,16 +50,44 @@ public class MainActivity extends Activity {
 
         Button gestureBtn = (Button) findViewById(R.id.gestureBtn);
         Button secondActBtn = (Button) findViewById(R.id.secondActBtn);
+        Button menuBtn = (Button) findViewById(R.id.menuBtn);
         gestureBtn.setOnClickListener(listener);
         secondActBtn.setOnClickListener(listener);
+        menuBtn.setOnClickListener(listener);
     }
 
+    // 上下文菜单
     // 重写onCreateContextMenu菜单，为菜单添加选项值
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
         menu.add("收藏");
         menu.add("举报");
+    }
+
+    // 选项菜单
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = new MenuInflater(this);
+        menuInflater.inflate(R.menu.menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+    // 点击菜单项的处理
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.msg:
+                Toast.makeText(MainActivity.this, "选择了消息", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.help:
+                Toast.makeText(MainActivity.this, "选择了帮助", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.homepage:
+                Toast.makeText(MainActivity.this, "选择了首页", Toast.LENGTH_SHORT).show();
+                break;
+            default:break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -88,6 +121,9 @@ public class MainActivity extends Activity {
                 case R.id.secondActBtn:
                     intent = new Intent(MainActivity.this, SecondActivity.class);
                     startActivity(intent);
+                    break;
+                case R.id.menuBtn:
+                    openOptionsMenu();
                     break;
                 default:break;
             }
