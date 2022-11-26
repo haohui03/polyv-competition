@@ -17,6 +17,8 @@
         <entry key="..\:/github/polyv-competition/polyvLiveStreamerScene/src/main/res/layouts/document/layout/plvls_document_controller_layout.xml" value="0.12" />
         <entry key="..\:/github/polyv-competition/polyvLiveStreamerScene/src/main/res/layouts/document/layout/plvls_document_input_widget.xml" value="0.2390625" />
         <entry key="..\:/github/polyv-competition/polyvLiveStreamerScene/src/main/res/layouts/document/layout/plvls_document_layout.xml" value="0.2390625" />
+        <entry key="..\:/github/polyv-competition/polyvLiveStreamerScene/src/main/res/layouts/document/layout/plvls_document_ppt_upload_progress_layout.xml" value="0.27239583333333334" />
+        <entry key="..\:/github/polyv-competition/polyvLiveStreamerScene/src/main/res/layouts/statusbar/layout/plvls_status_bar_layout.xml" value="0.16422805247225025" />
         <entry key="..\:/github/polyv-competition/polyvLiveStreamerScene/src/main/res/layouts/streamer/layout/plvls_streamer_layout.xml" value="0.22" />
         <entry key="..\:/github/polyv-competition/polyvLiveStreamerScene/src/main/res/layouts/streamer/layout/plvls_streamer_recycler_view_item.xml" value="0.5" />
       </map>

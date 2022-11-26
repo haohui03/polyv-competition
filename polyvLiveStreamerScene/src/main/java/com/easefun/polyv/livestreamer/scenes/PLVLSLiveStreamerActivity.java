@@ -174,6 +174,7 @@ public class PLVLSLiveStreamerActivity extends PLVBaseActivity {
         initBeautyModule();
         testbutton = findViewById(R.id.testbutton);
         PLVLSStreamerLayout layout = (PLVLSStreamerLayout) plvlsStreamerLy;
+        PLVLSDocumentLayout Doclayout = (PLVLSDocumentLayout) plvlsDocumentLy;
         layout.addOnScreenShotListener(new IPLVOnDataChangedListener<Bitmap>() {
             @Override
             public void onChanged(Bitmap bitmap) {
@@ -183,7 +184,7 @@ public class PLVLSLiveStreamerActivity extends PLVBaseActivity {
         testbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Bitmap bitmap =  Doclayout.GetDocumentShot();
                 layout.GetTeacherBitmap();
             }
         });
@@ -469,6 +470,7 @@ public class PLVLSLiveStreamerActivity extends PLVBaseActivity {
     // <editor-fold defaultstate="collapsed" desc="设置布局回调 - 推流和连麦">
     private void observeStreamerLayout() {
         //监听推流状态变化
+
         plvlsStreamerLy.addOnStreamerStatusListener(new IPLVOnDataChangedListener<Boolean>() {
             @Override
             public void onChanged(@Nullable Boolean isStartedStatus) {

@@ -208,6 +208,8 @@ public class PLVLSStreamerLayout extends FrameLayout implements IPLVLSStreamerLa
     // </editor-fold>
 
     // <editor-fold defaultstate="collapsed" desc="对外API - 实现IPLVLSStreamerLayout定义的方法">
+
+
     @Override
     public void init(IPLVLiveRoomDataManager liveRoomDataManager) {
         this.liveRoomDataManager = liveRoomDataManager;
@@ -574,6 +576,7 @@ public class PLVLSStreamerLayout extends FrameLayout implements IPLVLSStreamerLa
             public void onPixelCopyFinished(int i) {
                 if(PixelCopy.SUCCESS==i){
                     ScreenShot.postValue(bitmap);
+
                 }
             }
         },new Handler());
