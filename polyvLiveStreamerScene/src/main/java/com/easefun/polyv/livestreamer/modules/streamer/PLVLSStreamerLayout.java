@@ -21,6 +21,7 @@ import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Handler;
 import android.util.AttributeSet;
+import android.util.Base64;
 import android.util.Log;
 import android.util.Pair;
 import android.view.LayoutInflater;
@@ -49,6 +50,7 @@ import com.easefun.polyv.livestreamer.modules.streamer.adapter.PLVLSStreamerAdap
 import com.easefun.polyv.livestreamer.modules.streamer.position.PLVLSStreamerViewPositionManager;
 import com.easefun.polyv.livestreamer.modules.streamer.position.vo.PLVLSStreamerViewPositionUiState;
 import com.easefun.polyv.livestreamer.scenes.PLVLSLiveStreamerActivity;
+import com.easefun.polyv.livestreamer.util.recognition.Recognition;
 import com.plv.business.model.ppt.PLVPPTAuthentic;
 import com.plv.foundationsdk.component.di.PLVDependManager;
 import com.plv.foundationsdk.permission.PLVFastPermission;
@@ -60,6 +62,8 @@ import com.plv.socket.user.PLVSocketUserBean;
 import com.plv.thirdpart.blankj.utilcode.util.ConvertUtils;
 import com.plv.thirdpart.blankj.utilcode.util.Utils;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -574,8 +578,45 @@ public class PLVLSStreamerLayout extends FrameLayout implements IPLVLSStreamerLa
             public void onPixelCopyFinished(int i) {
                 if(PixelCopy.SUCCESS==i){
                     ScreenShot.postValue(bitmap);
+                    Log.i("test", Recognition.accurateBasic(ToBase.bitmapToBase64(bitmap)));
                 }
             }
         },new Handler());
     }
+}
+
+class ToBase {
+    /*
+     * bitmap转base64
+     * */
+    static String bitmapToBase64(Bitmap bitmap) {
+        String result = null;
+        ByteArrayOutputStream baos = null;
+        try {
+            if (bitmap != null) {
+                baos = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+
+                baos.flush();
+                baos.close();
+
+                byte[] bitmapBytes = baos.toByteArray();
+                result = Base64.encodeToString(bitmapBytes, Base64.DEFAULT);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (baos != null) {
+                    baos.flush();
+                    baos.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return result;
+    }
+    /*end*/
+
 }
