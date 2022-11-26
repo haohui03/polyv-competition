@@ -30,7 +30,8 @@ android {
 }
 
 dependencies {
-
+    implementation files('src\\main\\libs\\rhino-1.7.14.jar')
+    implementation 'com.squareup.okhttp3:okhttp:3.0.1'
     implementation 'androidx.appcompat:appcompat:1.3.0'
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
