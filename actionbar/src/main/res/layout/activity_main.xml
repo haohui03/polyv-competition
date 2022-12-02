@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    tools:context=".MainActivity">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="显示 Action Bar"
+        android:id="@+id/show_action_bar"
+        android:layout_weight="1"
+        android:background="@color/btnColor"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:layout_toLeftOf="@+id/none"/>
+
+    <TextView
+        android:id="@+id/none"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:layout_toRightOf="@+id/none"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="隐藏 Action Bar"
+        android:id="@+id/hide_action_bar"
+        android:layout_weight="1"
+        android:background="@color/btnColor"
+        android:layout_margin="10dp"/>
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_below="@+id/show_action_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="android:configChanges=\‘orientation|screenSize|keyboardHidden\’\n切换横竖屏不重新加载Activity"/>
+
+    <Button
+        android:id="@+id/moment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText"
+        android:text="朋友圈"
+        android:textColor="@color/white"
+        android:background="@color/cardview_dark_background"/>
+</RelativeLayout>

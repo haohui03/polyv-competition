@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <Button
+        android:text="Toast"
+        android:id="@+id/show_toast"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:text="带确定、取消按钮对话框"
+        android:id="@+id/with_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:text="带列表对话框"
+        android:id="@+id/with_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:text="带单选列表对话框"
+        android:id="@+id/with_single_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:text="带多选列表对话框"
+        android:id="@+id/with_mult_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    
+    <Button
+        android:id="@+id/notification_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="发送通知（有bug）"/>
+
+    <Button
+        android:id="@+id/broadcast_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="发送一条广播（没反应？）"/>
+</LinearLayout>

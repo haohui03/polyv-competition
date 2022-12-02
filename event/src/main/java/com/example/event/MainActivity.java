@@ -27,14 +27,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         RelativeLayout l = (RelativeLayout)findViewById (R.id.lo);
         Button longClickBtn = (Button) findViewById(R.id.longClickBtn);
-        longClickBtn.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-                registerForContextMenu(view); // 把长按事件注册到菜单
-                openContextMenu(view); // 打开菜单
-                return true;
-            }
-        });
+        registerForContextMenu(longClickBtn);
 
         FaceView faceView = new FaceView(MainActivity.this);
         faceView.setOnTouchListener(new View.OnTouchListener() {
@@ -60,9 +53,26 @@ public class MainActivity extends Activity {
     // 重写onCreateContextMenu菜单，为菜单添加选项值
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        MenuInflater menuInflater = new MenuInflater(this);
+        menuInflater.inflate(R.menu.menu, menu);
         super.onCreateContextMenu(menu, v, menuInfo);
-        menu.add("收藏");
-        menu.add("举报");
+    }
+
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.msg:
+                Toast.makeText(MainActivity.this, "选择了消息", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.help:
+                Toast.makeText(MainActivity.this, "选择了帮助", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.homepage:
+                Toast.makeText(MainActivity.this, "选择了首页", Toast.LENGTH_SHORT).show();
+                break;
+            default:break;
+        }
+        return super.onContextItemSelected(item);
     }
 
     // 选项菜单
