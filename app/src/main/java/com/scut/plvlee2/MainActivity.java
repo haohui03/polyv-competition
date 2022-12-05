@@ -38,13 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
     private IPLVStreamerContract.IStreamerPresenter presnter;
 
-    void init(){
-        ConFig = new PLVLiveChannelConfig();
-        ConFig.setChannelType(PLVLiveChannelType.SEMINAR);
-        LiveRoomManage = new  PLVLiveRoomDataManager(ConFig);
-        presnter = new PLVStreamerPresenter(LiveRoomManage);
 
-    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

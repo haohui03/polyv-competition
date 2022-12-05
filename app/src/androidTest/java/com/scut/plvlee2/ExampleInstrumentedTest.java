@@ -1,6 +1,10 @@
 package com.scut.plvlee2;
 
+import static com.easefun.polyv.livecommon.module.modules.note.Utils.UtilRecognizer.accurateBasic;
+
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
@@ -23,4 +27,12 @@ public class ExampleInstrumentedTest {
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
         assertEquals("com.scut.plvlee2", appContext.getPackageName());
     }
+    @Test
+    public void translateTest(){
+        Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
+        Bitmap bitmap =  BitmapFactory.decodeResource(appContext.getResources(),R.drawable.translate);
+        String res =  accurateBasic(bitmap);
+        System.out.println(res);
+    }
+
 }

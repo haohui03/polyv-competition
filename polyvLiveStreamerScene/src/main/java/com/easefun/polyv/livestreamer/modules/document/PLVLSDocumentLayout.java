@@ -528,6 +528,11 @@ public class PLVLSDocumentLayout extends FrameLayout implements IPLVLSDocumentLa
     }
 
     // </editor-fold>
+
+
+    public  PLVSDocumentWebView getDocumentWebView(){
+        return plvlsDocumentWebView;
+    }
     public Bitmap GetDocumentShot(){
         plvlsDocumentWebView.buildDrawingCache();
         return this.plvlsDocumentWebView.getDrawingCache();

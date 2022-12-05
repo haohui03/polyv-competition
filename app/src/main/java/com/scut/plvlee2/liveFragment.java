@@ -12,6 +12,8 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.scut.plvlee2.Streamlive.StreamTest;
+
 public class liveFragment extends Fragment {
     @Nullable
     @Override
@@ -19,6 +21,13 @@ public class liveFragment extends Fragment {
 //        return super.onCreateView(inflater, container, savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_live, container, false);
         Button startLive = (Button) view.findViewById(R.id.startLive);
+        Button TestLive = (Button) view.findViewById(R.id.TestLive);
+        TestLive.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(view.getContext(), StreamTest.class));
+            }
+        });
         startLive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

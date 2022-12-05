@@ -34,6 +34,7 @@ import com.easefun.polyv.livestreamer.modules.chatroom.IPLVLSChatroomLayout;
 import com.easefun.polyv.livestreamer.modules.document.IPLVLSDocumentLayout;
 import com.easefun.polyv.livestreamer.modules.document.PLVLSDocumentLayout;
 import com.easefun.polyv.livestreamer.modules.document.widget.PLVLSDocumentControllerExpandMenu;
+import com.easefun.polyv.livestreamer.modules.note.NoteLayout;
 import com.easefun.polyv.livestreamer.modules.statusbar.IPLVLSStatusBarLayout;
 import com.easefun.polyv.livestreamer.modules.streamer.IPLVLSStreamerLayout;
 import com.easefun.polyv.livestreamer.modules.streamer.PLVLSStreamerLayout;
@@ -88,6 +89,8 @@ public class PLVLSLiveStreamerActivity extends PLVBaseActivity {
     // 美颜布局
     private IPLVLSBeautyLayout beautyLayout;
 
+    //笔记功能布局
+    private NoteLayout noteLayout;
     private Bitmap ScreenShot;
     // </editor-fold>
 
@@ -172,20 +175,13 @@ public class PLVLSLiveStreamerActivity extends PLVBaseActivity {
         initLiveRoomManager();
         initView();
         initBeautyModule();
-        testbutton = findViewById(R.id.testbutton);
+        //testbutton = findViewById(R.id.testbutton);
         PLVLSStreamerLayout layout = (PLVLSStreamerLayout) plvlsStreamerLy;
         PLVLSDocumentLayout Doclayout = (PLVLSDocumentLayout) plvlsDocumentLy;
         layout.addOnScreenShotListener(new IPLVOnDataChangedListener<Bitmap>() {
             @Override
             public void onChanged(Bitmap bitmap) {
                 ScreenShot = bitmap.copy(Bitmap.Config.ARGB_8888,false) ;
-            }
-        });
-        testbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Bitmap bitmap =  Doclayout.GetDocumentShot();
-                layout.GetTeacherBitmap();
             }
         });
         checkStreamRecover();
@@ -341,6 +337,11 @@ public class PLVLSLiveStreamerActivity extends PLVBaseActivity {
 
         // 初始化美颜布局
         beautyLayout = new PLVLSBeautyLayout(this);
+
+        //初始化笔记布局
+        noteLayout = new NoteLayout(this);
+        noteLayout.init(liveRoomDataManager);
+
     }
     // </editor-fold>
 
@@ -613,6 +614,7 @@ public class PLVLSLiveStreamerActivity extends PLVBaseActivity {
             @Override
             public void onSwitchFullScreen(boolean toFullScreen) {
                 plvlsChatroomLy.notifyDocumentLayoutFullScreen(toFullScreen);
+                noteLayout.SetDocumentViewRef(plvlsDocumentLy.getDocumentWebView());
             }
         });
     }

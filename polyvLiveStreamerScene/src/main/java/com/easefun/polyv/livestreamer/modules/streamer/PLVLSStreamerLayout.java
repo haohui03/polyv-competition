@@ -126,13 +126,7 @@ public class PLVLSStreamerLayout extends FrameLayout implements IPLVLSStreamerLa
         plvlsStreamerRv.getItemAnimator().setChangeDuration(0);
         plvlsStreamerRv.getItemAnimator().setMoveDuration(0);
         plvlsStreamerRv.getItemAnimator().setRemoveDuration(0);
-        plvlsStreamerRv.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.e(mTAG, "onClick: "+view.getClass().getSimpleName());
-                Bitmap bitmap = streamerAdapter.getTeacherRenderView().getDrawingCache(true);
-            }
-        });
+
         RecyclerView.ItemAnimator rvAnimator = plvlsStreamerRv.getItemAnimator();
         if (rvAnimator instanceof SimpleItemAnimator) {
             ((SimpleItemAnimator) rvAnimator).setSupportsChangeAnimations(false);
@@ -580,8 +574,8 @@ public class PLVLSStreamerLayout extends FrameLayout implements IPLVLSStreamerLa
             public void onPixelCopyFinished(int i) {
                 if(PixelCopy.SUCCESS==i){
                     ScreenShot.postValue(bitmap);
-                    Log.i("test", Recognition.accurateBasic(ToBase.bitmapToBase64(bitmap)));
-
+                    //String result = Recognition.accurateBasic(ToBase.bitmapToBase64(bitmap));
+                    //System.out.println(result+"lgt");
                 }
             }
         },new Handler());
