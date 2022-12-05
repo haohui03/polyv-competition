@@ -1,5 +1,7 @@
 package com.scut.plvlee2.util.recognition;
 
+import android.util.Log;
+
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -27,9 +29,9 @@ public class Token {
      */
     public static String getAuth() {
         // 官网获取的 API Key 更新为你注册的
-        String clientId = "t5jjozOUNyMszLfDSyfvoIGB ";
+        String clientId = "t5jjozOUNyMszLfDSyfvoIGB";
         // 官网获取的 Secret Key 更新为你注册的
-        String clientSecret = "QUiqs0GlI1HZZCDOKcHPA4m82Ghc2s5F ";
+        String clientSecret = "QUiqs0GlI1HZZCDOKcHPA4m82Ghc2s5F";
         return getAuth(clientId, clientSecret);
     }
 
@@ -74,12 +76,11 @@ public class Token {
             /**
              * 返回结果示例
              */
-            System.err.println("result:" + result);
+            Log.i("result11:" , result);
             JSONObject jsonObject = new JSONObject(result);
-            String access_token = jsonObject.getString("access_token");
-            return access_token;
+            return jsonObject.getString("access_token");
         } catch (Exception e) {
-            System.err.printf("获取token失败！");
+            Log.e("testAuth","获取token失败！");
             e.printStackTrace(System.err);
         }
         return null;

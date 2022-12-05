@@ -1,5 +1,7 @@
 package com.easefun.polyv.livestreamer.util.recognition;
 
+import android.util.Log;
+
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
