@@ -52,6 +52,8 @@ import com.plv.livescenes.streamer.config.PLVStreamerConfig;
 import com.plv.livescenes.streamer.linkmic.IPLVLinkMicEventSender;
 import com.plv.socket.user.PLVSocketUserConstant;
 
+import java.lang.ref.WeakReference;
+
 /**
  * 手机开播三分屏场景界面。
  * 支持的功能有：推流和连麦、文档、聊天室
@@ -301,6 +303,7 @@ public class PLVLSLiveStreamerActivity extends PLVBaseActivity {
         plvlsStatusBarLy = findViewById(R.id.plvls_status_bar_ly);
         plvlsDocumentLy = findViewById(R.id.plvls_document_ly);
         plvlsStreamerLy = findViewById(R.id.plvls_streamer_ly);
+        noteLayout     =  findViewById(R.id.note_lys);
         plvlsChatroomLy = findViewById(R.id.plvls_chatroom_ly);
 
         // 初始化推流和连麦布局
@@ -339,8 +342,11 @@ public class PLVLSLiveStreamerActivity extends PLVBaseActivity {
         beautyLayout = new PLVLSBeautyLayout(this);
 
         //初始化笔记布局
-        noteLayout = new NoteLayout(this);
         noteLayout.init(liveRoomDataManager);
+        PLVLSDocumentLayout DocumentLy = (PLVLSDocumentLayout) plvlsDocumentLy;
+        if(DocumentLy!=null){
+            noteLayout.SetDocumentLayoutRef(new WeakReference<PLVLSDocumentLayout>(DocumentLy));
+        }
 
     }
     // </editor-fold>
@@ -614,7 +620,8 @@ public class PLVLSLiveStreamerActivity extends PLVBaseActivity {
             @Override
             public void onSwitchFullScreen(boolean toFullScreen) {
                 plvlsChatroomLy.notifyDocumentLayoutFullScreen(toFullScreen);
-                noteLayout.SetDocumentViewRef(plvlsDocumentLy.getDocumentWebView());
+
+
             }
         });
     }

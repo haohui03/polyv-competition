@@ -14,8 +14,16 @@
         <entry key="..\:/github/polyv-competition/app/src/main/res/layout/stream_activity_layout.xml" value="0.2390625" />
         <entry key="..\:/github/polyv-competition/app/src/main/res/layout/streamer_layout.xml" value="0.24739583333333334" />
         <entry key="..\:/github/polyv-competition/app/src/main/res/layout/streamer_layout_test.xml" value="0.33" />
+        <entry key="..\:/github/polyv-competition/polyvLiveCloudClassScene/src/main/res/layout/plvlc_cloudclass_activity.xml" value="0.16757246376811594" />
+        <entry key="..\:/github/polyv-competition/polyvLiveCloudClassScene/src/main/res/layouts/player/layout/plvlc_live_player_layout.xml" value="0.1" />
+        <entry key="..\:/github/polyv-competition/polyvLiveCloudClassScene/src/main/res/layouts/player/layout/plvlc_playback_player_layout.xml" value="0.1" />
+        <entry key="..\:/github/polyv-competition/polyvLiveCloudClassScene/src/main/res/layouts/ppt/layout/note_layout.xml" value="0.10191725529767912" />
+        <entry key="..\:/github/polyv-competition/polyvLiveCloudClassScene/src/main/res/layouts/ppt/layout/plvlc_ppt_floating_layout.xml" value="0.1" />
+        <entry key="..\:/github/polyv-competition/polyvLiveCloudClassScene/src/main/res/layouts/ppt/layout/plvlc_ppt_view_layout.xml" value="0.1" />
         <entry key="..\:/github/polyv-competition/polyvLiveCommonModul/src/main/res/drawable/plv_icon_image_load_err.xml" value="0.2275" />
         <entry key="..\:/github/polyv-competition/polyvLiveCommonModul/src/main/res/layout/plv_interact_layout.xml" value="0.1" />
+        <entry key="..\:/github/polyv-competition/polyvLiveCommonModul/src/main/res/layout/plv_interact_layout_2.xml" value="0.1" />
+        <entry key="..\:/github/polyv-competition/polyvLiveCommonModul/src/main/res/layout/plvlc_player_nostream_view.xml" value="0.1" />
         <entry key="..\:/github/polyv-competition/polyvLiveStreamerScene/src/main/res/layout/note_ly.xml" value="0.11125126135216952" />
         <entry key="..\:/github/polyv-competition/polyvLiveStreamerScene/src/main/res/layout/plvls_live_streamer_activity.xml" value="0.22" />
         <entry key="..\:/github/polyv-competition/polyvLiveStreamerScene/src/main/res/layouts/chatroom/layout/plvls_chatroom_layout.xml" value="0.1" />

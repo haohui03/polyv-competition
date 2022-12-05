@@ -55,8 +55,9 @@
         app:layout_constraintLeft_toRightOf="@+id/plvls_document_ly"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/plvls_document_ly" />
+
     <com.easefun.polyv.livestreamer.modules.note.NoteLayout
-        android:id="@+id/note_ly"
+        android:id="@+id/note_lys"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginLeft="8dp"

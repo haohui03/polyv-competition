@@ -1,4 +1,4 @@
-package com.easefun.polyv.livestreamer.modules.note;
+package com.easefun.polyv.livecloudclass.modules.note;
 
 import static com.easefun.polyv.livecommon.module.modules.note.Utils.UtilRecognizer.accurateBasic;
 
@@ -14,21 +14,21 @@ import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.easefun.polyv.livecloudclass.modules.media.PLVLCLiveMediaLayout;
+import com.easefun.polyv.livecloudclass.modules.ppt.PLVLCFloatingPPTLayout;
 import com.easefun.polyv.livecommon.module.data.IPLVLiveRoomDataManager;
 import com.easefun.polyv.livecommon.module.modules.note.INoteContact;
 import com.easefun.polyv.livecommon.module.modules.note.NoteData;
 import com.easefun.polyv.livecommon.module.modules.note.NotePresenter;
-import com.easefun.polyv.livestreamer.R;
-import com.easefun.polyv.livestreamer.modules.document.PLVLSDocumentLayout;
+import com.easefun.polyv.livecloudclass.R;
 
 import java.lang.ref.WeakReference;
 import java.util.List;
 
 
 public class NoteLayout extends FrameLayout implements INoteContact.INoteView {
-    private WeakReference<PLVLSDocumentLayout> DocumentLayoutRef;
+    private WeakReference<PLVLCFloatingPPTLayout> floatingPPTLayoutWeakReference;
     private IPLVLiveRoomDataManager liveRoomDataManager;
     private INoteContact.INotePresenter notePresenter;
 
@@ -71,7 +71,7 @@ public class NoteLayout extends FrameLayout implements INoteContact.INoteView {
 
     //识别test   从documentLayout 中获取一个图片
     void recongnizetest(){
-        Bitmap bitmap =  DocumentLayoutRef.get().GetDocumentShot();
+        Bitmap bitmap =  floatingPPTLayoutWeakReference.get().getScreenShot();
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -83,15 +83,13 @@ public class NoteLayout extends FrameLayout implements INoteContact.INoteView {
 
     }
     //document View 的触摸事件  可以获取任意卫视
-    public void SetDocumentLayoutRef(WeakReference<PLVLSDocumentLayout> documentLayoutRef){
-        this.DocumentLayoutRef = documentLayoutRef ;
-        this.DocumentLayoutRef.get().setmOnTouchListener(new OnTouchListener() {
+    public void SetLiveMediaLayoutRef(WeakReference<PLVLCFloatingPPTLayout> liveMediaLayoutRef){
+        this.floatingPPTLayoutWeakReference = liveMediaLayoutRef ;
+        this.floatingPPTLayoutWeakReference.get().setOnTouchToTranslateListener(new OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-
-
                 Log.i(TAG, "onTouch: "+motionEvent.getX()+motionEvent.getY()+motionEvent.getAction());
-                return true;
+                return false;
             }
         });
     }

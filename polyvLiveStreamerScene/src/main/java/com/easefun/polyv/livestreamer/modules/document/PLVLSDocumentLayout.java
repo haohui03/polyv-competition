@@ -16,6 +16,7 @@ import android.graphics.Bitmap;
 import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.PixelCopy;
 import android.view.View;
 import android.view.ViewGroup;
@@ -113,6 +114,7 @@ public class PLVLSDocumentLayout extends FrameLayout implements IPLVLSDocumentLa
 
     public PLVLSDocumentLayout(@NonNull Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
+
     }
 
     public PLVLSDocumentLayout(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
@@ -529,6 +531,10 @@ public class PLVLSDocumentLayout extends FrameLayout implements IPLVLSDocumentLa
 
     // </editor-fold>
 
+
+    public void setmOnTouchListener(OnTouchListener l) {
+        this.rootView.setOnTouchListener(l);
+    }
 
     public  PLVSDocumentWebView getDocumentWebView(){
         return plvlsDocumentWebView;
