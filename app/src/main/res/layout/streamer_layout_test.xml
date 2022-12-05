@@ -9,4 +9,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:overScrollMode="never" />
+    <com.easefun.polyv.livescenes.document.PLVSDocumentWebView
+        android:id="@+id/web_view_test"
+        android:layout_width="100dp"
+        android:layout_height="100dp" />
+    <SurfaceView
+        android:id="@+id/sf_test"
+        android:layout_marginTop="100dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp">
+
+    </SurfaceView>
+
 </FrameLayout>

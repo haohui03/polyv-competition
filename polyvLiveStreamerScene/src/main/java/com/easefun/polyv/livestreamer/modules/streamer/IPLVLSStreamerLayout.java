@@ -1,5 +1,6 @@
 package com.easefun.polyv.livestreamer.modules.streamer;
 
+import android.graphics.Bitmap;
 import android.util.Pair;
 
 import com.easefun.polyv.livecommon.module.data.IPLVLiveRoomDataManager;
@@ -11,6 +12,7 @@ import com.easefun.polyv.livescenes.streamer.config.PLVSStreamerConfig;
  * 推流和连麦布局的接口定义
  */
 public interface IPLVLSStreamerLayout {
+
 
     /**
      * 初始化

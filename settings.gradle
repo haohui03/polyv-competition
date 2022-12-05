@@ -15,7 +15,8 @@ pluginManagement {
 rootProject.name = "plvlee2"
 include ':app',
         ':polyvLiveCommonModul',
-        ':polyvLiveStreamerScene'
+        ':polyvLiveStreamerScene',
+        ':polyvLiveCloudClassScene'
 
 
 

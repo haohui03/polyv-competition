@@ -577,7 +577,7 @@ public class mLoginActivity extends PLVBaseActivity  implements View.OnClickList
                                 }
                             }
                     );
-                    //todo 什么纯视频
+                    //todo 更改判斷逻辑
 //                } else if (PLVLiveChannelType.ALONE.equals(liveChannelType)) {
 //                    //进入手机开播纯视频场景
 //                    requireStreamerPermissionThenRun(

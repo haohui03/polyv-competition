@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.easefun.polyv.livecommon.module.config.PLVLiveSDKConfig;
 
+//app运行单例
 public class PLVapp extends Application {
     @Override
     public void onCreate() {

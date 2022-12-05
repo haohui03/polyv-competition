@@ -4,6 +4,7 @@ import android.content.Intent;
 
 import com.easefun.polyv.livecommon.module.data.IPLVLiveRoomDataManager;
 import com.easefun.polyv.livecommon.module.modules.streamer.contract.IPLVStreamerContract;
+import com.easefun.polyv.livescenes.document.PLVSDocumentWebView;
 import com.easefun.polyv.livestreamer.modules.document.widget.PLVLSDocumentControllerExpandMenu;
 
 /**
@@ -71,4 +72,6 @@ public interface IPLVLSDocumentLayout {
      * @return streamerView
      */
     IPLVStreamerContract.IStreamerView getDocumentLayoutStreamerView();
+
+    PLVSDocumentWebView getDocumentWebView();
 }

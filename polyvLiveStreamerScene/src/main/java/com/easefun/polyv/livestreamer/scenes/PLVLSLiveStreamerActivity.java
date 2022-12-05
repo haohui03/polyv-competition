@@ -34,6 +34,7 @@ import com.easefun.polyv.livestreamer.modules.chatroom.IPLVLSChatroomLayout;
 import com.easefun.polyv.livestreamer.modules.document.IPLVLSDocumentLayout;
 import com.easefun.polyv.livestreamer.modules.document.PLVLSDocumentLayout;
 import com.easefun.polyv.livestreamer.modules.document.widget.PLVLSDocumentControllerExpandMenu;
+import com.easefun.polyv.livestreamer.modules.note.NoteLayout;
 import com.easefun.polyv.livestreamer.modules.statusbar.IPLVLSStatusBarLayout;
 import com.easefun.polyv.livestreamer.modules.streamer.IPLVLSStreamerLayout;
 import com.easefun.polyv.livestreamer.modules.streamer.PLVLSStreamerLayout;
@@ -50,6 +51,8 @@ import com.plv.livescenes.access.PLVUserRole;
 import com.plv.livescenes.streamer.config.PLVStreamerConfig;
 import com.plv.livescenes.streamer.linkmic.IPLVLinkMicEventSender;
 import com.plv.socket.user.PLVSocketUserConstant;
+
+import java.lang.ref.WeakReference;
 
 /**
  * 手机开播三分屏场景界面。
@@ -88,6 +91,8 @@ public class PLVLSLiveStreamerActivity extends PLVBaseActivity {
     // 美颜布局
     private IPLVLSBeautyLayout beautyLayout;
 
+    //笔记功能布局
+    private NoteLayout noteLayout;
     private Bitmap ScreenShot;
     // </editor-fold>
 
@@ -172,19 +177,13 @@ public class PLVLSLiveStreamerActivity extends PLVBaseActivity {
         initLiveRoomManager();
         initView();
         initBeautyModule();
-        testbutton = findViewById(R.id.testbutton);
+        //testbutton = findViewById(R.id.testbutton);
         PLVLSStreamerLayout layout = (PLVLSStreamerLayout) plvlsStreamerLy;
+        PLVLSDocumentLayout Doclayout = (PLVLSDocumentLayout) plvlsDocumentLy;
         layout.addOnScreenShotListener(new IPLVOnDataChangedListener<Bitmap>() {
             @Override
             public void onChanged(Bitmap bitmap) {
                 ScreenShot = bitmap.copy(Bitmap.Config.ARGB_8888,false) ;
-            }
-        });
-        testbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                layout.GetTeacherBitmap();
             }
         });
         checkStreamRecover();
@@ -304,6 +303,7 @@ public class PLVLSLiveStreamerActivity extends PLVBaseActivity {
         plvlsStatusBarLy = findViewById(R.id.plvls_status_bar_ly);
         plvlsDocumentLy = findViewById(R.id.plvls_document_ly);
         plvlsStreamerLy = findViewById(R.id.plvls_streamer_ly);
+        noteLayout     =  findViewById(R.id.note_lys);
         plvlsChatroomLy = findViewById(R.id.plvls_chatroom_ly);
 
         // 初始化推流和连麦布局
@@ -340,6 +340,14 @@ public class PLVLSLiveStreamerActivity extends PLVBaseActivity {
 
         // 初始化美颜布局
         beautyLayout = new PLVLSBeautyLayout(this);
+
+        //初始化笔记布局
+        noteLayout.init(liveRoomDataManager);
+        PLVLSDocumentLayout DocumentLy = (PLVLSDocumentLayout) plvlsDocumentLy;
+        if(DocumentLy!=null){
+            noteLayout.SetDocumentLayoutRef(new WeakReference<PLVLSDocumentLayout>(DocumentLy));
+        }
+
     }
     // </editor-fold>
 
@@ -469,6 +477,7 @@ public class PLVLSLiveStreamerActivity extends PLVBaseActivity {
     // <editor-fold defaultstate="collapsed" desc="设置布局回调 - 推流和连麦">
     private void observeStreamerLayout() {
         //监听推流状态变化
+
         plvlsStreamerLy.addOnStreamerStatusListener(new IPLVOnDataChangedListener<Boolean>() {
             @Override
             public void onChanged(@Nullable Boolean isStartedStatus) {
@@ -611,6 +620,8 @@ public class PLVLSLiveStreamerActivity extends PLVBaseActivity {
             @Override
             public void onSwitchFullScreen(boolean toFullScreen) {
                 plvlsChatroomLy.notifyDocumentLayoutFullScreen(toFullScreen);
+
+
             }
         });
     }
