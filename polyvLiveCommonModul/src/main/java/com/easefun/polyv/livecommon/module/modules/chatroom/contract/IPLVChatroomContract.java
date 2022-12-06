@@ -9,6 +9,7 @@ import androidx.annotation.WorkerThread;
 import android.util.Pair;
 
 import com.easefun.polyv.livecommon.module.modules.chatroom.PLVCustomGiftBean;
+import com.easefun.polyv.livecommon.module.modules.chatroom.customData;
 import com.easefun.polyv.livecommon.module.modules.chatroom.presenter.data.PLVChatroomData;
 import com.easefun.polyv.livecommon.ui.widget.itemview.PLVBaseViewData;
 import com.easefun.polyv.livescenes.chatroom.IPolyvChatroomManager;
@@ -185,7 +186,8 @@ public interface IPLVChatroomContract {
          */
         @WorkerThread
         void onCustomGiftEvent(@NonNull PolyvCustomEvent.UserBean userBean, @NonNull PLVCustomGiftBean customGiftBean);
-
+        @WorkerThread
+        void onCustomEvent(@NonNull PolyvCustomEvent.UserBean userBean, @NonNull customData customBean);
         /**
          * 自己本地发送的文本聊天信息
          */
@@ -349,8 +351,10 @@ public interface IPLVChatroomContract {
          * @param customGiftBean 自定义信息实例
          * @param tip            信息提示文案
          */
+
         PolyvCustomEvent<PLVCustomGiftBean> sendCustomGiftMessage(PLVCustomGiftBean customGiftBean, String tip);
 
+         PolyvCustomEvent<customData> sendCustomMessage(customData customBean, String tip);
         /**
          * 设置每次获取历史记录的条数，默认20条
          */

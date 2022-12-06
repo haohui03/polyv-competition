@@ -23,6 +23,7 @@ import com.easefun.polyv.livestreamer.R;
 import com.easefun.polyv.livestreamer.modules.document.PLVLSDocumentLayout;
 
 import java.lang.ref.WeakReference;
+import java.util.Date;
 import java.util.List;
 
 
@@ -56,6 +57,7 @@ public class NoteLayout extends FrameLayout implements INoteContact.INoteView {
             @Override
             public void onClick(View view) {
                 recongnizetest();
+
             }
         });
     }
@@ -106,6 +108,11 @@ public class NoteLayout extends FrameLayout implements INoteContact.INoteView {
     //请求笔记返回的数据
     @Override
     public void onRequestNoteComplete(List<NoteData> noteData) {
+
+    }
+
+    @Override
+    public void onHistoryNote(List<NoteData> noteData) {
 
     }
 }

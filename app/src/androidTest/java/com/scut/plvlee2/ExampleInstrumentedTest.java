@@ -18,6 +18,9 @@ import static org.junit.Assert.*;
 import com.scut.plvlee2.Bean.Result;
 import com.scut.plvlee2.util.translation.Translate;
 
+import java.time.Instant;
+import java.util.Date;
+
 /**
  * Instrumented test, which will execute on an Android device.
  *
@@ -53,4 +56,10 @@ public class ExampleInstrumentedTest {
 
     }
 
+    @Test
+    public void TimeTest(){
+        Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
+
+        Log.e("lgt", Date.from(Instant.now()).toString());
+    }
 }

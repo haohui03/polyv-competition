@@ -23,6 +23,7 @@ import com.easefun.polyv.livecommon.module.modules.note.NotePresenter;
 import com.easefun.polyv.livecloudclass.R;
 
 import java.lang.ref.WeakReference;
+import java.util.Date;
 import java.util.List;
 
 public class NoteLayout extends FrameLayout implements INoteContact.INoteView {
@@ -55,7 +56,10 @@ public class NoteLayout extends FrameLayout implements INoteContact.INoteView {
         testButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                recongnizetest();
+                NoteData noteData = new NoteData("xx",new Date(System.currentTimeMillis()),"笔记","zhe shi wo ");
+                notePresenter.SetNote("","",noteData);
+
+                //recongnizetest();
             }
         });
     }
@@ -130,6 +134,11 @@ public class NoteLayout extends FrameLayout implements INoteContact.INoteView {
     //请求笔记返回的数据
     @Override
     public void onRequestNoteComplete(List<NoteData> noteData) {
+
+    }
+
+    @Override
+    public void onHistoryNote(List<NoteData> noteData) {
 
     }
 }
