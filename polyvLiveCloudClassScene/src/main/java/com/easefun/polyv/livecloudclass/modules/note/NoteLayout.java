@@ -8,6 +8,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
+import android.view.PixelCopy;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -31,7 +32,7 @@ public class NoteLayout extends FrameLayout implements INoteContact.INoteView {
     private WeakReference<PLVLCFloatingPPTLayout> floatingPPTLayoutWeakReference;
     private IPLVLiveRoomDataManager liveRoomDataManager;
     private INoteContact.INotePresenter notePresenter;
-
+    private Context context;
     //控件
     Button testButton;
     private String TAG = "lgt";
@@ -51,6 +52,7 @@ public class NoteLayout extends FrameLayout implements INoteContact.INoteView {
     }
 
     private void initView() {
+        this.context = context;
         LayoutInflater.from(getContext()).inflate(R.layout.note_layout, this);
         testButton = findViewById(R.id.recognize);
         testButton.setOnClickListener(new OnClickListener() {
@@ -69,29 +71,56 @@ public class NoteLayout extends FrameLayout implements INoteContact.INoteView {
 
     }
 
+
+    //todo 只有全屏模式才能翻译，而且是在开播状态，应该新增判断逻辑
     //识别test   从documentLayout 中获取一个图片
     void recongnizetest(){
         Bitmap bitmap =  floatingPPTLayoutWeakReference.get().getScreenShot();
-        new Thread(new Runnable() {
+        this.floatingPPTLayoutWeakReference.get().setOnTouchToTranslateListener(new OnTouchListener() {
+            float startX ;
+            float startY;
+            float endX;
+            float endY;
             @Override
-            public void run() {
-                String res  =  accurateBasic(bitmap );
-                Log.i(TAG, "recognize result:"+res);
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if(motionEvent.getAction()==MotionEvent.ACTION_DOWN){
+                    startX = motionEvent.getX();
+                    startY = motionEvent.getY();
+
+                }
+                else if(motionEvent.getAction()==MotionEvent.ACTION_UP) {
+                    endX = motionEvent.getX();
+                    endY = motionEvent.getY();
+                    Bitmap mCropBitmap = Bitmap.createBitmap(bitmap,
+                            (int)startX ,(int) startY, (int)endX- (int)startX, (int)endY-(int) startY);
+
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            String res  =  accurateBasic(mCropBitmap);
+                            Log.i(TAG, "recognize result:"+res);
+                        }
+                    }).start();
+                    floatingPPTLayoutWeakReference.get().setOnTouchToTranslateListener(new OnTouchListener() {
+                        @Override
+                        public boolean onTouch(View view, MotionEvent motionEvent) {
+                            return false;
+                        }
+                    });
+                }
+                //为true时会阻隔点击事件的传递
+                return true;
             }
-        }).start();
+        });
+
+
 
 
     }
     //document View 的触摸事件  可以获取任意卫视
     public void SetLiveMediaLayoutRef(WeakReference<PLVLCFloatingPPTLayout> liveMediaLayoutRef){
         this.floatingPPTLayoutWeakReference = liveMediaLayoutRef ;
-        this.floatingPPTLayoutWeakReference.get().setOnTouchToTranslateListener(new OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                Log.i(TAG, "onTouch: "+motionEvent.getX()+motionEvent.getY()+motionEvent.getAction());
-                return false;
-            }
-        });
+
     }
 
 

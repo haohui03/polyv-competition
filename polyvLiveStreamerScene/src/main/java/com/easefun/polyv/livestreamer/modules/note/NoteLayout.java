@@ -76,6 +76,7 @@ public class NoteLayout extends FrameLayout implements INoteContact.INoteView {
             @Override
             public void run() {
                 String res  =  accurateBasic(bitmap );
+                //获取识别结果
                 Log.i(TAG, "recognize result:"+res);
             }
         }).start();

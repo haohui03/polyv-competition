@@ -167,6 +167,7 @@ public class PLVLCCloudClassActivity extends PLVBaseActivity {
         intent.putExtra(EXTRA_IS_LIVE, true);
         activity.startActivity(intent);
         return PLVLaunchResult.success();
+
     }
 
     /**

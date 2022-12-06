@@ -87,7 +87,7 @@ import com.scut.plvlee2.mLoginActivity;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-
+/** @deprecated */
 public class StreamTest extends PLVBaseActivity {
     DocumentLy documentLy;
     //数据管理器

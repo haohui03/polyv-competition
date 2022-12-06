@@ -7,10 +7,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
+import android.view.PixelCopy;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -278,19 +280,22 @@ public class PLVLCFloatingPPTLayout extends FrameLayout implements IPLVLiveFloat
 
     public void setOnTouchToTranslateListener(OnTouchListener l) {
         PLVLCPPTView pptWebView = (PLVLCPPTView) this.pptView;
+
         //todo 监听了整个屏幕的触摸事件，最好是只监听ppt区域的，但是不知道被哪个view拦截了
         if(pptWebView!=null){
-
             this.setOnTouchListener(l);
         }
 
     }
     public Bitmap getScreenShot(){
+
         PLVLCPPTView pptWebView = (PLVLCPPTView) this.pptView;
-        if(pptWebView!=null){
-            pptWebView.getpptWebView().buildDrawingCache();
-            Bitmap bitmap = pptWebView.getpptWebView().getDrawingCache();
-            return bitmap;
+        if(pptWebView.getWidth()>1){
+            Bitmap temBitmap = Bitmap.createBitmap(pptWebView.getWidth(), pptWebView.getHeight(), Bitmap.Config.ARGB_8888);
+            //使用Canvas，调用自定义view控件的onDraw方法，绘制图片
+            Canvas canvas = new Canvas(temBitmap);
+            pptWebView.draw(canvas);
+            return temBitmap;
         }
         return null;
     }

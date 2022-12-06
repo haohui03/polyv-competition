@@ -11,7 +11,7 @@ import com.easefun.polyv.livecommon.module.config.PLVLiveChannelConfigFiller;
 import com.easefun.polyv.livecommon.module.data.IPLVLiveRoomDataManager;
 import com.easefun.polyv.livecommon.module.data.PLVLiveRoomDataManager;
 import com.easefun.polyv.livecommon.module.modules.chatroom.presenter.PLVChatroomPresenter;
-
+/** @deprecated */
 public class DocumentLy extends FrameLayout {
     PLVChatroomPresenter ChatroomPresenter;
 
