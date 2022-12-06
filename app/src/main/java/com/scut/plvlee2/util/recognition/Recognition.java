@@ -2,6 +2,8 @@ package com.scut.plvlee2.util.recognition;
 
 import android.util.Log;
 
+import org.json.JSONObject;
+
 import java.net.URLEncoder;
 
 public class Recognition {
@@ -23,7 +25,8 @@ public class Recognition {
 
             String result = HttpUtil.post(url, accessToken, param);
             Log.i("recognition", result);
-            return result;
+            JSONObject jsonObject = new JSONObject(result);
+            return jsonObject.getJSONArray("words_result").getJSONObject(0).getString("words");
         } catch (Exception e) {
             e.printStackTrace();
         }
