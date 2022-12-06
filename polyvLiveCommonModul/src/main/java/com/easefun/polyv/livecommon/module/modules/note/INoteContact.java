@@ -6,7 +6,7 @@ import com.easefun.polyv.livecommon.module.modules.note.data.NoteData;
 import java.util.List;
 
 /**
- * 笔记模块要实现的共能
+ * 笔记模块要实现的功能
  */
 public interface INoteContact {
 
