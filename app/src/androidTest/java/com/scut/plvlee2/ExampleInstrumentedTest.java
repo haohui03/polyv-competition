@@ -5,6 +5,7 @@ import static com.easefun.polyv.livecommon.module.modules.note.Utils.UtilRecogni
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
@@ -38,10 +39,18 @@ public class ExampleInstrumentedTest {
         System.out.println(res);
     }
     @Test
-    public void translateTest(){
+    public void translateTest() {
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        Result result =  Translate.translate(appContext,"kid","en","zh");
-        System.out.println("lgt"+result);
+        Result result = Translate.translate(appContext, "help", "en", "zh");
+
+        Log.i("yhh","src\n"+ result.getSrc());
+        Log.i("yhh","dst\n"+ result.getDst());
+        Log.i("yhh","音标\n"+ result.getEnglishPhonetic());
+        Log.i("yhh","拼音\n"+ result.getPhonetic().toString());
+        Log.i("yhh","collins词典"+ result.getCollins().get(0).getTran());
+        Log.i("yhh","英文解释"+ result.getEnglishMeaning().get(0).getGroups().get(0).getExample());
+
+
     }
 
 }

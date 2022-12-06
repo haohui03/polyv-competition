@@ -7,11 +7,11 @@ public class Result {
     private String src;
     private String dst;
 
-    public ArrayList<String> getEnglishMeaning() {
+    public ArrayList<Edict> getEnglishMeaning() {
         return englishMeaning;
     }
 
-    private ArrayList<String> englishMeaning = new ArrayList<>();
+    private ArrayList<Edict> englishMeaning = new ArrayList<>();
 
     public String getEnglishPhonetic() {
         return englishPhonetic;
@@ -20,17 +20,18 @@ public class Result {
     public void setEnglishPhonetic(String englishPhonetic) {
         this.englishPhonetic = englishPhonetic;
     }
+    private ArrayList<CollinsSingle> Collins = new ArrayList<>();
 
-    private String englishPhonetic;
-    private ArrayList<Map<String,String>> phonetic = new ArrayList<>();
-
-    private ArrayList<Map<String,String>> similarWords = new ArrayList<>();
-
-    public ArrayList<Map<String, String>> getCollins() {
+    public ArrayList<CollinsSingle> getCollins(){
         return Collins;
     }
 
-    private ArrayList<Map<String,String>> Collins = new ArrayList<>();
+
+    private String englishPhonetic;
+    private ArrayList<Map<String, String>> phonetic = new ArrayList<>();
+
+
+
 
 //    private ArrayList
 
@@ -54,8 +55,7 @@ public class Result {
         return phonetic;
     }
 
-    public ArrayList<Map<String, String>> getSimilarWords() {
-        return similarWords;
-    }
+
 }
+
 
