@@ -27,6 +27,8 @@ import com.plv.livescenes.feature.login.PLVLiveLoginResult;
 import com.plv.livescenes.feature.login.PLVSceneLoginManager;
 import com.plv.thirdpart.blankj.utilcode.util.ToastUtils;
 import com.scut.plvlee2.Streamlive.StreamTest;
+import com.scut.plvlee2.util.translation.Translate;
+
 public class liveFragment extends Fragment {
     @Nullable
     @Override

@@ -3,6 +3,7 @@ package com.easefun.polyv.livecommon.module.modules.note;
 import android.util.Log;
 
 import com.easefun.polyv.livecommon.module.data.IPLVLiveRoomDataManager;
+import com.easefun.polyv.livecommon.module.modules.note.data.NoteData;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;

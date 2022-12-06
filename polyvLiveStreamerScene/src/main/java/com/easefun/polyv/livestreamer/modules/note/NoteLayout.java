@@ -14,11 +14,10 @@ import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.easefun.polyv.livecommon.module.data.IPLVLiveRoomDataManager;
 import com.easefun.polyv.livecommon.module.modules.note.INoteContact;
-import com.easefun.polyv.livecommon.module.modules.note.NoteData;
+import com.easefun.polyv.livecommon.module.modules.note.data.NoteData;
 import com.easefun.polyv.livecommon.module.modules.note.NotePresenter;
 import com.easefun.polyv.livestreamer.R;
 import com.easefun.polyv.livestreamer.modules.document.PLVLSDocumentLayout;

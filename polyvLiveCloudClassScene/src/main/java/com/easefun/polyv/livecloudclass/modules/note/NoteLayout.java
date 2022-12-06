@@ -8,7 +8,6 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
-import android.view.PixelCopy;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -16,17 +15,15 @@ import android.widget.FrameLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.easefun.polyv.livecloudclass.modules.media.PLVLCLiveMediaLayout;
 import com.easefun.polyv.livecloudclass.modules.ppt.PLVLCFloatingPPTLayout;
 import com.easefun.polyv.livecommon.module.data.IPLVLiveRoomDataManager;
 import com.easefun.polyv.livecommon.module.modules.note.INoteContact;
-import com.easefun.polyv.livecommon.module.modules.note.NoteData;
+import com.easefun.polyv.livecommon.module.modules.note.data.NoteData;
 import com.easefun.polyv.livecommon.module.modules.note.NotePresenter;
 import com.easefun.polyv.livecloudclass.R;
 
 import java.lang.ref.WeakReference;
 import java.util.List;
-
 
 public class NoteLayout extends FrameLayout implements INoteContact.INoteView {
     private WeakReference<PLVLCFloatingPPTLayout> floatingPPTLayoutWeakReference;
@@ -97,7 +94,7 @@ public class NoteLayout extends FrameLayout implements INoteContact.INoteView {
                     new Thread(new Runnable() {
                         @Override
                         public void run() {
-                            String res  =  accurateBasic(mCropBitmap);
+                            String res  = accurateBasic(mCropBitmap);
                             Log.i(TAG, "recognize result:"+res);
                         }
                     }).start();

@@ -1,6 +1,7 @@
 package com.easefun.polyv.livecommon.module.modules.note;
 
 import com.easefun.polyv.livecommon.module.data.IPLVLiveRoomDataManager;
+import com.easefun.polyv.livecommon.module.modules.note.data.NoteData;
 
 import java.util.List;
 
@@ -12,7 +13,7 @@ public interface INoteContact {
 
     interface INoteView{
         void onPresenterInitComplete();
-        void onRequestNoteComplete(List< NoteData>noteData);
+        void onRequestNoteComplete(List<NoteData>noteData);
     }
     /**
      * 表示层接口

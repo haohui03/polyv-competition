@@ -14,6 +14,9 @@ import org.junit.runner.RunWith;
 
 import static org.junit.Assert.*;
 
+import com.scut.plvlee2.Bean.Result;
+import com.scut.plvlee2.util.translation.Translate;
+
 /**
  * Instrumented test, which will execute on an Android device.
  *
@@ -28,11 +31,17 @@ public class ExampleInstrumentedTest {
         assertEquals("com.scut.plvlee2", appContext.getPackageName());
     }
     @Test
-    public void translateTest(){
+    public void treTest(){
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
         Bitmap bitmap =  BitmapFactory.decodeResource(appContext.getResources(),R.drawable.translate);
         String res =  accurateBasic(bitmap);
         System.out.println(res);
+    }
+    @Test
+    public void translateTest(){
+        Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
+        Result result =  Translate.translate(appContext,"kid","en","zh");
+        System.out.println("lgt"+result);
     }
 
 }

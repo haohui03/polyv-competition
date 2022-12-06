@@ -1,6 +1,7 @@
 package com.scut.plvlee2.util.translation;
 
 import android.app.Activity;
+import android.content.Context;
 import android.util.Log;
 
 import com.scut.plvlee2.Bean.Result;
@@ -46,7 +47,7 @@ public class Translate implements Runnable {
         result.setSrc(data.getString("src"));
 
         JSONArray phonetic = trans_result.getJSONArray("phonetic");
-        for (int i = 0; i <= phonetic.length(); i++) {
+        for (int i = 0; i < phonetic.length(); i++) {
             JSONObject jsonObject1 = phonetic.getJSONObject(i);
             String src = jsonObject1.getString("src_str");
             String dst = jsonObject1.getString("trg_str");
@@ -98,7 +99,7 @@ public class Translate implements Runnable {
     }
 
 
-    public static Result translate(Activity activity, String content, String from, String to) {
+    public static Result translate(Context context, String content, String from, String to) {
         Long ts = System.currentTimeMillis();
         String data = "from=%s&to=%s&query=%s&simple_means_flag=3&sign=%s&token=966fb6dca07a463ba56bc75a718533dd&domain=common";
         String urlContent = content;
@@ -107,7 +108,7 @@ public class Translate implements Runnable {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        String sign = js.generateSign(activity, content);
+        String sign = js.generateSign( context,content);
         HashMap<String, String> hashMap = new HashMap<>();
         hashMap.put("cookie", "REALTIME_TRANS_SWITCH=1; HISTORY_SWITCH=1; FANYI_WORD_SWITCH=1; SOUND_SPD_SWITCH=1; SOUND_PREFER_SWITCH=1; BIDUPSID=D26E07259B2D194C9D0D52A11C03D5BD; PSTM=1614998312; __yjs_duid=1_75324387c8bf9258935b623988dc5df41619581804229; MCITY=-:; " + "MBD_AT=0; BDUSS=TczdWlTWEF5cWd3cFVRSFNmczhnUHRSaWZkbUFpYkFla200UFdCcm9peGtoYUZpRVFBQUFBJCQAAAAAAAAAAAEAAAB5ZQGCxuUyNQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" + "AAAAAAAAAAAAAAAGT4eWJk-Hlie; BDUSS_BFESS=TczdWlTWEF5cWd3cFVRSFNmczhnUHRSaWZkbUFpYkFla200UFdCcm9peGtoYUZpRVFBQUFBJCQAAAAAAAAAAAEAAAB5ZQGCxuUyNQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGT4eWJk-Hlie; " + "APPGUIDE_10_0_2=1; ZFY=ynQTxG:BbHpsE:Bvpf1uu5duYqdHEa7NtEIMLjWnp0mbA:C; BAIDU_WISE_UID=wapp_1657975581363_955; BAIDUID=FD495CD185CC24D839C7FD1682A2E26E:FG=1; BAIDUID_BFESS=FD495CD185CC24D839C7FD1682A2E26E:FG=1; __bid_n=183df24eeb04055e3c4207; Hm_lvt_64ecd8" + "2404c51e03dc91cb9e8c025574=1668596369,1668685375,1668843569,1668844149; Hm_lpvt_64ecd82404c51e03dc91cb9e8c025574=1668863503; ab_sr=1.0.1_MzkzODI5MGI4MzExNTI0NzRlNGFkMmIxMTU1NjNiYjUzYzc5YTE0MDc2M2I1MTI3NDliYmIzMGUzYTE2MDMzMWY1ODkzODYzZjFjYzE3NmY1NDMwMDU1NTIyZGE2NjdjNDk5NDkzZmI2MjM4NjYwYmYzZWQyY2ZlY2RlYmIyNThiYjhh" + "ZTZjYWUwNDRkOTM4ODdlNDcwNjczMWMxYTU2ZTE4MzZjMGU4OGEzOTIyMmFmY2JkM2I5ODAyNTdlNDU0");
         hashMap.put("User-Agent", UA);

@@ -11,7 +11,7 @@ public class Result {
         return englishMeaning;
     }
 
-    private ArrayList<String> englishMeaning;
+    private ArrayList<String> englishMeaning = new ArrayList<>();
 
     public String getEnglishPhonetic() {
         return englishPhonetic;
@@ -22,15 +22,15 @@ public class Result {
     }
 
     private String englishPhonetic;
-    private ArrayList<Map<String,String>> phonetic;
+    private ArrayList<Map<String,String>> phonetic = new ArrayList<>();
 
-    private ArrayList<Map<String,String>> similarWords;
+    private ArrayList<Map<String,String>> similarWords = new ArrayList<>();
 
     public ArrayList<Map<String, String>> getCollins() {
         return Collins;
     }
 
-    private ArrayList<Map<String,String>> Collins;
+    private ArrayList<Map<String,String>> Collins = new ArrayList<>();
 
 //    private ArrayList
 
