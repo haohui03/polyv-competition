@@ -21,6 +21,7 @@ import com.easefun.polyv.livecommon.module.modules.chatroom.PLVCustomGiftBean;
 import com.easefun.polyv.livecommon.module.modules.chatroom.PLVCustomGiftEvent;
 import com.easefun.polyv.livecommon.module.modules.chatroom.PLVSpecialTypeTag;
 import com.easefun.polyv.livecommon.module.modules.chatroom.contract.IPLVChatroomContract;
+import com.easefun.polyv.livecommon.module.modules.chatroom.customData;
 import com.easefun.polyv.livecommon.module.modules.chatroom.holder.PLVChatMessageItemType;
 import com.easefun.polyv.livecommon.module.modules.chatroom.presenter.data.PLVChatroomData;
 import com.easefun.polyv.livecommon.module.modules.socket.PLVSocketMessage;
@@ -432,7 +433,23 @@ public class PLVChatroomPresenter implements IPLVChatroomContract.IChatroomPrese
         PolyvChatroomManager.getInstance().sendCustomMsg(customEvent);
         return customEvent;
     }
-
+    @Override
+    public PolyvCustomEvent<customData> sendCustomMessage(customData customBean, String tip) {
+        PolyvCustomEvent<customData> customEvent = new PolyvCustomEvent<>(customBean.EVENT/*自定义信息事件名*/, customBean);
+        customEvent.setTip(tip);
+        customEvent.setEmitMode(PolyvBaseCustomEvent.EMITMODE_ALL);//设置广播方式，EMITMODE_ALL为广播给包括自己的所有用户，EMITMODE_OTHERS为广播给不包括自己的所有用户
+        customEvent.setVersion(PolyvCustomEvent.VERSION_1);//设置信息的版本号，对该版本号的信息才进行处理
+        /**
+         * 设置自定义消息是否加入历史聊天记录，默认设置为加入
+         * PLVCustomEvent.JOIN_HISTORY_TRUE为加入
+         * PLVCustomEvent.JOIN_HISTORY_FALSE为不加入
+         * */
+        customEvent.setJoinHistory(PLVCustomEvent.JOIN_HISTORY_TRUE);
+        customEvent.setTime(System.currentTimeMillis());
+        PLVCommonLog.d(TAG, "chatroom sendCustomGiftMessage: " + customEvent);
+        PolyvChatroomManager.getInstance().sendCustomMsg(customEvent);
+        return customEvent;
+    }
     @Override
     public void setGetChatHistoryCount(int getChatHistoryCount) {
         this.getChatHistoryCount = getChatHistoryCount;
@@ -848,6 +865,18 @@ public class PLVChatroomPresenter implements IPLVChatroomContract.IChatroomPrese
                             }
                         }
                         break;
+                    case customData.EVENT:
+                        Type customType = new TypeToken<PolyvCustomEvent<customData>>() {
+                        }.getType();
+                        final PolyvCustomEvent<customData> customEvent = PolyvEventHelper.gson.fromJson(message, customType);
+                        if(customEvent != null && PolyvCustomEvent.VERSION_1 == customEvent.getVersion()
+                                && customEvent.getData() != null && customEvent.getUser() != null)
+                        callbackToView(new ViewRunnable() {
+                            @Override
+                            public void run(IPLVChatroomContract.IChatroomView view) {
+                                view.onCustomEvent(customEvent.getUser(), customEvent.getData());
+                            }
+                        });
                     default:
                         break;
                 }
