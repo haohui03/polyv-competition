@@ -1,18 +1,23 @@
 package com.easefun.polyv.livecloudclass.modules.media.controller;
 
+import static com.easefun.polyv.livecommon.module.modules.note.Utils.UtilRecognizer.accurateBasic;
+
 import android.app.Activity;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 import android.content.Context;
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.Pair;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -29,9 +34,16 @@ import com.easefun.polyv.livecloudclass.R;
 import com.easefun.polyv.livecloudclass.modules.chatroom.widget.PLVLCLikeIconView;
 import com.easefun.polyv.livecloudclass.modules.media.widget.PLVLCLiveMoreLayout;
 import com.easefun.polyv.livecloudclass.modules.media.widget.PLVLCPPTTurnPageLayout;
+import com.easefun.polyv.livecloudclass.modules.note.MyView;
+import com.easefun.polyv.livecloudclass.modules.ppt.IPLVLCFloatingPPTLayout;
+import com.easefun.polyv.livecloudclass.modules.ppt.PLVLCFloatingPPTLayout;
 import com.easefun.polyv.livecloudclass.modules.translation.TranslationLayout;
+import com.easefun.polyv.livecommon.module.data.IPLVLiveRoomDataManager;
+import com.easefun.polyv.livecommon.module.data.PLVLiveRoomDataManager;
 import com.easefun.polyv.livecommon.module.modules.commodity.viewmodel.PLVCommodityViewModel;
 import com.easefun.polyv.livecommon.module.modules.commodity.viewmodel.vo.PLVCommodityUiState;
+import com.easefun.polyv.livecommon.module.modules.note.INoteContact;
+import com.easefun.polyv.livecommon.module.modules.note.NotePresenter;
 import com.easefun.polyv.livecommon.module.modules.player.floating.PLVFloatingPlayerManager;
 import com.easefun.polyv.livecommon.module.modules.player.live.contract.IPLVLivePlayerContract;
 import com.easefun.polyv.livecommon.module.modules.player.live.presenter.data.PLVPlayInfoVO;
@@ -46,6 +58,7 @@ import com.plv.thirdpart.blankj.utilcode.util.ConvertUtils;
 import com.plv.thirdpart.blankj.utilcode.util.ScreenUtils;
 import com.plv.thirdpart.blankj.utilcode.util.StringUtils;
 
+import java.lang.ref.WeakReference;
 import java.util.List;
 
 import io.reactivex.disposables.Disposable;
@@ -126,6 +139,8 @@ public class PLVLCLiveMediaController extends FrameLayout implements IPLVLCLiveM
     //翻译界面容器
     private FrameLayout translationContainer;
 
+    private MyView myView;//绘画选择区域
+
     // 小窗按钮
     private ImageView liveControlFloatingIv;
     //ppt 翻页
@@ -134,6 +149,9 @@ public class PLVLCLiveMediaController extends FrameLayout implements IPLVLCLiveM
     private ImageView rewardView;
     //商品按钮
     private ImageView commodityView;
+
+    private WeakReference<IPLVLCFloatingPPTLayout> floatingPPTLayoutWeakReference;
+    private INoteContact.INotePresenter notePresenter;
 
     //播放器presenter
     private IPLVLivePlayerContract.ILivePlayerPresenter livePlayerPresenter;
@@ -194,6 +212,13 @@ public class PLVLCLiveMediaController extends FrameLayout implements IPLVLCLiveM
     private void initView() {
         LayoutInflater.from(getContext()).inflate(R.layout.plvlc_live_controller_layout, this);
 
+
+        myView = new MyView(getContext());
+        myView.setSign(true);
+
+        final LayoutParams params = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        myView.setLayoutParams(params);
+        addView(myView);
         //竖屏控制栏布局
         videoControllerPortLy = findViewById(R.id.video_controller_port_ly);
         backPortIv = findViewById(R.id.back_port_iv);
@@ -406,6 +431,17 @@ public class PLVLCLiveMediaController extends FrameLayout implements IPLVLCLiveM
         else {
             Toast.makeText(getContext(), "没有找到翻译界面", Toast.LENGTH_SHORT).show();
         }
+        translationLayout.setScreenShotButtonOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //todo hide 会隐藏控制器布局
+                hide();
+                myView.setSeat(0, 0, 0, 0);
+                myView.setSign(false);
+                myView.postInvalidate();
+                imageRecognize();
+            }
+        });
         //笔记
         noteLandIv = landscapeController.getNoteView();
         noteLandIv.setOnClickListener(this);
@@ -551,6 +587,15 @@ public class PLVLCLiveMediaController extends FrameLayout implements IPLVLCLiveM
     }
 
     @Override
+    public void initNotePresent(WeakReference<IPLVLCFloatingPPTLayout>  floatingPPTLayoutRef, IPLVLiveRoomDataManager liveRoomDataManager) {
+        this.floatingPPTLayoutWeakReference  = floatingPPTLayoutRef;
+        notePresenter = new NotePresenter();
+        notePresenter.initLiveRoom(liveRoomDataManager);
+    }
+
+
+
+    @Override
     public void updateWhenRequestJoinLinkMic(boolean isRequestJoinLinkMic) {
         isRequestingJoinLinkMic = isRequestJoinLinkMic;
         getLiveMediaDispatcher().updateViewProperties();
@@ -576,6 +621,65 @@ public class PLVLCLiveMediaController extends FrameLayout implements IPLVLCLiveM
         getLiveMediaDispatcher().updateViewProperties();
     }
 
+    void imageRecognize(){
+        Bitmap bitmap =  floatingPPTLayoutWeakReference.get().getScreenShot();
+        this.floatingPPTLayoutWeakReference.get().setOnTouchToTranslateListener(new OnTouchListener() {
+            float startX ;
+            float startY;
+            float endX;
+            float endY;
+            int m = 0, n = 0; // 移动过程的中间坐标
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if(motionEvent.getAction()==MotionEvent.ACTION_DOWN){
+                    startX = motionEvent.getX();
+                    startY = motionEvent.getY();
+                }
+                // 移动的时候进行绘制框
+                if(motionEvent.getAction() == MotionEvent.ACTION_MOVE){
+                    m = (int) motionEvent.getX();
+                    n = (int) motionEvent.getY();
+                    myView.setSeat((int)startX, (int)startY, m, n);
+                    myView.postInvalidate();
+                }
+                // 抬起，
+                // todo end-start为负数会闪退！！抬走
+                if(motionEvent.getAction()==MotionEvent.ACTION_UP) {
+                    // 隐藏截图提示框
+                    myView.setSign(true);
+                    myView.postInvalidate();
+
+                    endX = motionEvent.getX();
+                    endY = motionEvent.getY();
+                    int width = (int)Math.abs(endX- startX);
+                    int height =  (int)Math.abs(endY- startY);
+                    startX = Math.min(startX, endX);
+                    startY = Math.min(startY, endY);
+                    Bitmap mCropBitmap = Bitmap.createBitmap(bitmap,
+                            (int)startX ,(int) startY, width,height);
+
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            String res  = accurateBasic(mCropBitmap);
+                            Log.i(TAG, "recognize result:"+res);
+                        }
+                    }).start();
+                    floatingPPTLayoutWeakReference.get().setOnTouchToTranslateListener(new OnTouchListener() {
+                        @Override
+                        public boolean onTouch(View view, MotionEvent motionEvent) {
+                            return false;
+                        }
+                    });
+                }
+                //为true时会阻隔点击事件的传递
+                return true;
+            }
+        });
+
+
+
+    }
     @Override
     public void updateWhenLeaveLinkMic() {
         isLinkMic = false;

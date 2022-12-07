@@ -1,5 +1,8 @@
 package com.easefun.polyv.livecommon.module.modules.ppt.contract;
 
+import android.graphics.Bitmap;
+import android.view.View;
+
 /**
  * date: 2020/9/16
  * author: HWilliamgo
@@ -19,6 +22,8 @@ public interface IPLVLiveFloatingContract {
          * @param nick  讲师昵称
          */
         void updateTeacherInfo(String actor, String nick);
+
+
     }
 
     /**

@@ -1,5 +1,6 @@
 package com.easefun.polyv.livecloudclass.modules.ppt;
 
+import android.graphics.Bitmap;
 import android.view.View;
 
 import com.easefun.polyv.livecommon.ui.widget.PLVSwitchViewAnchorLayout;
@@ -71,6 +72,10 @@ public interface IPLVLCFloatingPPTLayout {
      * 销毁
      */
     void destroy();
+
+    void setOnTouchToTranslateListener(View.OnTouchListener l);
+
+    Bitmap getScreenShot();
     // </editor-fold>
 
     // <editor-fold defaultstate="collapsed" desc="2. 需要外部响应的事件监听器">

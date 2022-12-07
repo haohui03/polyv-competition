@@ -7,6 +7,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
@@ -32,6 +33,7 @@ public class TranslationLayout extends ConstraintLayout {
     private String TAG = "lee";
     //图片转文字的识别器
 
+    ImageButton ScreenShotButton;
     public TranslationLayout(@NonNull Context context) {
         this(context, null);
     }
@@ -49,7 +51,7 @@ public class TranslationLayout extends ConstraintLayout {
         View _view = LayoutInflater.from(getContext()).inflate(R.layout.translation_ly, null);
         this.addView(_view);
         LinearLayout linearLayout = (LinearLayout)findViewById (R.id.linearLayout);
-
+        ScreenShotButton = findViewById(R.id.screenshot);
         //动态添加
         /*NoteLayout noteLayout1 = new NoteLayout(getContext());
         NoteLayout noteLayout2 = new NoteLayout(getContext());
@@ -96,6 +98,10 @@ public class TranslationLayout extends ConstraintLayout {
                 "《牛津高阶英汉双解词典》\n";
         exampleSentence.setContent(content);
         linearLayout.addView(exampleSentence);
+    }
+
+    public void setScreenShotButtonOnClickListener(@Nullable OnClickListener l) {
+        this.ScreenShotButton.setOnClickListener(l);
     }
 
 

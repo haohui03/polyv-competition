@@ -8,6 +8,8 @@ import android.widget.TextView;
 import com.easefun.polyv.businesssdk.api.common.ppt.IPolyvPPTView;
 import com.easefun.polyv.livecloudclass.modules.chatroom.chatlandscape.PLVLCChatLandscapeLayout;
 import com.easefun.polyv.livecloudclass.modules.media.controller.IPLVLCLiveLandscapePlayerController;
+import com.easefun.polyv.livecloudclass.modules.ppt.IPLVLCFloatingPPTLayout;
+import com.easefun.polyv.livecloudclass.modules.ppt.PLVLCFloatingPPTLayout;
 import com.easefun.polyv.livecommon.module.data.IPLVLiveRoomDataManager;
 import com.easefun.polyv.livecommon.module.modules.player.PLVPlayerState;
 import com.easefun.polyv.livecommon.module.modules.player.playback.prsenter.data.PLVPlayInfoVO;
@@ -17,6 +19,8 @@ import com.easefun.polyv.livecommon.ui.widget.PLVSwitchViewAnchorLayout;
 import com.easefun.polyv.livecommon.ui.widget.PLVTriangleIndicateTextView;
 import com.easefun.polyv.livescenes.video.api.IPolyvLiveListenerEvent;
 import com.plv.livescenes.document.model.PLVPPTStatus;
+
+import java.lang.ref.WeakReference;
 
 /**
  * 云课堂场景下，针对 播放器布局 进行封装的 接口
@@ -264,6 +268,8 @@ public interface IPLVLCMediaLayout {
      * @param toShow true：显示，false：隐藏
      */
     void onTurnPageLayoutChange(boolean toShow);
+
+    void SetFloatPptLayoutRef(WeakReference<IPLVLCFloatingPPTLayout> liveMediaLayoutRef);
     // </editor-fold>
 
     // <editor-fold defaultstate="collapsed" desc="1、外部直接调用的方法 - playback部分，定义 回放播放器布局 独有的方法">

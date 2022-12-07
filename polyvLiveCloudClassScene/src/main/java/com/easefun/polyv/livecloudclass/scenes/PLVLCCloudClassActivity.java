@@ -414,6 +414,7 @@ public class PLVLCCloudClassActivity extends PLVBaseActivity {
             // 播放器布局
             videoLyViewStub.setLayoutResource(R.layout.plvlc_live_media_layout_view_stub);
             mediaLayout = (IPLVLCMediaLayout) videoLyViewStub.inflate();
+            mediaLayout.SetFloatPptLayoutRef(new WeakReference<>(floatingPPTLayout) );
             mediaLayout.init(liveRoomDataManager);
             mediaLayout.setLandscapeControllerView(liveLandscapeChannelController);
             mediaLayout.startPlay();
@@ -430,6 +431,7 @@ public class PLVLCCloudClassActivity extends PLVBaseActivity {
 
             noteLayout = findViewById(R.id.note_lys);
             noteLayout.init(liveRoomDataManager);
+
             PLVLCFloatingPPTLayout plvlcFloatingPPTLayout = (PLVLCFloatingPPTLayout) floatingPPTLayout;
             PLVLCLiveMediaLayout liveMediaLayout = (PLVLCLiveMediaLayout) mediaLayout;
             noteLayout.SetLiveMediaLayoutRef(new WeakReference<>(plvlcFloatingPPTLayout));

@@ -42,6 +42,8 @@ import com.easefun.polyv.livecloudclass.modules.media.widget.PLVLCLightTipsView;
 import com.easefun.polyv.livecloudclass.modules.media.widget.PLVLCProgressTipsView;
 import com.easefun.polyv.livecloudclass.modules.media.widget.PLVLCVideoLoadingLayout;
 import com.easefun.polyv.livecloudclass.modules.media.widget.PLVLCVolumeTipsView;
+import com.easefun.polyv.livecloudclass.modules.ppt.IPLVLCFloatingPPTLayout;
+import com.easefun.polyv.livecloudclass.modules.ppt.PLVLCFloatingPPTLayout;
 import com.easefun.polyv.livecommon.module.data.IPLVLiveRoomDataManager;
 import com.easefun.polyv.livecommon.module.data.PLVStatefulData;
 import com.easefun.polyv.livecommon.module.modules.chapter.viewmodel.PLVPlaybackChapterViewModel;
@@ -76,6 +78,7 @@ import com.plv.thirdpart.blankj.utilcode.util.ConvertUtils;
 import com.plv.thirdpart.blankj.utilcode.util.ScreenUtils;
 import com.plv.thirdpart.blankj.utilcode.util.ToastUtils;
 
+import java.lang.ref.WeakReference;
 import java.util.List;
 
 /**
@@ -643,6 +646,11 @@ public class PLVLCPlaybackMediaLayout extends FrameLayout implements IPLVLCMedia
 
     @Override
     public void onTurnPageLayoutChange(boolean toShow) {
+
+    }
+
+    @Override
+    public void SetFloatPptLayoutRef(WeakReference<IPLVLCFloatingPPTLayout> liveMediaLayoutRef) {
 
     }
     // </editor-fold>

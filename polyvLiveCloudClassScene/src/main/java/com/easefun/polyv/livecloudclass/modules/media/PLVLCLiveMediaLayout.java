@@ -45,6 +45,8 @@ import com.easefun.polyv.livecloudclass.modules.media.widget.PLVLCLiveAudioModeV
 import com.easefun.polyv.livecloudclass.modules.media.widget.PLVLCNetworkTipsView;
 import com.easefun.polyv.livecloudclass.modules.media.widget.PLVLCVideoLoadingLayout;
 import com.easefun.polyv.livecloudclass.modules.media.widget.PLVLCVolumeTipsView;
+import com.easefun.polyv.livecloudclass.modules.ppt.IPLVLCFloatingPPTLayout;
+import com.easefun.polyv.livecloudclass.modules.ppt.PLVLCFloatingPPTLayout;
 import com.easefun.polyv.livecommon.module.data.IPLVLiveRoomDataManager;
 import com.easefun.polyv.livecommon.module.data.PLVStatefulData;
 import com.easefun.polyv.livecommon.module.modules.marquee.IPLVMarqueeView;
@@ -83,6 +85,7 @@ import com.plv.thirdpart.blankj.utilcode.util.StringUtils;
 import com.plv.thirdpart.blankj.utilcode.util.TimeUtils;
 import com.plv.thirdpart.blankj.utilcode.util.ToastUtils;
 
+import java.lang.ref.WeakReference;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -416,7 +419,9 @@ public class PLVLCLiveMediaLayout extends FrameLayout implements IPLVLCMediaLayo
                     floatingWindow.showByUser(!floatingWindow.isRequestingShowByUser());
                 }
             }
+
         });
+
     }
 
     private void initAudioModeView() {
@@ -575,6 +580,7 @@ public class PLVLCLiveMediaLayout extends FrameLayout implements IPLVLCMediaLayo
         observeLinkMicStatus(livePlayerPresenter);
 
         mediaController.setLivePlayerPresenter(livePlayerPresenter);
+        mediaController.initNotePresent(floatingPPTLayoutWeakReference,liveRoomDataManager);
     }
 
     @Override
@@ -896,7 +902,18 @@ public class PLVLCLiveMediaLayout extends FrameLayout implements IPLVLCMediaLayo
     public void onTurnPageLayoutChange(boolean toShow) {
         mediaController.setTurnPageLayoutStatus(toShow);
     }
+
+
+    private  WeakReference<IPLVLCFloatingPPTLayout> floatingPPTLayoutWeakReference;
+    @Override
+    public void SetFloatPptLayoutRef(WeakReference<IPLVLCFloatingPPTLayout> floatingPPTLayoutWeakReference) {
+        this.floatingPPTLayoutWeakReference=floatingPPTLayoutWeakReference;
+    }
     // </editor-fold>
+
+    public void setFloatingPPTLayoutWeakReference(WeakReference<IPLVLCFloatingPPTLayout> floatingPPTLayoutWeakReference) {
+        this.floatingPPTLayoutWeakReference = floatingPPTLayoutWeakReference;
+    }
 
     // <editor-fold defaultstate="collapsed" desc="对外API - 实现IPLVLCMediaLayout定义的playback方法，空实现">
     @Override

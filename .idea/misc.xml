@@ -20,6 +20,7 @@
         <entry key="..\:/github/polyv-competition/polyvLiveCloudClassScene/src/main/res/layouts/ppt/layout/note_layout.xml" value="0.10191725529767912" />
         <entry key="..\:/github/polyv-competition/polyvLiveCloudClassScene/src/main/res/layouts/ppt/layout/plvlc_ppt_floating_layout.xml" value="0.1" />
         <entry key="..\:/github/polyv-competition/polyvLiveCloudClassScene/src/main/res/layouts/ppt/layout/plvlc_ppt_view_layout.xml" value="0.1" />
+        <entry key="..\:/github/polyv-competition/polyvLiveCloudClassScene/src/main/res/layouts/ppt/layout/translation_ly.xml" value="0.25" />
         <entry key="..\:/github/polyv-competition/polyvLiveCommonModul/src/main/res/drawable/plv_icon_image_load_err.xml" value="0.2275" />
         <entry key="..\:/github/polyv-competition/polyvLiveCommonModul/src/main/res/layout/plv_interact_layout.xml" value="0.1" />
         <entry key="..\:/github/polyv-competition/polyvLiveCommonModul/src/main/res/layout/plv_interact_layout_2.xml" value="0.1" />
@@ -43,12 +44,5 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
-  </component>
-  <component name="VisualizationToolProject">
-    <option name="state">
-      <ProjectState>
-        <option name="scale" value="0.10487394621796339" />
-      </ProjectState>
-    </option>
   </component>
 </project>

@@ -4,9 +4,15 @@ import androidx.annotation.NonNull;
 import android.view.View;
 
 import com.easefun.polyv.businesssdk.api.common.meidacontrol.IPolyvMediaController;
+import com.easefun.polyv.livecloudclass.modules.ppt.IPLVLCFloatingPPTLayout;
+import com.easefun.polyv.livecloudclass.modules.ppt.PLVLCFloatingPPTLayout;
+import com.easefun.polyv.livecommon.module.data.IPLVLiveRoomDataManager;
+import com.easefun.polyv.livecommon.module.data.PLVLiveRoomDataManager;
 import com.easefun.polyv.livecommon.module.modules.player.live.contract.IPLVLivePlayerContract;
 import com.easefun.polyv.livescenes.video.PolyvLiveVideoView;
 import com.plv.livescenes.document.model.PLVPPTStatus;
+
+import java.lang.ref.WeakReference;
 
 /**
  * 直播播放器控制栏接口，继承于直播播放器所需设置的 IPolyvMediaController 接口
@@ -101,6 +107,7 @@ public interface IPLVLCLiveMediaController extends IPolyvMediaController<PolyvLi
      */
     void updateWhenLeaveRtc();
 
+    void initNotePresent(WeakReference<IPLVLCFloatingPPTLayout> liveMediaLayoutRef, IPLVLiveRoomDataManager liveRoomDataManager);
     void updateWhenRequestJoinLinkMic(boolean isRequestJoinLinkMic);
 
     void updateWhenLinkMicOpenOrClose(boolean isOpenLinkMic);
@@ -238,6 +245,8 @@ public interface IPLVLCLiveMediaController extends IPolyvMediaController<PolyvLi
          * 小窗点击事件
          */
         void onClickFloating();
+
+
     }
     // </editor-fold>
 }
