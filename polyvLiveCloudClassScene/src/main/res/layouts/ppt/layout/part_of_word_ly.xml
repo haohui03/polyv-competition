@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00000000"
+    android:orientation="vertical"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp">
+
+
+    <TextView
+        android:id="@+id/part_of_word_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="英英释义"
+        style="@style/translation_title2"/>
+
+
+   <TextView
+       android:id="@+id/part_of_word_content"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       style="@style/translation_normal"
+       android:text="noun\n1
+(usually plural) a necessary commodity for which demand is constant
+\nSynonym:
+staple\nadj\n
+1
+of or denoting or of the nature of or containing a base\n
+2
+serving as a base or starting point
+a basic course in Russian
+basic training for raw recruits
+a set of basic tools
+an introductory art course
+\nSynonym:
+introductory\n
+3
+pertaining to or constituting a base or basis
+a basic fact
+the basic ingredients
+basic changes in public opinion occur because of changes in priorities
+\n4
+reduced to the simplest and most significant form possible without loss of generality
+a basic story line
+a canonical syllable pattern
+\nSynonym:
+canonic canonical
+"/>
+
+</LinearLayout>
