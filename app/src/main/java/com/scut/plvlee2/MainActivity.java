@@ -1,26 +1,23 @@
 package com.scut.plvlee2;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.*;
-
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.easefun.polyv.livecommon.module.config.PLVLiveChannelConfig;
-import com.easefun.polyv.livecommon.module.config.PLVLiveSDKConfig;
 import com.easefun.polyv.livecommon.module.data.IPLVLiveRoomDataManager;
-import com.easefun.polyv.livecommon.module.data.PLVLiveRoomDataManager;
 import com.easefun.polyv.livecommon.module.modules.streamer.contract.IPLVStreamerContract;
-import com.easefun.polyv.livecommon.module.modules.streamer.presenter.PLVStreamerPresenter;
-import com.plv.livescenes.config.PLVLiveChannelType;
+
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -51,6 +48,9 @@ public class MainActivity extends AppCompatActivity {
 
         // 初始页面 - liveFragment
         getFragmentManager().beginTransaction().add(R.id.frameLayout, new liveFragment()).commit();
+
+
+
     }
 
     @Override

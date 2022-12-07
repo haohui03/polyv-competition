@@ -2,11 +2,16 @@ package com.easefun.polyv.livecloudclass.modules.media.controller;
 
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
+
+import com.easefun.polyv.livecloudclass.R;
 import com.easefun.polyv.livecloudclass.modules.chatroom.widget.PLVLCLikeIconView;
 import com.easefun.polyv.livecloudclass.modules.media.widget.PLVLCPPTTurnPageLayout;
+import com.easefun.polyv.livecloudclass.modules.translation.TranslationLayout;
 import com.easefun.polyv.livecommon.ui.widget.PLVTriangleIndicateTextView;
 
 /**
@@ -88,6 +93,12 @@ public interface IPLVLCLiveLandscapePlayerController {
      */
     ImageView getMoreView();
 
+    //获取笔记按钮
+    ImageView getNoteView();
+    //获取翻译按钮
+    TextView getTranslationView();
+    //获取翻译界面容器
+    FrameLayout getTranslationConatiner();
     /**
      * 获取打赏按钮
      */

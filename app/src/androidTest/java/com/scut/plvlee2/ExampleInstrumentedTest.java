@@ -53,7 +53,6 @@ public class ExampleInstrumentedTest {
         Log.i("yhh","collins词典"+ result.getCollins().get(0).getTran());
         Log.i("yhh","英文解释"+ result.getEnglishMeaning().get(0).getGroups().get(0).getExample());
 
-
     }
 
     @Test

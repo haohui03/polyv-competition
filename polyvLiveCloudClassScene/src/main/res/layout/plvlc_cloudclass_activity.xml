@@ -25,7 +25,25 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
-    <!-- 连麦布局 -->
+<!--    <View-->
+<!--        android:id="@+id/transition_ly_reference"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"/>-->
+<!--    <com.easefun.polyv.livecloudclass.modules.translation.TranslationLayout
+        android:id="@+id/transition_ly"
+        android:layout_width="300dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />-->
+
+
+     <!-- 连麦布局 -->
     <ViewStub
         android:id="@+id/plvlc_linkmic_viewstub"
         android:layout_width="match_parent"

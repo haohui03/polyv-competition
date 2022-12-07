@@ -137,6 +137,9 @@ public interface IPLVLCLiveMediaController extends IPolyvMediaController<PolyvLi
      */
     void showMoreLayout();
 
+//    显示笔记
+    void showNoteLayout();
+
     /**
      * 弹幕切换按钮点击回调
      *

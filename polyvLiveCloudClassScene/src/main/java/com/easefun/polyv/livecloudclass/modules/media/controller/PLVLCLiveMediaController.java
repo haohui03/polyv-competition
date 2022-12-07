@@ -21,6 +21,7 @@ import android.widget.LinearLayout;
 import android.widget.MediaController;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.easefun.polyv.businesssdk.model.video.PolyvDefinitionVO;
 import com.easefun.polyv.businesssdk.model.video.PolyvMediaPlayMode;
@@ -28,6 +29,7 @@ import com.easefun.polyv.livecloudclass.R;
 import com.easefun.polyv.livecloudclass.modules.chatroom.widget.PLVLCLikeIconView;
 import com.easefun.polyv.livecloudclass.modules.media.widget.PLVLCLiveMoreLayout;
 import com.easefun.polyv.livecloudclass.modules.media.widget.PLVLCPPTTurnPageLayout;
+import com.easefun.polyv.livecloudclass.modules.translation.TranslationLayout;
 import com.easefun.polyv.livecommon.module.modules.commodity.viewmodel.PLVCommodityViewModel;
 import com.easefun.polyv.livecommon.module.modules.commodity.viewmodel.vo.PLVCommodityUiState;
 import com.easefun.polyv.livecommon.module.modules.player.floating.PLVFloatingPlayerManager;
@@ -113,6 +115,17 @@ public class PLVLCLiveMediaController extends FrameLayout implements IPLVLCLiveM
     private PLVLCLikeIconView likesLandIv;
     //更多按钮
     private ImageView moreLandIv;
+
+
+    //笔记按钮
+    private ImageView noteLandIv;
+    //翻译按钮
+    private TextView translationLandTv;
+    //翻译界面
+    private TranslationLayout translationLayout;
+    //翻译界面容器
+    private FrameLayout translationContainer;
+
     // 小窗按钮
     private ImageView liveControlFloatingIv;
     //ppt 翻页
@@ -381,6 +394,40 @@ public class PLVLCLiveMediaController extends FrameLayout implements IPLVLCLiveM
         likesLandIv.setOnButtonClickListener(this);
         moreLandIv = landscapeController.getMoreView();
         moreLandIv.setOnClickListener(this);
+
+        // 翻译界面
+        translationLayout = new TranslationLayout(getContext());
+        translationContainer = landscapeController.getTranslationConatiner();
+        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        translationContainer.addView(translationLayout, layoutParams);
+        if(translationLayout != null) {
+            translationLayout.setVisibility(View.INVISIBLE);
+        }
+        else {
+            Toast.makeText(getContext(), "没有找到翻译界面", Toast.LENGTH_SHORT).show();
+        }
+        //笔记
+        noteLandIv = landscapeController.getNoteView();
+        noteLandIv.setOnClickListener(this);
+        //翻译按钮
+        translationLandTv = landscapeController.getTranslationView();
+        translationLandTv.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(translationLayout != null) {
+                    if(translationLayout.getVisibility() == View.VISIBLE) {
+                        translationLayout.setVisibility(View.INVISIBLE);
+                    }
+                    else {
+                        translationLayout.setVisibility(View.VISIBLE);
+                    }
+                }
+                else {
+                    Toast.makeText(getContext(), "没有找到翻译界面", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
         rewardView = landscapeController.getRewardView();
         rewardView.setOnClickListener(this);
         commodityView = landscapeController.getCommodityView();
@@ -577,6 +624,13 @@ public class PLVLCLiveMediaController extends FrameLayout implements IPLVLCLiveM
     }
 
     @Override
+    public void showNoteLayout() {
+        if (noteLandIv != null) {
+            noteLandIv.performClick();
+        }
+    }
+
+    @Override
     public void dispatchDanmuSwitchOnClicked(View v) {
         this.onClick(v);
     }
@@ -600,7 +654,6 @@ public class PLVLCLiveMediaController extends FrameLayout implements IPLVLCLiveM
         if (moreLayout != null) {
             moreLayout.hide();
         }
-
         dispose(bitPopupWindowTimer);
         dispose(reopenFloatingDelay);
     }
