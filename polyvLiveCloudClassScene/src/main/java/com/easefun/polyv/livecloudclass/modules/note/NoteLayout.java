@@ -2,18 +2,23 @@ package com.easefun.polyv.livecloudclass.modules.note;
 
 import static com.easefun.polyv.livecommon.module.modules.note.Utils.UtilRecognizer.accurateBasic;
 
+import android.app.ActionBar;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.widget.Button;
 import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.easefun.polyv.livecloudclass.modules.ppt.PLVLCFloatingPPTLayout;
 import com.easefun.polyv.livecommon.module.data.IPLVLiveRoomDataManager;
@@ -31,6 +36,9 @@ public class NoteLayout extends FrameLayout implements INoteContact.INoteView {
     private IPLVLiveRoomDataManager liveRoomDataManager;
     private INoteContact.INotePresenter notePresenter;
     private Context context;
+
+    private MyView myView;//绘画选择区域
+
     //控件
     Button testButton;
     private String TAG = "lgt";
@@ -51,17 +59,28 @@ public class NoteLayout extends FrameLayout implements INoteContact.INoteView {
 
     private void initView() {
         this.context = context;
+        myView = new MyView(getContext());
+        myView.setSign(true);
         LayoutInflater.from(getContext()).inflate(R.layout.note_layout, this);
         testButton = findViewById(R.id.recognize);
         testButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                NoteData noteData = new NoteData("xx",new Date(System.currentTimeMillis()),"笔记","zhe shi wo ");
-                notePresenter.SetNote("","",noteData);
+                myView.setSeat(0, 0, 0, 0);
+                myView.setSign(false);
+                myView.postInvalidate();
 
+//                NoteData noteData = new NoteData("xx",new Date(System.currentTimeMillis()),"笔记","zhe shi wo ");
+//                notePresenter.SetNote("","",noteData);
+                    recongnizetest();
                 //recongnizetest();
             }
         });
+        // todo 添加后会影响父容器的位置
+        // 绘图提示区域
+        final LayoutParams params = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        myView.setLayoutParams(params);
+        addView(myView);
     }
 
 
@@ -71,8 +90,7 @@ public class NoteLayout extends FrameLayout implements INoteContact.INoteView {
         notePresenter.initLiveRoom(liveRoomDataManager);
 
     }
-
-
+    // todo 关闭悬浮窗识别会闪退
     //todo 只有全屏模式才能翻译，而且是在开播状态，应该新增判断逻辑
     //识别test   从documentLayout 中获取一个图片
     void recongnizetest(){
@@ -82,14 +100,27 @@ public class NoteLayout extends FrameLayout implements INoteContact.INoteView {
             float startY;
             float endX;
             float endY;
+            int m = 0, n = 0; // 移动过程的中间坐标
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 if(motionEvent.getAction()==MotionEvent.ACTION_DOWN){
                     startX = motionEvent.getX();
                     startY = motionEvent.getY();
-
                 }
-                else if(motionEvent.getAction()==MotionEvent.ACTION_UP) {
+                // 移动的时候进行绘制框
+                if(motionEvent.getAction() == MotionEvent.ACTION_MOVE){
+                    m = (int) motionEvent.getX();
+                    n = (int) motionEvent.getY();
+                    myView.setSeat((int)startX, (int)startY, m, n);
+                    myView.postInvalidate();
+                }
+                // 抬起，
+                // todo end-start为负数会闪退！！
+                if(motionEvent.getAction()==MotionEvent.ACTION_UP) {
+                    // 隐藏截图提示框
+                    myView.setSign(true);
+                    myView.postInvalidate();
+
                     endX = motionEvent.getX();
                     endY = motionEvent.getY();
                     Bitmap mCropBitmap = Bitmap.createBitmap(bitmap,
@@ -113,7 +144,6 @@ public class NoteLayout extends FrameLayout implements INoteContact.INoteView {
                 return true;
             }
         });
-
 
 
 
