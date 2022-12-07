@@ -1,11 +1,11 @@
 package com.easefun.polyv.livecloudclass.modules.translation;
 
-//import static com.easefun.polyv.livecommon.module.modules.note.Utils.UtilRecognizer.accurateBasic;
 
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -14,18 +14,12 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.easefun.polyv.livecloudclass.R;
 
-/*import com.easefun.polyv.livecommon.module.data.IPLVLiveRoomDataManager;
-import com.easefun.polyv.livecommon.module.modules.note.INoteContact;
-import com.easefun.polyv.livecommon.module.modules.note.NoteData;
-import com.easefun.polyv.livecommon.module.modules.note.NotePresenter;
-import com.easefun.polyv.livescenes.document.PLVSDocumentWebView;*/
-
 
 public class OverviewOfWordLayout extends ConstraintLayout {
-/*    private PLVSDocumentWebView documentWebViewWeakReference;
-    private IPLVLiveRoomDataManager liveRoomDataManager;
-    private INoteContact.INotePresenter notePresenter;*/
 
+    private TextView wordTv;
+    private TextView phTv;
+    private TextView tslTv;
 
     public OverviewOfWordLayout(@NonNull Context context) {
         this(context, null);
@@ -48,30 +42,16 @@ public class OverviewOfWordLayout extends ConstraintLayout {
 
     private void initView() {
         LayoutInflater.from(getContext()).inflate(R.layout.overview_of_word_ly, this);
-
+        wordTv = findViewById(R.id.word);
+        phTv = findViewById(R.id.phonetic);
+        tslTv = findViewById(R.id.translation);
     }
 
-
-    /*public void init(IPLVLiveRoomDataManager liveRoomDataManager){
-        this.liveRoomDataManager = liveRoomDataManager;
-        notePresenter = new NotePresenter();
-        notePresenter.initLiveRoom(liveRoomDataManager);
+    //设置 单词、音标、翻译
+    public void setOverview(String word, String ph, String tsl) {
+        wordTv.setText(word);
+        phTv.setText(ph);
+        tslTv.setText(tsl);
     }
 
-    public void SetDocumentViewRef(PLVSDocumentWebView documentWebView){
-        this.documentWebViewWeakReference = documentWebView ;
-    }
-
-
-    //p层初始化完毕调用
-    @Override
-    public void onPresenterInitComplete() {
-
-    }
-
-    //请求笔记返回的数据
-    @Override
-    public void onRequestNoteComplete(List<NoteData> noteData) {
-
-    }*/
 }

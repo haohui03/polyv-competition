@@ -653,7 +653,8 @@ public class PLVLCLiveMediaController extends FrameLayout implements IPLVLCLiveM
                 +result.getEnglishPhonetic()+"\n"
                 +Collins.toString()+"\n"
                 +EnglishMeanings;
-       translationLayout.setExampleSentenceContent(content);
+
+//       translationLayout.setExampleSentenceContent(content);
    }
     void imageRecognize(){
         Bitmap bitmap =  floatingPPTLayoutWeakReference.get().getScreenShot();

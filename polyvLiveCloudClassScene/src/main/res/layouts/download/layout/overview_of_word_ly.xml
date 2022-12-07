@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
-            android:id="@+id/title"
+            android:id="@+id/word"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="basic"
@@ -49,6 +49,7 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/translation"
         style="@style/translation_normal"
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"

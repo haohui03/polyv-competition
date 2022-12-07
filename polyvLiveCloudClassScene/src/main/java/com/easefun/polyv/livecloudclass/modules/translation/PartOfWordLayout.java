@@ -5,6 +5,7 @@ package com.easefun.polyv.livecloudclass.modules.translation;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -21,10 +22,9 @@ import com.easefun.polyv.livescenes.document.PLVSDocumentWebView;*/
 
 
 public class PartOfWordLayout extends ConstraintLayout {
-/*    private PLVSDocumentWebView documentWebViewWeakReference;
-    private IPLVLiveRoomDataManager liveRoomDataManager;
-    private INoteContact.INotePresenter notePresenter;*/
 
+    private TextView titleTv;
+    private LinearLayout part_of_word_layout;
 
     public PartOfWordLayout(@NonNull Context context) {
         this(context, null);
@@ -42,38 +42,17 @@ public class PartOfWordLayout extends ConstraintLayout {
 
     private void initView() {
         LayoutInflater.from(getContext()).inflate(R.layout.part_of_word_ly, this);
+        titleTv = findViewById(R.id.part_of_word_title);
+        part_of_word_layout = findViewById(R.id.part_of_word_layout);
     }
 
-    public void setTitle(String title) {
-        TextView titleView = (TextView)findViewById(R.id.part_of_word_title);
-        titleView.setText(title);
-    }
-    public void setContent(String content) {
-        TextView titleView = (TextView)findViewById(R.id.part_of_word_content);
-        titleView.setText(content);
+    public void setTitle(String s) {
+        titleTv.setText(s);
     }
 
-
-    /*public void init(IPLVLiveRoomDataManager liveRoomDataManager){
-        this.liveRoomDataManager = liveRoomDataManager;
-        notePresenter = new NotePresenter();
-        notePresenter.initLiveRoom(liveRoomDataManager);
+    public void addSingleItem(String s) {
+        SingleItem singleItem = new SingleItem(getContext());
+        singleItem.setContent(s);
+        part_of_word_layout.addView(singleItem);
     }
-
-    public void SetDocumentViewRef(PLVSDocumentWebView documentWebView){
-        this.documentWebViewWeakReference = documentWebView ;
-    }
-
-
-    //p层初始化完毕调用
-    @Override
-    public void onPresenterInitComplete() {
-
-    }
-
-    //请求笔记返回的数据
-    @Override
-    public void onRequestNoteComplete(List<NoteData> noteData) {
-
-    }*/
 }
