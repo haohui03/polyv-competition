@@ -1,6 +1,6 @@
 package com.easefun.polyv.livecommon.module.modules.note.translation;
 
-import android.app.Activity;
+import android.content.Context;
 import android.util.Log;
 
 import org.mozilla.javascript.Function;
@@ -65,9 +65,9 @@ public class js {
             "        \"\".concat((b %= 1e6).toString(), \".\").concat(b ^ f)\n" +
             "}\n";
 
-    public static String generateSign(Activity application,String content){
+    public static String generateSign(Context context, String content){
         try {
-            InputStream inputStream = application.getApplicationContext().getResources().getAssets().open("sign.js");
+            InputStream inputStream = context.getResources().getAssets().open("sign.js");
 
             InputStreamReader reader = new InputStreamReader(inputStream);
             org.mozilla.javascript.Context ctx = org.mozilla.javascript.Context.enter();
@@ -91,8 +91,8 @@ public class js {
     }
     public static String generateSign(String content){
         try {
+           // InputStream inputStream = new FileInputStream("sign.js");
             InputStream inputStream = new ByteArrayInputStream(signjs.getBytes());
-
             InputStreamReader reader = new InputStreamReader(inputStream);
             org.mozilla.javascript.Context ctx = org.mozilla.javascript.Context.enter();
             //添加这一行的目的是禁止优化，因为优化后可能报错

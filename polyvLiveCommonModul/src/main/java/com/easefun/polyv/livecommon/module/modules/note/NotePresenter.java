@@ -1,10 +1,8 @@
 package com.easefun.polyv.livecommon.module.modules.note;
 
-import android.os.Build;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 
 import com.easefun.polyv.livecommon.module.data.IPLVLiveRoomDataManager;
 import com.easefun.polyv.livecommon.module.modules.chatroom.PLVCustomGiftBean;
@@ -13,23 +11,16 @@ import com.easefun.polyv.livecommon.module.modules.chatroom.customData;
 import com.easefun.polyv.livecommon.module.modules.chatroom.presenter.PLVChatroomPresenter;
 import com.easefun.polyv.livecommon.module.modules.chatroom.view.PLVAbsChatroomView;
 import com.easefun.polyv.livecommon.module.modules.note.data.NoteData;
-import com.easefun.polyv.livecommon.module.modules.note.data.TranslateResult;
 import com.easefun.polyv.livecommon.ui.widget.itemview.PLVBaseViewData;
 import com.easefun.polyv.livescenes.chatroom.send.custom.PolyvCustomEvent;
 import com.google.gson.internal.LinkedTreeMap;
-import com.plv.livescenes.chatroom.send.custom.PLVCustomEvent;
 import com.plv.socket.event.PLVBaseEvent;
 
 import java.lang.ref.WeakReference;
-import java.sql.Time;
-import java.sql.Timestamp;
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 
 public class NotePresenter implements INoteContact.INotePresenter {
     static final String TAG = "lee";

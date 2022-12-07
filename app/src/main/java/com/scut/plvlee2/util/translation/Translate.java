@@ -3,7 +3,6 @@ package com.scut.plvlee2.util.translation;
 import android.content.Context;
 import android.util.Log;
 
-import com.scut.plvlee2.Bean.Result;
 
 import org.json.JSONArray;
 import org.json.JSONException;

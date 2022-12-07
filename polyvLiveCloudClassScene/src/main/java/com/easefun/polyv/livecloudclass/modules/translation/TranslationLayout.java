@@ -27,7 +27,7 @@ public class TranslationLayout extends ConstraintLayout {
 /*    private PLVSDocumentWebView documentWebViewWeakReference;
     private IPLVLiveRoomDataManager liveRoomDataManager;
     private INoteContact.INotePresenter notePresenter;*/
-
+PartOfWordLayout exampleSentence;
     //控件
     Button testButton;
     private String TAG = "lee";
@@ -60,7 +60,7 @@ public class TranslationLayout extends ConstraintLayout {
         linearLayout.addView(noteLayout2);*/
         //移除全部
 //        linearLayout.removeAllViews();
-        PartOfWordLayout exampleSentence = new PartOfWordLayout(getContext());
+        exampleSentence= new PartOfWordLayout(getContext());
         exampleSentence.setTitle("双语例句");
         String content = "1\n" +
                 "A basic sense of rhythm and pitch is essential in a music teacher. \n" +
@@ -98,6 +98,9 @@ public class TranslationLayout extends ConstraintLayout {
                 "《牛津高阶英汉双解词典》\n";
         exampleSentence.setContent(content);
         linearLayout.addView(exampleSentence);
+    }
+    public void setExampleSentenceContent(String content){
+        exampleSentence.setContent(content);
     }
 
     public void setScreenShotButtonOnClickListener(@Nullable OnClickListener l) {

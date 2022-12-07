@@ -44,6 +44,11 @@ import com.easefun.polyv.livecommon.module.modules.commodity.viewmodel.PLVCommod
 import com.easefun.polyv.livecommon.module.modules.commodity.viewmodel.vo.PLVCommodityUiState;
 import com.easefun.polyv.livecommon.module.modules.note.INoteContact;
 import com.easefun.polyv.livecommon.module.modules.note.NotePresenter;
+import com.easefun.polyv.livecommon.module.modules.note.data.CollinsSingle;
+import com.easefun.polyv.livecommon.module.modules.note.data.Edict;
+import com.easefun.polyv.livecommon.module.modules.note.data.Result;
+import com.easefun.polyv.livecommon.module.modules.note.data.Single;
+import com.easefun.polyv.livecommon.module.modules.note.translation.Translate;
 import com.easefun.polyv.livecommon.module.modules.player.floating.PLVFloatingPlayerManager;
 import com.easefun.polyv.livecommon.module.modules.player.live.contract.IPLVLivePlayerContract;
 import com.easefun.polyv.livecommon.module.modules.player.live.presenter.data.PLVPlayInfoVO;
@@ -58,7 +63,11 @@ import com.plv.thirdpart.blankj.utilcode.util.ConvertUtils;
 import com.plv.thirdpart.blankj.utilcode.util.ScreenUtils;
 import com.plv.thirdpart.blankj.utilcode.util.StringUtils;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.disposables.Disposable;
@@ -621,6 +630,31 @@ public class PLVLCLiveMediaController extends FrameLayout implements IPLVLCLiveM
         getLiveMediaDispatcher().updateViewProperties();
     }
 
+
+   void setTranslateResult(Result result){
+        String Collins = "柯林斯词典\n";
+        List <String > EnglishMeanings = new ArrayList<>();
+       for (CollinsSingle c:
+            result.getCollins()) {
+           Collins+="    "+c.getEx().toString()+"  ["+c.getType()+"]"+"\n";
+           Collins+="      "+c.getTran().toString()+"\n";
+       }
+       for (Edict e:
+             result.getEnglishMeaning()) {
+           EnglishMeanings.add(e.getPos()+"\n");
+           for (Single s:
+                e.getGroups()) {
+               EnglishMeanings.add("  语义："+s.getMeaning()+ "\n例句："+ s.getExample().toString()+"\n");
+           }
+
+       }
+        String content = result.getSrc()+"\n"
+                +"   "+result.getDst()+"\n"
+                +result.getEnglishPhonetic()+"\n"
+                +Collins.toString()+"\n"
+                +EnglishMeanings;
+       translationLayout.setExampleSentenceContent(content);
+   }
     void imageRecognize(){
         Bitmap bitmap =  floatingPPTLayoutWeakReference.get().getScreenShot();
         this.floatingPPTLayoutWeakReference.get().setOnTouchToTranslateListener(new OnTouchListener() {
@@ -662,7 +696,28 @@ public class PLVLCLiveMediaController extends FrameLayout implements IPLVLCLiveM
                         @Override
                         public void run() {
                             String res  = accurateBasic(mCropBitmap);
-                            Log.i(TAG, "recognize result:"+res);
+
+                            try {
+                                String words = "";
+                                JSONObject jsonObject = new JSONObject(res);
+                                int words_result_num = jsonObject.getInt("words_result_num");
+                                for(int t = 0;t<words_result_num;t++){
+                                    words+=
+                                    jsonObject.getJSONArray("words_result").getJSONObject(t).getString("words")
+                                            +" ";
+
+                                }
+                                Log.i(TAG, "recognize result:"+res);
+                                Result result = Translate.translate(getContext(),words,"en","zh");
+                                setTranslateResult(result);
+
+                                //String word = jsonObject.getJSONObject()
+
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+
                         }
                     }).start();
                     floatingPPTLayoutWeakReference.get().setOnTouchToTranslateListener(new OnTouchListener() {

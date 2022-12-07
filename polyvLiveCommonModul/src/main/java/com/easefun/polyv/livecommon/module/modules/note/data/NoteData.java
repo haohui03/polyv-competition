@@ -34,7 +34,7 @@ public class NoteData {
     //自己的笔记评论
     private Date time;
     //翻译的结果
-    public List<TranslateResult > translateResults=new ArrayList<>();
+    public List<Result> results =new ArrayList<>();
 
 
     public String getClassId() {
@@ -61,12 +61,12 @@ public class NoteData {
         this.time = time;
     }
 
-    public List<TranslateResult> getTranslateResults() {
-        return translateResults;
+    public List<Result> getTranslateResults() {
+        return results;
     }
 
-    public void setTranslateResults(List<TranslateResult> translateResults) {
-        this.translateResults = translateResults;
+    public void setTranslateResults(List<Result> results) {
+        this.results = results;
     }
 
     public List<String> getImageURl() {

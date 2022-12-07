@@ -1,5 +1,4 @@
-package com.scut.plvlee2.Bean;
-
+package com.easefun.polyv.livecommon.module.modules.note.data;
 
 import java.util.ArrayList;
 
@@ -11,6 +10,13 @@ public class Edict {
         return pos;
     }
 
+    @Override
+    public String toString() {
+        return "Edict{" +
+                "pos='" + pos + '\'' +
+                ", groups=" + groups +
+                '}';
+    }
 
     public void setPos(String pos) {
         this.pos = pos;

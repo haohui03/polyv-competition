@@ -1,4 +1,4 @@
-package com.scut.plvlee2.Bean;
+package com.easefun.polyv.livecommon.module.modules.note.data;
 
 import java.util.ArrayList;
 
@@ -20,14 +20,6 @@ public class Single {
         return similarWord;
     }
 
-    @Override
-    public String toString() {
-        return "Single{" +
-                "meaning='" + meaning + '\'' +
-                ", example=" + example +
-                ", similarWord=" + similarWord +
-                '}';
-    }
 
     public void setMeaning(String meaning) {
         this.meaning = meaning;
