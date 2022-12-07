@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+<!--    上下两条渐变黑色背景-->
     <FrameLayout
         android:id="@+id/gradient_bar_land_ly"
         android:layout_width="match_parent"
@@ -25,6 +26,7 @@
             android:src="@drawable/plvlc_controller_video_bottom_landscape_gradient" />
     </FrameLayout>
 
+<!--    ppt翻页按钮-->
     <com.easefun.polyv.livecloudclass.modules.media.widget.PLVLCPPTTurnPageLayout
         android:id="@+id/video_ppt_turn_page_land_layout"
         android:layout_width="wrap_content"
@@ -34,6 +36,7 @@
         android:layout_marginBottom="68dp"
         android:visibility="invisible" />
 
+<!--    直播名字-->
     <TextView
         android:id="@+id/video_name_land_tv"
         android:layout_width="wrap_content"
@@ -51,6 +54,7 @@
         android:textColor="#ffffff"
         android:textSize="16sp" />
 
+<!--    播放次数-->
     <TextView
         android:id="@+id/video_viewer_count_land_tv"
         android:layout_width="wrap_content"
@@ -65,7 +69,7 @@
         android:textSize="12sp"
         android:visibility="gone"
         tools:visibility="visible" />
-
+<!--    返回按钮-->
     <ImageView
         android:id="@+id/back_land_iv"
         android:layout_width="40dp"
@@ -75,6 +79,7 @@
         android:padding="8dp"
         android:src="@drawable/plvlc_controller_back" />
 
+<!--    底部黑色条条-->
     <LinearLayout
         android:id="@+id/bottom_bar_land_ly"
         android:layout_width="wrap_content"
@@ -118,12 +123,62 @@
             android:visibility="gone" />
     </LinearLayout>
 
+<!--    翻译界面-->
+<!--    <View-->
+<!--        android:id="@+id/transition_ly_reference"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"/>-->
+<!--    <com.easefun.polyv.livecloudclass.modules.translation.TranslationLayout-->
+<!--        android:id="@+id/transition_ly"-->
+<!--        android:layout_width="300dp"-->
+<!--        android:layout_height="match_parent"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        />-->
+    <FrameLayout
+        android:id="@+id/translation_container"
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+    </FrameLayout>
+
+    <!--    顶部黑色条条-->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_marginRight="8dp"
         android:orientation="horizontal">
+
+<!--        笔记-->
+        <ImageView
+            android:id="@+id/live_note"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="14dp"
+            android:padding="8dp"
+            android:src="@drawable/note" />
+
+        <TextView
+            android:textColor="#FFFFFFFF"
+            android:text="翻译"
+            android:id="@+id/live_translation"
+            android:layout_width="wrap_content"
+            android:layout_height="46dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="14dp"
+            android:padding="8dp"
+            />
 
         <ImageView
             android:id="@+id/plvlc_live_control_floating_land_iv"
@@ -153,6 +208,7 @@
             android:src="@drawable/plvlc_controller_more" />
     </LinearLayout>
 
+<!--    点赞-->
     <com.easefun.polyv.livecloudclass.modules.chatroom.widget.PLVLCLikeIconView
         android:id="@+id/likes_land_iv"
         android:layout_width="62dp"
@@ -174,7 +230,9 @@
         android:visibility="invisible"
         tools:visibility="visible" />
 
+<!--    礼物，要删掉(disable?)需要修改 com.easefun.polyv.livecloundclass/modules/media/controller/PLVLCLiveLandscapeChannelController-->
     <com.easefun.polyv.livecommon.ui.widget.imageview.PLVSimpleImageView
+
         android:id="@+id/plvlc_iv_show_point_reward"
         android:layout_width="36dp"
         android:layout_height="36dp"

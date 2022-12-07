@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.easefun.polyv.livecloudclass.R;
 import com.easefun.polyv.livecloudclass.modules.chatroom.widget.PLVLCLikeIconView;
 import com.easefun.polyv.livecloudclass.modules.media.widget.PLVLCPPTTurnPageLayout;
+import com.easefun.polyv.livecloudclass.modules.translation.TranslationLayout;
 import com.easefun.polyv.livecommon.ui.widget.PLVTriangleIndicateTextView;
 import com.easefun.polyv.livecommon.ui.widget.imageview.IPLVVisibilityChangedListener;
 import com.easefun.polyv.livecommon.ui.widget.imageview.PLVSimpleImageView;
@@ -61,6 +62,7 @@ public class PLVLCLiveLandscapeChannelController extends FrameLayout implements 
         likesReferView = findViewById(R.id.plvlc_refer_view_1);
         cardEnterReferView = findViewById(R.id.plvlc_refer_view_2);
         cardEnterIv = findViewById(R.id.plvlc_card_enter_view);
+        //礼物
         rewardIv = findViewById(R.id.plvlc_iv_show_point_reward);
         controllerCommodityIv = findViewById(R.id.plvlc_controller_commodity_iv);
 
@@ -204,6 +206,26 @@ public class PLVLCLiveLandscapeChannelController extends FrameLayout implements 
     public ImageView getMoreView() {
         return findViewById(R.id.more_land_iv);
     }
+
+    @Override
+    public ImageView getNoteView () {
+        return findViewById(R.id.live_note);
+    }
+
+    @Override
+    public TextView getTranslationView () {
+        return findViewById(R.id.live_translation);
+    }
+
+    @Override
+    public FrameLayout getTranslationConatiner() {
+        return findViewById(R.id.translation_container);
+    }
+
+/*    @Override
+    public TranslationLayout getTranslationLayout () {
+        return findViewById(R.id.transition_ly);
+    }*/
 
     @Override
     public PLVSimpleImageView getRewardView() {
