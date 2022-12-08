@@ -65,7 +65,7 @@ public class NoteLayout extends FrameLayout implements INoteContact.INoteView {
 
     public void init(IPLVLiveRoomDataManager liveRoomDataManager){
         this.liveRoomDataManager = liveRoomDataManager;
-        notePresenter = new NotePresenter();
+        notePresenter = new NotePresenter(getContext());
         notePresenter.initLiveRoom(liveRoomDataManager);
 
     }
@@ -110,6 +110,12 @@ public class NoteLayout extends FrameLayout implements INoteContact.INoteView {
     public void onRequestNoteComplete(List<NoteData> noteData) {
 
     }
+
+    @Override
+    public void onNewNoteAccept(NoteData noteData) {
+
+    }
+
 
     @Override
     public void onHistoryNote(List<NoteData> noteData) {

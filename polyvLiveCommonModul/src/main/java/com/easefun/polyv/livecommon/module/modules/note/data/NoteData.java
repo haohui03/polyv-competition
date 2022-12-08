@@ -1,10 +1,11 @@
 package com.easefun.polyv.livecommon.module.modules.note.data;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class NoteData {
+public class NoteData implements Serializable {
     public static final  int SHARE_NOTE = 1;
     public static final  int CLASS_NOTE = 2;
     public static final  int FREE_NOTE = 3;
@@ -31,7 +32,7 @@ public class NoteData {
     private String content;
     //自己的笔记评论
     private String note;
-    //自己的笔记评论
+    //时间
     private Date time;
     //翻译的结果
     public List<Result> results =new ArrayList<>();
@@ -61,8 +62,27 @@ public class NoteData {
         this.time = time;
     }
 
+    public void setResults(List<Result> results) {
+        this.results = results;
+    }
+
     public List<Result> getTranslateResults() {
         return results;
+    }
+
+    @Override
+    public String toString() {
+        return "NoteData{" +
+                "userId='" + userId + '\'' +
+                ", ClassId='" + ClassId + '\'' +
+                ", NoteId=" + NoteId +
+                ", NoteType=" + NoteType +
+                ", content='" + content + '\'' +
+                ", note='" + note + '\'' +
+                ", time=" + time +
+                ", results=" + results +
+                ", ImageURl=" + ImageURl +
+                '}';
     }
 
     public void setTranslateResults(List<Result> results) {
@@ -76,7 +96,6 @@ public class NoteData {
     public void setImageURl(List<String> imageURl) {
         ImageURl = imageURl;
     }
-
 
 
     public List<String> ImageURl = new ArrayList<>();

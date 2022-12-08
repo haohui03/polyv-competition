@@ -46,6 +46,7 @@ import com.easefun.polyv.livecommon.module.modules.note.INoteContact;
 import com.easefun.polyv.livecommon.module.modules.note.NotePresenter;
 import com.easefun.polyv.livecommon.module.modules.note.data.CollinsSingle;
 import com.easefun.polyv.livecommon.module.modules.note.data.Edict;
+import com.easefun.polyv.livecommon.module.modules.note.data.NoteData;
 import com.easefun.polyv.livecommon.module.modules.note.data.Result;
 import com.easefun.polyv.livecommon.module.modules.note.data.Single;
 import com.easefun.polyv.livecommon.module.modules.note.translation.Translate;
@@ -598,7 +599,7 @@ public class PLVLCLiveMediaController extends FrameLayout implements IPLVLCLiveM
     @Override
     public void initNotePresent(WeakReference<IPLVLCFloatingPPTLayout>  floatingPPTLayoutRef, IPLVLiveRoomDataManager liveRoomDataManager) {
         this.floatingPPTLayoutWeakReference  = floatingPPTLayoutRef;
-        notePresenter = new NotePresenter();
+        notePresenter = new NotePresenter(getContext());
         notePresenter.initLiveRoom(liveRoomDataManager);
     }
 
@@ -653,8 +654,16 @@ public class PLVLCLiveMediaController extends FrameLayout implements IPLVLCLiveM
                 +result.getEnglishPhonetic()+"\n"
                 +Collins.toString()+"\n"
                 +EnglishMeanings;
-
-//       translationLayout.setExampleSentenceContent(content);
+       //todo gjh 设置文字格式
+       //translationLayout.setExampleSentenceContent(content);
+   }
+   void testForSaveNote( Result result){
+       ;
+       NoteData noteData = new NoteData("这是摘抄的笔记","这是个人的想法");
+       List<Result> results = new ArrayList<>();
+       results.add(result);
+       noteData.setResults(results);
+       notePresenter.SetNote(noteData);
    }
     void imageRecognize(){
         Bitmap bitmap =  floatingPPTLayoutWeakReference.get().getScreenShot();
@@ -710,6 +719,8 @@ public class PLVLCLiveMediaController extends FrameLayout implements IPLVLCLiveM
                                 }
                                 Log.i(TAG, "recognize result:"+res);
                                 Result result = Translate.translate(getContext(),words,"en","zh");
+                                //测试保存的存储层
+                                testForSaveNote(result);
                                 setTranslateResult(result);
 
                                 //String word = jsonObject.getJSONObject()
@@ -1204,4 +1215,5 @@ public class PLVLCLiveMediaController extends FrameLayout implements IPLVLCLiveM
     }
 
     // </editor-fold>
+
 }

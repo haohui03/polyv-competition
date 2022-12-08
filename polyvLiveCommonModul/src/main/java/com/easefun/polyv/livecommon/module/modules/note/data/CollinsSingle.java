@@ -1,6 +1,8 @@
 package com.easefun.polyv.livecommon.module.modules.note.data;
 
-public class CollinsSingle {
+import java.io.Serializable;
+
+public class CollinsSingle implements Serializable {
     private String tran;
     private String ex;
 

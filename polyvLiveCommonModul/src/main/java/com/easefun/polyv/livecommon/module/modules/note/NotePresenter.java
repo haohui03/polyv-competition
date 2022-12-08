@@ -1,5 +1,6 @@
 package com.easefun.polyv.livecommon.module.modules.note;
 
+import android.content.Context;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -25,6 +26,7 @@ import java.util.List;
 public class NotePresenter implements INoteContact.INotePresenter {
     static final String TAG = "lee";
     INoteDataSource noteDataSource;
+    Context context;
     IPLVLiveRoomDataManager liveRoomDataManager;
     IPLVChatroomContract.IChatroomPresenter chatroomPresenter;
     String userId;
@@ -36,29 +38,16 @@ public class NotePresenter implements INoteContact.INotePresenter {
     //view弱引用列表
     List<WeakReference<INoteContact.INoteView>> iNoteViews = new ArrayList<>();
 
+    public NotePresenter(Context context) {
+        this.context = context;
+    }
+
     @Override
     public void initLiveRoom(IPLVLiveRoomDataManager liveRoomDataManager) {
         chatroomPresenter = new PLVChatroomPresenter(liveRoomDataManager);
         chatroomPresenter.init();
 
         chatroomPresenter.registerView(new PLVAbsChatroomView() {
-            @Override
-            public void onHistoryDataList(List<PLVBaseViewData<PLVBaseEvent>> chatMessageDataList, int requestSuccessTime, boolean isNoMoreHistory, int viewIndex) {
-
-                for (PLVBaseViewData<PLVBaseEvent> BaseData :
-                chatMessageDataList) {
-                    PLVBaseEvent baseEvent = BaseData.getData();
-                    if(baseEvent.getEVENT()==customData.EVENT){
-                        Object o1 =  baseEvent.getObj1();
-                    }
-                }
-            }
-
-            @Override
-            public void onCustomGiftEvent(@NonNull PolyvCustomEvent.UserBean userBean, @NonNull PLVCustomGiftBean customGiftBean) {
-
-            }
-
             @Override
             public void onCustomEvent(@NonNull PolyvCustomEvent.UserBean userBean, @NonNull customData customBean) {
                 String data = customBean.getDataname();
@@ -67,14 +56,15 @@ public class NotePresenter implements INoteContact.INotePresenter {
                 if(cacheNoteKey.add(key)){
                     if(customBean.getType().equals(customData.TYPE_NOTE)){
                         NoteData noteData = (NoteData)(customBean.getCustomObj());
-                        List<NoteData> noteDatas = new ArrayList<>();
+                        if(userId.equals(noteData.getUserId())){
+                            currentUserNote.add(noteData);
+                        }
 
-                        noteDatas.add(noteData);
                         for (WeakReference<INoteContact.INoteView> view :
                                 iNoteViews) {
                             INoteContact.INoteView  view1=  view.get();
                             if(view1!=null){
-                                view1.onRequestNoteComplete(noteDatas);
+                                view1.onNewNoteAccept(noteData);
                             }
                         }
                     }
@@ -94,6 +84,7 @@ public class NotePresenter implements INoteContact.INotePresenter {
         this.userId = userId;
         noteDataSource = LocalNoteDataBaseSingleton.getInstance();
         noteDataSource.SetPresenter(this);
+        noteDataSource.initContext(context);
     }
 
     @Override
@@ -111,12 +102,17 @@ public class NotePresenter implements INoteContact.INotePresenter {
 
     @Override
     public void requestNoteInChannel() {
-
+        noteDataSource.requestNoteList(userId);
     }
 
     @Override
     public void removeNote(String classId, String userId) {
+        noteDataSource.deleteNote(classId,userId);
+    }
 
+    @Override
+    public void removeClassNote() {
+        removeNote(classID=liveRoomDataManager.getConfig().getChannelId(),liveRoomDataManager.getConfig().getUser().getViewerId());
     }
 
     @Override
@@ -144,6 +140,11 @@ public class NotePresenter implements INoteContact.INotePresenter {
         chatroomPresenter.sendCustomMessage(new customData(newNote,customData.TYPE_NOTE),"");
     }
 
+    @Override
+    public void destroy() {
+        noteDataSource.SaveData();
+    }
+
     //请求获取笔记列表返回
     public void requestNoteListComplete(List<NoteData> noteData){
         for (WeakReference<INoteContact.INoteView>  view:
@@ -156,9 +157,19 @@ public class NotePresenter implements INoteContact.INotePresenter {
         String setNote(NoteData noteData);
         boolean requestNoteList(String userId);
         boolean deleteNote(long noteId);
+        boolean deleteNote(String classId, String userId);
+        boolean initContext(Context context);
+        boolean SaveData();
     }
 
 
+    //危险方法
+    @Override
+    protected void finalize() throws Throwable {
+        if(noteDataSource!=null){
+            noteDataSource.SaveData();
+        }
+        super.finalize();
 
-    //展示用的本地数据库
+    }
 }

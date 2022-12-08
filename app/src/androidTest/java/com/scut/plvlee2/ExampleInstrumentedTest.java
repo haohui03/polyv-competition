@@ -14,12 +14,15 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static org.junit.Assert.*;
-
-import com.scut.plvlee2.Bean.Result;
-import com.scut.plvlee2.util.translation.Translate;
+import com.easefun.polyv.livecommon.module.modules.note.data.Result;
+import com.easefun.polyv.livecommon.module.modules.note.LocalNoteDataBaseSingleton;
+import com.easefun.polyv.livecommon.module.modules.note.data.NoteData;
+import com.easefun.polyv.livecommon.module.modules.note.translation.Translate;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -59,6 +62,20 @@ public class ExampleInstrumentedTest {
     public void TimeTest(){
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
+        Log.e("lgt", Date.from(Instant.now()).toString());
+    }
+    @Test
+    public void DataBaseTest(){
+        Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
+        LocalNoteDataBaseSingleton.LocalNoteDataBase dataBase =  LocalNoteDataBaseSingleton.getInstance();
+        Result result = Translate.translate(appContext, "help", "en", "zh");
+        dataBase.initContext(appContext);
+        NoteData noteData = new NoteData("tip","hello");
+        List<Result> results= new ArrayList<>();
+        results.add(result);
+        noteData.setTranslateResults(results);
+        dataBase.setNote(noteData);
+        dataBase.SaveData();
         Log.e("lgt", Date.from(Instant.now()).toString());
     }
 }

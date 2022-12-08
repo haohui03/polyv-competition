@@ -1,9 +1,10 @@
 package com.easefun.polyv.livecommon.module.modules.note.data;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class Result {
+public class Result implements Serializable {
     private String src;
     private String dst;
 

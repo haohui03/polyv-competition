@@ -1,8 +1,9 @@
 package com.easefun.polyv.livecommon.module.modules.note.data;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Edict {
+public class Edict implements Serializable {
     private String pos;
     private ArrayList<Single> groups =new ArrayList<>();
 
