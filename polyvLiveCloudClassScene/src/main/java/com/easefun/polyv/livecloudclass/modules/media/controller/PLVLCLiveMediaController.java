@@ -35,11 +35,10 @@ import com.easefun.polyv.livecloudclass.modules.chatroom.widget.PLVLCLikeIconVie
 import com.easefun.polyv.livecloudclass.modules.media.widget.PLVLCLiveMoreLayout;
 import com.easefun.polyv.livecloudclass.modules.media.widget.PLVLCPPTTurnPageLayout;
 import com.easefun.polyv.livecloudclass.modules.note.MyView;
+import com.easefun.polyv.livecloudclass.modules.note.NoteLayout;
 import com.easefun.polyv.livecloudclass.modules.ppt.IPLVLCFloatingPPTLayout;
-import com.easefun.polyv.livecloudclass.modules.ppt.PLVLCFloatingPPTLayout;
 import com.easefun.polyv.livecloudclass.modules.translation.TranslationLayout;
 import com.easefun.polyv.livecommon.module.data.IPLVLiveRoomDataManager;
-import com.easefun.polyv.livecommon.module.data.PLVLiveRoomDataManager;
 import com.easefun.polyv.livecommon.module.modules.commodity.viewmodel.PLVCommodityViewModel;
 import com.easefun.polyv.livecommon.module.modules.commodity.viewmodel.vo.PLVCommodityUiState;
 import com.easefun.polyv.livecommon.module.modules.note.INoteContact;
@@ -140,14 +139,20 @@ public class PLVLCLiveMediaController extends FrameLayout implements IPLVLCLiveM
     private ImageView moreLandIv;
 
 
-    //笔记按钮
-    private ImageView noteLandIv;
+
     //翻译按钮
     private TextView translationLandTv;
     //翻译界面
     private TranslationLayout translationLayout;
     //翻译界面容器
     private FrameLayout translationContainer;
+
+    //笔记按钮
+    private ImageView noteLandIv;
+    //笔记界面容器
+    private FrameLayout noteContainer;
+    //笔记界面
+    private NoteLayout noteLayout;
 
     private MyView myView;//绘画选择区域
 
@@ -432,7 +437,7 @@ public class PLVLCLiveMediaController extends FrameLayout implements IPLVLCLiveM
 
         // 翻译界面
         translationLayout = new TranslationLayout(getContext());
-        translationContainer = landscapeController.getTranslationConatiner();
+        translationContainer = landscapeController.getTranslationContainer();
         ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         translationContainer.addView(translationLayout, layoutParams);
         if(translationLayout != null) {
@@ -452,9 +457,34 @@ public class PLVLCLiveMediaController extends FrameLayout implements IPLVLCLiveM
                 imageRecognize();
             }
         });
-        //笔记
+        // 笔记界面
+        noteLayout = new NoteLayout(getContext());
+        noteContainer = landscapeController.getNoteContainer();
+        noteContainer.addView(noteLayout, layoutParams);
+        if(noteLayout != null) {
+            noteLayout.setVisibility(View.INVISIBLE);
+        }
+        else {
+            Toast.makeText(getContext(), "没有找到笔记界面", Toast.LENGTH_SHORT).show();
+        }
+        //笔记按钮
         noteLandIv = landscapeController.getNoteView();
-        noteLandIv.setOnClickListener(this);
+        noteLandIv.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(noteLayout != null) {
+                    if(noteLayout.getVisibility() == View.VISIBLE) {
+                        noteLayout.setVisibility(View.INVISIBLE);
+                    }
+                    else {
+                        noteLayout.setVisibility(View.VISIBLE);
+                    }
+                }
+                else {
+                    Toast.makeText(getContext(), "没有找到笔记界面", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
         //翻译按钮
         translationLandTv = landscapeController.getTranslationView();
         translationLandTv.setOnClickListener(new OnClickListener() {

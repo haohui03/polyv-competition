@@ -429,12 +429,12 @@ public class PLVLCCloudClassActivity extends PLVBaseActivity {
             linkMicLayout.init(liveRoomDataManager, linkMicControlBar);
             linkMicLayout.hideAll();
 
-            noteLayout = findViewById(R.id.note_lys);
-            noteLayout.init(liveRoomDataManager);
+//            noteLayout = findViewById(R.id.note_lys);
+//            noteLayout.init(liveRoomDataManager);
 
             PLVLCFloatingPPTLayout plvlcFloatingPPTLayout = (PLVLCFloatingPPTLayout) floatingPPTLayout;
             PLVLCLiveMediaLayout liveMediaLayout = (PLVLCLiveMediaLayout) mediaLayout;
-            noteLayout.SetLiveMediaLayoutRef(new WeakReference<>(plvlcFloatingPPTLayout));
+//            noteLayout.SetLiveMediaLayoutRef(new WeakReference<>(plvlcFloatingPPTLayout));
         } else {
             // 播放器布局
             videoLyViewStub.setLayoutResource(R.layout.plvlc_playback_media_layout_view_stub);

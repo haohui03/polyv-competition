@@ -40,6 +40,7 @@ public class liveFragment extends Fragment {
         Button startLive = (Button) view.findViewById(R.id.startLive);
         Button TestLive = (Button) view.findViewById(R.id.TestLive);
         Button watchLive = (Button) view.findViewById(R.id.watchLive);
+        Button myNote = (Button) view.findViewById(R.id.myNoteBtn);
         watchLive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,6 +57,12 @@ public class liveFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(view.getContext(), mLoginActivity.class));
+            }
+        });
+        myNote.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(view.getContext(), NoteActivity.class));
             }
         });
         return view;

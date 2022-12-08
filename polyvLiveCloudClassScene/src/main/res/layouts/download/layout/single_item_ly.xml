@@ -28,12 +28,11 @@
             android:text="asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf"
 />
 
-        <ImageButton
-            android:id="@+id/add_single_item"
+        <Button
+            android:id="@+id/add_remove_btn"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:background="#00000000"
-            android:src="@drawable/small_add"
+            android:background="@drawable/small_add"
             android:scaleType="fitCenter"
             android:layout_gravity="bottom"/>
 

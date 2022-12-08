@@ -7,12 +7,5 @@
     android:id="@+id/word_layout">
 
 
-<!--    <com.example.plv.OverviewOfWordLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"/>-->
-
-<!--    <com.example.plv.PartOfWordLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"/>-->
 
 </LinearLayout>

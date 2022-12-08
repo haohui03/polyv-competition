@@ -12,7 +12,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import com.easefun.polyv.livecloudclass.R;
 
 
-public class WordLayout extends ConstraintLayout {
+public class WordLayout extends LinearLayout {
 
     private LinearLayout word_layout;
 
@@ -32,9 +32,10 @@ public class WordLayout extends ConstraintLayout {
     private void initView() {
         LayoutInflater.from(getContext()).inflate(R.layout.word_ly, this);
         word_layout = findViewById(R.id.word_layout);
+        setViewByResult();
     }
 
-    // 根据翻译结果设置显示的内容,差写参数
+    // todo 根据翻译结果设置显示的内容,差写参数
     public void setViewByResult() {
         OverviewOfWordLayout overviewOfWordLayout = new OverviewOfWordLayout(getContext());
         overviewOfWordLayout.setOverview("help", "发音", "n.帮助");

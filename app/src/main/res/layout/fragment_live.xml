@@ -4,7 +4,7 @@
     android:layout_height="match_parent">
     <Button
         android:id="@+id/startLive"
-        android:layout_width="200dp"
+        android:layout_width="250dp"
         android:layout_height="100dp"
         android:layout_above="@+id/watchLive"
         android:layout_centerHorizontal="true"
@@ -14,7 +14,7 @@
 
     <Button
         android:id="@+id/watchLive"
-        android:layout_width="200dp"
+        android:layout_width="250dp"
         android:layout_height="100dp"
         android:layout_centerInParent="true"
         android:layout_marginTop="30dp"
@@ -23,11 +23,22 @@
         android:textSize="30dp" />
 
     <Button
+        android:layout_below="@id/watchLive"
+        android:id="@+id/myNoteBtn"
+        android:layout_width="250dp"
+        android:layout_height="100dp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="30dp"
+        android:background="#66531277"
+        android:text="我的笔记"
+        android:textSize="30dp" />
+
+    <Button
         android:id="@+id/TestLive"
         android:layout_width="200dp"
         android:layout_height="100dp"
-        android:layout_marginTop="60dp"
-        android:layout_below="@+id/watchLive"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/myNote"
         android:layout_centerHorizontal="true"
         android:background="#6600ff77"
         android:text="开发测试,谨慎点击"

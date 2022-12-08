@@ -218,10 +218,13 @@ public class PLVLCLiveLandscapeChannelController extends FrameLayout implements 
     }
 
     @Override
-    public FrameLayout getTranslationConatiner() {
+    public FrameLayout getTranslationContainer() {
         return findViewById(R.id.translation_container);
     }
 
+    public FrameLayout getNoteContainer() {
+        return findViewById(R.id.note_container);
+    }
 /*    @Override
     public TranslationLayout getTranslationLayout () {
         return findViewById(R.id.transition_ly);

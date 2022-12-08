@@ -37,10 +37,7 @@ public class NoteLayout extends FrameLayout implements INoteContact.INoteView {
     private INoteContact.INotePresenter notePresenter;
     private Context context;
 
-    private MyView myView;//绘画选择区域
 
-    //控件
-    Button testButton;
     private String TAG = "lgt";
     //图片转文字的识别器
 
@@ -58,96 +55,71 @@ public class NoteLayout extends FrameLayout implements INoteContact.INoteView {
     }
 
     private void initView() {
-        this.context = context;
-        myView = new MyView(getContext());
-        myView.setSign(true);
-        LayoutInflater.from(getContext()).inflate(R.layout.note_layout, this);
-        testButton = findViewById(R.id.recognize);
-        testButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                myView.setSeat(0, 0, 0, 0);
-                myView.setSign(false);
-                myView.postInvalidate();
-
-//                NoteData noteData = new NoteData("xx",new Date(System.currentTimeMillis()),"笔记","zhe shi wo ");
-//                notePresenter.SetNote("","",noteData);
-                    recongnizetest();
-                //recongnizetest();
-            }
-        });
-        // todo 添加后会影响父容器的位置
-        // 绘图提示区域
-        final LayoutParams params = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-        myView.setLayoutParams(params);
-        addView(myView);
-    }
-
-
-    public void init(IPLVLiveRoomDataManager liveRoomDataManager){
-        this.liveRoomDataManager = liveRoomDataManager;
-        notePresenter = new NotePresenter(getContext());
-        notePresenter.initLiveRoom(liveRoomDataManager);
+        View _view = LayoutInflater.from(getContext()).inflate(R.layout.note_layout, null);
+        this.addView(_view);
 
     }
+
+
+
     // todo 关闭悬浮窗识别会闪退
     //todo 只有全屏模式才能翻译，而且是在开播状态，应该新增判断逻辑
     //识别test   从documentLayout 中获取一个图片
-    void recongnizetest(){
-        Bitmap bitmap =  floatingPPTLayoutWeakReference.get().getScreenShot();
-        this.floatingPPTLayoutWeakReference.get().setOnTouchToTranslateListener(new OnTouchListener() {
-            float startX ;
-            float startY;
-            float endX;
-            float endY;
-            int m = 0, n = 0; // 移动过程的中间坐标
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                if(motionEvent.getAction()==MotionEvent.ACTION_DOWN){
-                    startX = motionEvent.getX();
-                    startY = motionEvent.getY();
-                }
-                // 移动的时候进行绘制框
-                if(motionEvent.getAction() == MotionEvent.ACTION_MOVE){
-                    m = (int) motionEvent.getX();
-                    n = (int) motionEvent.getY();
-                    myView.setSeat((int)startX, (int)startY, m, n);
-                    myView.postInvalidate();
-                }
-                // 抬起，
-                // todo end-start为负数会闪退！！
-                if(motionEvent.getAction()==MotionEvent.ACTION_UP) {
-                    // 隐藏截图提示框
-                    myView.setSign(true);
-                    myView.postInvalidate();
-
-                    endX = motionEvent.getX();
-                    endY = motionEvent.getY();
-                    Bitmap mCropBitmap = Bitmap.createBitmap(bitmap,
-                            (int)startX ,(int) startY, (int)endX- (int)startX, (int)endY-(int) startY);
-
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            String res  = accurateBasic(mCropBitmap);
-                            Log.i(TAG, "recognize result:"+res);
-                        }
-                    }).start();
-                    floatingPPTLayoutWeakReference.get().setOnTouchToTranslateListener(new OnTouchListener() {
-                        @Override
-                        public boolean onTouch(View view, MotionEvent motionEvent) {
-                            return false;
-                        }
-                    });
-                }
-                //为true时会阻隔点击事件的传递
-                return true;
-            }
-        });
-
-
-
-    }
+//    void recongnizetest(){
+//        Bitmap bitmap =  floatingPPTLayoutWeakReference.get().getScreenShot();
+//        this.floatingPPTLayoutWeakReference.get().setOnTouchToTranslateListener(new OnTouchListener() {
+//            float startX ;
+//            float startY;
+//            float endX;
+//            float endY;
+//            int m = 0, n = 0; // 移动过程的中间坐标
+//            @Override
+//            public boolean onTouch(View view, MotionEvent motionEvent) {
+//                if(motionEvent.getAction()==MotionEvent.ACTION_DOWN){
+//                    startX = motionEvent.getX();
+//                    startY = motionEvent.getY();
+//                }
+//                // 移动的时候进行绘制框
+//                if(motionEvent.getAction() == MotionEvent.ACTION_MOVE){
+//                    m = (int) motionEvent.getX();
+//                    n = (int) motionEvent.getY();
+//                    myView.setSeat((int)startX, (int)startY, m, n);
+//                    myView.postInvalidate();
+//                }
+//                // 抬起，
+//                // todo end-start为负数会闪退！！
+//                if(motionEvent.getAction()==MotionEvent.ACTION_UP) {
+//                    // 隐藏截图提示框
+//                    myView.setSign(true);
+//                    myView.postInvalidate();
+//
+//                    endX = motionEvent.getX();
+//                    endY = motionEvent.getY();
+//                    Bitmap mCropBitmap = Bitmap.createBitmap(bitmap,
+//                            (int)startX ,(int) startY, (int)endX- (int)startX, (int)endY-(int) startY);
+//
+//                    new Thread(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            String res  = accurateBasic(mCropBitmap);
+//                            Log.i(TAG, "recognize result:"+res);
+//                        }
+//                    }).start();
+//                    floatingPPTLayoutWeakReference.get().setOnTouchToTranslateListener(new OnTouchListener() {
+//                        @Override
+//                        public boolean onTouch(View view, MotionEvent motionEvent) {
+//                            return false;
+//                        }
+//                    });
+//                }
+//                //为true时会阻隔点击事件的传递
+//                return true;
+//            }
+//        });
+//
+//
+//
+//    }
     //document View 的触摸事件  可以获取任意卫视
     public void SetLiveMediaLayoutRef(WeakReference<PLVLCFloatingPPTLayout> liveMediaLayoutRef){
         this.floatingPPTLayoutWeakReference = liveMediaLayoutRef ;

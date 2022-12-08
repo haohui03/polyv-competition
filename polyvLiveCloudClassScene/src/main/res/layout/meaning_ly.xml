@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp">
+    <TextView
+        android:id="@+id/meaning"
+        style="@style/translation_normal"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="adj.
+基本的，基础的，根本的;最简单的，初级的;必需的，基本需要的;（化）碱的，碱性的\nn.
+基本原理，基本原则（常作basics）;（BASIC或Basic）(计)初学者通用符号指令码"/>
+</LinearLayout>
