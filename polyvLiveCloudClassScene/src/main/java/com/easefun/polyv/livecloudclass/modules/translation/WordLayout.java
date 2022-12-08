@@ -11,6 +11,8 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.easefun.polyv.livecloudclass.R;
 
+import java.util.List;
+
 
 public class WordLayout extends LinearLayout {
 
@@ -32,19 +34,21 @@ public class WordLayout extends LinearLayout {
     private void initView() {
         LayoutInflater.from(getContext()).inflate(R.layout.word_ly, this);
         word_layout = findViewById(R.id.word_layout);
-        setViewByResult();
     }
 
     // todo 根据翻译结果设置显示的内容,差写参数
-    public void setViewByResult() {
+    public void setViewByResult(String EnglishMeaning,String YingBiao, String Chinese,String MoreMeaning,List<String > Sample) {
         OverviewOfWordLayout overviewOfWordLayout = new OverviewOfWordLayout(getContext());
-        overviewOfWordLayout.setOverview("help", "发音", "n.帮助");
+        overviewOfWordLayout.setOverview(EnglishMeaning, YingBiao, Chinese);
         word_layout.addView(overviewOfWordLayout);
         PartOfWordLayout partOfWordLayout = new PartOfWordLayout(getContext());
         partOfWordLayout.setTitle("双语例句");
-        partOfWordLayout.addSingleItem("Please help me");
-        partOfWordLayout.addSingleItem("项目2");
-        partOfWordLayout.addSingleItem("项目3");
+        partOfWordLayout.addSingleItem(MoreMeaning);
+        for (String s:
+             Sample) {
+            partOfWordLayout.addSingleItem(s);
+        }
+
         word_layout.addView(partOfWordLayout);
     }
 

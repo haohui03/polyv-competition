@@ -12,6 +12,9 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import android.os.Handler;
+import android.os.Looper;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.Pair;
@@ -737,6 +740,9 @@ public class PLVLCLiveMediaController extends FrameLayout implements IPLVLCLiveM
                         public void run() {
                             String res  = accurateBasic(mCropBitmap);
 
+                            if(res==null){
+                                return;
+                            }
                             try {
                                 String words = "";
                                 JSONObject jsonObject = new JSONObject(res);
@@ -751,9 +757,16 @@ public class PLVLCLiveMediaController extends FrameLayout implements IPLVLCLiveM
                                 Result result = Translate.translate(getContext(),words,"en","zh");
                                 //测试保存的存储层
                                 testForSaveNote(result);
-                                setTranslateResult(result);
+                                Handler handler = new Handler(Looper.getMainLooper());
+                                handler.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        translationLayout.addWordView(result);
+                                    }
+                                });
 
-                                //String word = jsonObject.getJSONObject()
+                                //setTranslateResult(result);
+
 
 
                             } catch (JSONException e) {
