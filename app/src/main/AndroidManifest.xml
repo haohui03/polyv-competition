@@ -24,9 +24,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
-            android:theme="@style/NoteActivityTheme"
+            android:name=".NoteTestActivity"
+            android:exported="false"
+            android:theme="@style/NoteActivityTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".NoteActivity" />
+        </activity>
+        <activity
             android:name=".NoteActivity"
-            android:exported="false">
+            android:exported="false"
+            android:theme="@style/NoteActivityTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
@@ -59,7 +67,6 @@
                 <category android:name="android.intent.category.BROWSABLE" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

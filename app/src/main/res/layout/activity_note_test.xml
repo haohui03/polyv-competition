@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NoteTestActivity"
+    android:background="@color/noteActivityBg">
+
+    <ScrollView
+        android:padding="40dp"
+        android:id="@+id/scrollContainer"
+        android:layout_width="match_parent"
+        android:layout_height="250dp">
+        <TextView
+            android:id="@+id/meaningTv"
+            style="@style/translation_title2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </ScrollView>
+
+    <EditText
+        android:textAlignment="center"
+        style="@style/translation_title2"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/inputEt"
+        android:layout_below="@id/scrollContainer"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"/>
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_margin="10dp"
+        android:layout_alignBottom="@id/inputEt"
+        android:layout_toRightOf="@id/inputEt"
+        android:layout_width="30dp"
+        android:layout_height="30dp" />
+
+    <LinearLayout
+        android:layout_marginTop="40dp"
+        android:layout_below="@id/inputEt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:textSize="16dp"
+            android:id="@+id/seeAns"
+            android:text="看答案"
+            android:background="@drawable/plv_shape_point_reward_point_to_send_btn_orange"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginRight="10dp"/>
+        <Button
+            android:id="@+id/submitAns"
+            android:textSize="16dp"
+            android:text="提交"
+            android:background="@drawable/plv_shape_point_reward_point_to_send_btn_orange"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_marginRight="10dp"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/nextTest"
+            android:textSize="16dp"
+            android:text="下一题"
+            android:background="@drawable/plv_shape_point_reward_point_to_send_btn_orange"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_marginRight="10dp"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+
+</RelativeLayout>

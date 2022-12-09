@@ -1,9 +1,12 @@
 package com.scut.plvlee2;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NavUtils;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
@@ -71,7 +74,6 @@ public class NoteActivity extends AppCompatActivity implements INoteContact.INot
             public void run() {
                 for (NoteData note:
                         noteDataList) {
-
                     if(note.getTranslateResults().isEmpty()){
                         continue;
                     }
@@ -82,8 +84,6 @@ public class NoteActivity extends AppCompatActivity implements INoteContact.INot
                 }
             }
         });
-
-
 
     }
     @Override
@@ -100,10 +100,33 @@ public class NoteActivity extends AppCompatActivity implements INoteContact.INot
                 Toast.makeText(this, "点击了搜索", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.sortBtn:
-                Toast.makeText(this, "点击了排序", Toast.LENGTH_SHORT).show();
+                String[] items = new String[]{
+                        "按添加日期升序",
+                        "按添加日期降序",
+                        "按字典序升序",
+                        "按字典序降序",
+                };
+                int default_selected = 0;
+                final String[] selected = {items[default_selected]};
+                AlertDialog.Builder builder = new AlertDialog.Builder(NoteActivity.this);
+                builder.setTitle("选择排序方式");
+                builder.setSingleChoiceItems(items,default_selected, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        selected[0] = items[i];
+                    }
+                });
+                builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(NoteActivity.this, "选择了"+ selected[0], Toast.LENGTH_SHORT).show();
+                    }
+                });
+                builder.create().show();
                 break;
             case R.id.testBtn:
-                Toast.makeText(this, "点击了自我测试", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(NoteActivity.this, NoteTestActivity.class));
+                break;
             default:break;
         }
         return super.onOptionsItemSelected(item);
