@@ -40,12 +40,16 @@ public class Translate implements Runnable {
         JSONObject jsonObject = null;
         try {
             jsonObject = new JSONObject(content);
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
         Result result = new Result();
         JSONObject trans_result = null;
+        if(jsonObject ==null){
+            return null;
+        }
         try {
             trans_result = jsonObject.getJSONObject("trans_result");
             JSONObject data = trans_result.getJSONArray("data").getJSONObject(0);

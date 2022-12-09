@@ -440,6 +440,7 @@ public class PLVLCLiveMediaController extends FrameLayout implements IPLVLCLiveM
 
         // 翻译界面
         translationLayout = new TranslationLayout(getContext());
+        translationLayout.init(notePresenter);
         translationContainer = landscapeController.getTranslationContainer();
         ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         translationContainer.addView(translationLayout, layoutParams);
@@ -458,6 +459,30 @@ public class PLVLCLiveMediaController extends FrameLayout implements IPLVLCLiveM
                 myView.setSign(false);
                 myView.postInvalidate();
                 imageRecognize();
+            }
+        });
+        translationLayout.setSearchOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String searchContent =  translationLayout.getSearchInputContent();
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Result searchResult = Translate.translate(getContext(),searchContent,"en","zh");
+
+                        Handler handler = new Handler(Looper.getMainLooper());
+                        handler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                translationLayout.removeViewInLinerLayout();
+                                translationLayout.addWordView(searchResult);
+                            }
+                        });
+                    }
+                }).start();
+
+
+
             }
         });
         // 笔记界面
@@ -698,6 +723,8 @@ public class PLVLCLiveMediaController extends FrameLayout implements IPLVLCLiveM
        noteData.setResults(results);
        notePresenter.SetNote(noteData);
    }
+
+   //
     void imageRecognize(){
         Bitmap bitmap =  floatingPPTLayoutWeakReference.get().getScreenShot();
         this.floatingPPTLayoutWeakReference.get().setOnTouchToTranslateListener(new OnTouchListener() {
@@ -754,16 +781,8 @@ public class PLVLCLiveMediaController extends FrameLayout implements IPLVLCLiveM
 
                                 }
                                 Log.i(TAG, "recognize result:"+res);
-                                Result result = Translate.translate(getContext(),words,"en","zh");
-                                //测试保存的存储层
-                                testForSaveNote(result);
-                                Handler handler = new Handler(Looper.getMainLooper());
-                                handler.post(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        translationLayout.addWordView(result);
-                                    }
-                                });
+                                translationLayout.setSearchInputContent(words);
+
 
                                 //setTranslateResult(result);
 
@@ -868,6 +887,8 @@ public class PLVLCLiveMediaController extends FrameLayout implements IPLVLCLiveM
         if (moreLayout != null) {
             moreLayout.hide();
         }
+
+        notePresenter.destroy();
         dispose(bitPopupWindowTimer);
         dispose(reopenFloatingDelay);
     }

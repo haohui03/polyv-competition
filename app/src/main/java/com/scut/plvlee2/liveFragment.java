@@ -1,7 +1,5 @@
 package com.scut.plvlee2;
 
-import static com.easefun.polyv.livecommon.module.config.PLVLiveScene.CLOUDCLASS;
-
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,15 +17,12 @@ import com.easefun.polyv.livecommon.module.config.PLVLiveChannelConfigFiller;
 import com.easefun.polyv.livecommon.module.config.PLVLiveScene;
 import com.easefun.polyv.livecommon.module.modules.player.floating.PLVFloatingPlayerManager;
 import com.easefun.polyv.livecommon.module.utils.result.PLVLaunchResult;
-import com.plv.foundationsdk.log.PLVCommonLog;
 import com.plv.foundationsdk.utils.PLVUtils;
 import com.plv.livescenes.config.PLVLiveChannelType;
 import com.plv.livescenes.feature.login.IPLVSceneLoginManager;
 import com.plv.livescenes.feature.login.PLVLiveLoginResult;
 import com.plv.livescenes.feature.login.PLVSceneLoginManager;
 import com.plv.thirdpart.blankj.utilcode.util.ToastUtils;
-import com.scut.plvlee2.Streamlive.StreamTest;
-import com.scut.plvlee2.util.translation.Translate;
 
 public class liveFragment extends Fragment {
     @Nullable
@@ -38,19 +33,12 @@ public class liveFragment extends Fragment {
         loginManager = new PLVSceneLoginManager();
         View view = inflater.inflate(R.layout.fragment_live, container, false);
         Button startLive = (Button) view.findViewById(R.id.startLive);
-        Button TestLive = (Button) view.findViewById(R.id.TestLive);
         Button watchLive = (Button) view.findViewById(R.id.watchLive);
         Button myNote = (Button) view.findViewById(R.id.myNoteBtn);
         watchLive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 loginLive();
-            }
-        });
-        TestLive.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(view.getContext(), StreamTest.class));
             }
         });
         startLive.setOnClickListener(new View.OnClickListener() {

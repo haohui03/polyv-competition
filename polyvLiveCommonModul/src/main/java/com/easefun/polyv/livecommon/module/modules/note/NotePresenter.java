@@ -97,7 +97,13 @@ public class NotePresenter implements INoteContact.INotePresenter {
     }
     @Override
     public void requestNote(String userId, String classId) {
-        noteDataSource.requestNoteList(userId);
+        if(this.userId.equals("admin")){
+            noteDataSource.requestAll();
+        }
+        else{
+            noteDataSource.requestNoteList(userId);
+        }
+
     }
 
     @Override
@@ -134,9 +140,8 @@ public class NotePresenter implements INoteContact.INotePresenter {
 
     @Override
     public void SetNote(NoteData newNote) {
-        NoteData noteData = new NoteData(this.userId,this.classID,
-                new Date(System.currentTimeMillis()),newNote.getContent(),newNote.getNote());
-        noteDataSource.setNote(noteData);
+
+        noteDataSource.setNote(newNote);
         chatroomPresenter.sendCustomMessage(new customData(newNote,customData.TYPE_NOTE),"");
     }
 
@@ -160,16 +165,8 @@ public class NotePresenter implements INoteContact.INotePresenter {
         boolean deleteNote(String classId, String userId);
         boolean initContext(Context context);
         boolean SaveData();
+        boolean requestAll();
     }
 
 
-    //危险方法
-    @Override
-    protected void finalize() throws Throwable {
-        if(noteDataSource!=null){
-            noteDataSource.SaveData();
-        }
-        super.finalize();
-
-    }
 }

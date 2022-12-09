@@ -6,6 +6,8 @@ import androidx.core.app.NavUtils;
 
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -20,16 +22,27 @@ import android.widget.Toast;
 
 import com.easefun.polyv.livecloudclass.modules.note.NoteWord;
 import com.easefun.polyv.livecloudclass.modules.translation.WordLayout;
+import com.easefun.polyv.livecommon.module.modules.note.INoteContact;
+import com.easefun.polyv.livecommon.module.modules.note.NotePresenter;
+import com.easefun.polyv.livecommon.module.modules.note.data.NoteData;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class NoteActivity extends AppCompatActivity {
+public class NoteActivity extends AppCompatActivity implements INoteContact.INoteView {
 
+
+    INoteContact.INotePresenter notePresenter;
+    LinearLayout linearLayout;
+    List<NoteData> noteDataList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        notePresenter = new NotePresenter(getApplicationContext());
+        notePresenter.initUser("admin");
+        notePresenter.registerView(this);
+        notePresenter.requestNote("","");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_note);
         getSupportActionBar().setTitle("我的笔记");
@@ -37,20 +50,42 @@ public class NoteActivity extends AppCompatActivity {
         if (NavUtils.getParentActivityName(NoteActivity.this) != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
-        LinearLayout linearLayout = findViewById(R.id.linearLayout);
-        NoteWord noteWord1 = new NoteWord(this);
-        noteWord1.setWord("help");
-        noteWord1.setView();
-        linearLayout.addView(noteWord1);
-
-        NoteWord noteWord2 = new NoteWord(this);
-        noteWord2.setWord("help");
-        linearLayout.addView(noteWord2);
-        NoteWord noteWord3 = new NoteWord(this);
-        noteWord3.setWord("help");
-        linearLayout.addView(noteWord3);
+        linearLayout = findViewById(R.id.linearLayout);
+//        NoteWord noteWord1 = new NoteWord(this);
+//        noteWord1.setWord("help");
+//        noteWord1.setView();
+//        linearLayout.addView(noteWord1);
+//
+//        NoteWord noteWord2 = new NoteWord(this);
+//        noteWord2.setWord("help");
+//        linearLayout.addView(noteWord2);
+//        NoteWord noteWord3 = new NoteWord(this);
+//        noteWord3.setWord("help");
+//        linearLayout.addView(noteWord3);
     }
 
+    void RefreshView(){
+        Handler handler = new Handler(Looper.getMainLooper());
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                for (NoteData note:
+                        noteDataList) {
+
+                    if(note.getTranslateResults().isEmpty()){
+                        continue;
+                    }
+                    NoteWord noteWord1 = new NoteWord(getApplicationContext());
+                    noteWord1.setWord(note.getTranslateResults().get(0).getSrc());
+                    noteWord1.setView(note.getTranslateResults().get(0));
+                    linearLayout.addView(noteWord1);
+                }
+            }
+        });
+
+
+
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
@@ -72,5 +107,27 @@ public class NoteActivity extends AppCompatActivity {
             default:break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onPresenterInitComplete() {
+
+    }
+
+    @Override
+    public void onRequestNoteComplete(List<NoteData> noteData) {
+            this.noteDataList= noteData;
+            RefreshView();
+    }
+
+    @Override
+    public void onNewNoteAccept(NoteData noteData) {
+        noteDataList.add(noteData);
+        RefreshView();
+    }
+
+    @Override
+    public void onHistoryNote(List<NoteData> noteData) {
+
     }
 }

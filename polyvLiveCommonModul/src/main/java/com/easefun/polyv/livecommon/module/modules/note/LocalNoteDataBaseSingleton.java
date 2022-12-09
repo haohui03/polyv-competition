@@ -76,6 +76,13 @@ public class LocalNoteDataBaseSingleton {
          }
 
          @Override
+         public boolean requestAll() {
+            //理应是网络上的数据库，所以是异步操作，创建新的线程;
+             NotePresenter.requestNoteListComplete(noteDataList);
+             return true;
+         }
+
+         @Override
          protected void finalize() throws Throwable {
              super.finalize();
              ObjectOutputStream obos;

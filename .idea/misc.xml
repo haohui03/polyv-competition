@@ -15,9 +15,14 @@
         <entry key="..\:/github/polyv-competition/app/src/main/res/layout/streamer_layout.xml" value="0.24739583333333334" />
         <entry key="..\:/github/polyv-competition/app/src/main/res/layout/streamer_layout_test.xml" value="0.33" />
         <entry key="..\:/github/polyv-competition/polyvLiveCloudClassScene/src/main/res/layout/plvlc_cloudclass_activity.xml" value="0.16757246376811594" />
+        <entry key="..\:/github/polyv-competition/polyvLiveCloudClassScene/src/main/res/layouts/download/layout/overview_of_word_ly.xml" value="0.1" />
+        <entry key="..\:/github/polyv-competition/polyvLiveCloudClassScene/src/main/res/layouts/download/layout/translation_ly.xml" value="0.1" />
+        <entry key="..\:/github/polyv-competition/polyvLiveCloudClassScene/src/main/res/layouts/download/layout/word_ly.xml" value="0.1" />
         <entry key="..\:/github/polyv-competition/polyvLiveCloudClassScene/src/main/res/layouts/player/layout/plvlc_live_player_layout.xml" value="0.1" />
         <entry key="..\:/github/polyv-competition/polyvLiveCloudClassScene/src/main/res/layouts/player/layout/plvlc_playback_player_layout.xml" value="0.1" />
         <entry key="..\:/github/polyv-competition/polyvLiveCloudClassScene/src/main/res/layouts/ppt/layout/note_layout.xml" value="0.10191725529767912" />
+        <entry key="..\:/github/polyv-competition/polyvLiveCloudClassScene/src/main/res/layouts/ppt/layout/overview_of_word_ly.xml" value="0.23177083333333334" />
+        <entry key="..\:/github/polyv-competition/polyvLiveCloudClassScene/src/main/res/layouts/ppt/layout/part_of_word_ly.xml" value="0.12552083333333333" />
         <entry key="..\:/github/polyv-competition/polyvLiveCloudClassScene/src/main/res/layouts/ppt/layout/plvlc_ppt_floating_layout.xml" value="0.1" />
         <entry key="..\:/github/polyv-competition/polyvLiveCloudClassScene/src/main/res/layouts/ppt/layout/plvlc_ppt_view_layout.xml" value="0.1" />
         <entry key="..\:/github/polyv-competition/polyvLiveCloudClassScene/src/main/res/layouts/ppt/layout/translation_ly.xml" value="0.25" />
