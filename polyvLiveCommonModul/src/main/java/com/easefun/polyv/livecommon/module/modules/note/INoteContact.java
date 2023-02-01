@@ -12,8 +12,19 @@ public interface INoteContact {
 
 
     interface INoteView{
+        //初始化完毕
         void onPresenterInitComplete();
+
+        /**
+         * 请求笔记列表
+         * @param noteData
+         */
         void onRequestNoteComplete(List<NoteData>noteData);
+
+        /**
+         * 收到教师笔记
+         * @param noteData
+         */
         void onNewNoteAccept(NoteData noteData);
         void onHistoryNote(List<NoteData>noteData);
 
@@ -25,7 +36,12 @@ public interface INoteContact {
         //直播间场景时的note
         void initLiveRoom(IPLVLiveRoomDataManager liveRoomDataManager);
         //个人界面（未登录直播时）的note
-        void initUser(String userId);
+        void initViewLocalUser(String userId);
+
+        /**
+         * 注册view
+         * @param iNoteView
+         */
         void registerView(INoteView iNoteView);
         void requestNote(String userId,String classId);
         void requestNoteInChannel();

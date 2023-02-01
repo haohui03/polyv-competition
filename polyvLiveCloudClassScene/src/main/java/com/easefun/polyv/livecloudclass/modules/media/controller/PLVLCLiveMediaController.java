@@ -454,7 +454,8 @@ public class PLVLCLiveMediaController extends FrameLayout implements IPLVLCLiveM
             @Override
             public void onClick(View view) {
                 //todo hide 会隐藏控制器布局
-                hide();
+                //hide();
+                setVisibilityLiveMediaOnly(View.GONE);
                 myView.setSeat(0, 0, 0, 0);
                 myView.setSign(false);
                 myView.postInvalidate();
@@ -800,6 +801,7 @@ public class PLVLCLiveMediaController extends FrameLayout implements IPLVLCLiveM
                             return false;
                         }
                     });
+                    setVisibilityLiveMediaOnly(View.VISIBLE);
                 }
                 //为true时会阻隔点击事件的传递
                 return true;
@@ -906,6 +908,14 @@ public class PLVLCLiveMediaController extends FrameLayout implements IPLVLCLiveM
     @Override
     public void setVisibility(int visibility) {
         super.setVisibility(visibility);
+        if (visibility == VISIBLE) {
+            landscapeController.show();
+        } else {
+            landscapeController.hide();
+        }
+    }
+    public void setVisibilityLiveMediaOnly(int visibility) {
+        //super.setVisibility(visibility);
         if (visibility == VISIBLE) {
             landscapeController.show();
         } else {

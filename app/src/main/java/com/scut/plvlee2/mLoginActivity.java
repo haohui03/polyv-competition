@@ -195,6 +195,7 @@ public class mLoginActivity extends PLVBaseActivity  implements View.OnClickList
     // </editor-fold>
     //点击一个view 如果和上一个不同，则把上一个的图片高光影藏
     private void updateDeleteView(View lastTouchInputView) {
+
         this.lastTouchInputView = lastTouchInputView;
         if (lastShowInputDeleteView != null) {
             lastShowInputDeleteView.setVisibility(View.GONE);
@@ -577,7 +578,6 @@ public class mLoginActivity extends PLVBaseActivity  implements View.OnClickList
                                 }
                             }
                     );
-                    //todo 更改判斷逻辑
 //                } else if (PLVLiveChannelType.ALONE.equals(liveChannelType)) {
 //                    //进入手机开播纯视频场景
 //                    requireStreamerPermissionThenRun(

@@ -1,8 +1,10 @@
 package com.scut.plvlee2;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -79,31 +81,29 @@ public class liveFragment extends Fragment {
         PLVFloatingPlayerManager.getInstance().clear();
 
         //todo 更改获取秘钥的方法，动态设置channelId
-        final String appId = "gesrlyj3fo";
-        final String appSecret ="9a8b89be009f49fa836e36cb081a464a";
-        final String userId = "ef727d9c48";
-        final String channelId = "3513971";
-        loginManager.loginLiveNew(appId, appSecret, userId, channelId, new IPLVSceneLoginManager.OnLoginListener<PLVLiveLoginResult>() {
-            @Override
-            public void onLoginSuccess(PLVLiveLoginResult plvLiveLoginResult) {
-                PLVLiveChannelConfigFiller.setupAccount(userId, appId, appSecret);
-                PLVLiveChannelType channelType = plvLiveLoginResult.getChannelTypeNew();
-                //进入云课堂场景
-                if (PLVLiveScene.isCloudClassSceneSupportType(channelType)) {
-                    PLVLaunchResult launchResult = PLVLCCloudClassActivity.launchLive(getActivity(), channelId, channelType, getViewerId(), getViewerName(), getViewerAvatar());
-                    if (!launchResult.isSuccess()) {
-                        ToastUtils.showShort(launchResult.getErrorMessage());
-                    }
-                }  else {
-                    ToastUtils.showShort(R.string.plv_scene_login_toast_cloudclass_no_support_type);
-                }
-            }
 
-            @Override
-            public void onLoginFailed(String msg, Throwable throwable) {
-                ToastUtils.showShort(msg);
-            }
-        });
+        startActivity(new Intent(getActivity(),PLVLoginWatcherActivity.class));
+//        loginManager.loginLiveNew(appId, appSecret, userId, channelId, new IPLVSceneLoginManager.OnLoginListener<PLVLiveLoginResult>() {
+//            @Override
+//            public void onLoginSuccess(PLVLiveLoginResult plvLiveLoginResult) {
+//                PLVLiveChannelConfigFiller.setupAccount(userId, appId, appSecret);
+//                PLVLiveChannelType channelType = plvLiveLoginResult.getChannelTypeNew();
+//                //进入云课堂场景
+//                if (PLVLiveScene.isCloudClassSceneSupportType(channelType)) {
+//                    PLVLaunchResult launchResult = PLVLCCloudClassActivity.launchLive(getActivity(), channelId, channelType, getViewerId(), getViewerName(), getViewerAvatar());
+//                    if (!launchResult.isSuccess()) {
+//                        ToastUtils.showShort(launchResult.getErrorMessage());
+//                    }
+//                }  else {
+//                    ToastUtils.showShort(R.string.plv_scene_login_toast_cloudclass_no_support_type);
+//                }
+//            }
+//
+//            @Override
+//            public void onLoginFailed(String msg, Throwable throwable) {
+//                ToastUtils.showShort(msg);
+//            }
+//        });
     }
 
 }

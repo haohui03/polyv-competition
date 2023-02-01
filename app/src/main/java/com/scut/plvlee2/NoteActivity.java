@@ -42,11 +42,11 @@ public class NoteActivity extends AppCompatActivity implements INoteContact.INot
     List<NoteData> noteDataList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         notePresenter = new NotePresenter(getApplicationContext());
-        notePresenter.initUser("admin");
+        notePresenter.initViewLocalUser("admin");
         notePresenter.registerView(this);
         notePresenter.requestNote("","");
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_note);
         getSupportActionBar().setTitle("我的笔记");
         // 判断父activity是否为空，不为空设置导航返回按钮
@@ -68,8 +68,10 @@ public class NoteActivity extends AppCompatActivity implements INoteContact.INot
     }
 
     void RefreshView(){
+
         Handler handler = new Handler(Looper.getMainLooper());
         handler.post(new Runnable() {
+
             @Override
             public void run() {
                 for (NoteData note:

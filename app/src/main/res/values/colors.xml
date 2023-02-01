@@ -9,6 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="bottom_selected">#4f00ff00</color>
     <color name="none">#0000</color>
-
+    <color name="video_back">#D6F2FF</color>
+    <color name="place_holder_color">#bfbfbf</color>
     <color name="noteActivityBg">#ff202030</color>
 </resources>

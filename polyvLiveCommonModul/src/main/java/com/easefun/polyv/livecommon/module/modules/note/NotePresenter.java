@@ -46,7 +46,6 @@ public class NotePresenter implements INoteContact.INotePresenter {
     public void initLiveRoom(IPLVLiveRoomDataManager liveRoomDataManager) {
         chatroomPresenter = new PLVChatroomPresenter(liveRoomDataManager);
         chatroomPresenter.init();
-
         chatroomPresenter.registerView(new PLVAbsChatroomView() {
             @Override
             public void onCustomEvent(@NonNull PolyvCustomEvent.UserBean userBean, @NonNull customData customBean) {
@@ -75,12 +74,12 @@ public class NotePresenter implements INoteContact.INotePresenter {
         });
         this.liveRoomDataManager = liveRoomDataManager;
         this.classID = liveRoomDataManager.getConfig().getChannelId().toString();
-        initUser(liveRoomDataManager.getConfig().getUser().getViewerId()) ;
+        initViewLocalUser(liveRoomDataManager.getConfig().getUser().getViewerId()) ;
         Log.i(TAG, "initLiveRoom: init liveRoom  usrId :"+userId);
     }
 
     @Override
-    public void initUser(String userId) {
+    public void initViewLocalUser(String userId) {
         this.userId = userId;
         noteDataSource = LocalNoteDataBaseSingleton.getInstance();
         noteDataSource.SetPresenter(this);

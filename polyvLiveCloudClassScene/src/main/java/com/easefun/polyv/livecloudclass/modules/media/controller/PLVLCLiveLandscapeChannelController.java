@@ -267,6 +267,7 @@ public class PLVLCLiveLandscapeChannelController extends FrameLayout implements 
 
     @Override
     public void hide() {
+
         setVisibility(GONE);
     }
     // </editor-fold>
